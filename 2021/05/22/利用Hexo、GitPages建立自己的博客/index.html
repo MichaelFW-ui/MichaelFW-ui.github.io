@@ -275,7 +275,7 @@ npm -v
 git config --global user.email &quot;你的GitHub注册邮箱&quot;
 
 ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;
-</code></pre><p> 一路回车键，找到自己电脑上的User\你的Windows用户名.ssh\id_rsa和id_rsa.pub两个文件。把后一个文件里的全部内容复制，粘贴到GitHub个人页面右上角下拉框-&gt;Settings-&gt;SSH and GPG keys-&gt; SSH Keys -&gt; New SSH keys这个界面中，添加即可。</p>
+</code></pre><p> 一路回车键，找到自己电脑上的User\你的Windows用户名\.ssh\id_rsa和id_rsa.pub两个文件。把后一个文件里的全部内容复制，粘贴到GitHub个人页面右上角下拉框-&gt;Settings-&gt;SSH and GPG keys-&gt; SSH Keys -&gt; New SSH keys这个界面中，添加即可。</p>
 <p> 这里应该有图片的，我之后再传吧。</p>
 <p> 回到Git Bash,输入</p>
 <pre><code> ssh git@github.com
@@ -292,10 +292,10 @@ hexo server
 <p>在设置之前，需要解释一个概念，在blog根目录里的_config.yml文件称为<strong>站点配置文件</strong>，进入根目录里的themes文件夹，里面也有个_config.yml文件，这个称为<strong>主题配置文件</strong>。</p>
 <p>打开前一个站点配置文件，找到deploy这个单词，填充如下内容：</p>
 <pre><code>deploy:
-type: git
-repo: git@github.com/GitHub用户名/GitHub用户名.github.io.git
-branch: main
-</code></pre><p>注意repo使用git@才能ssh登录，改成https的话，每次deploy都需要输入密码，烦都烦死了。<br>再注意branch 要使用main，因为GitHub整顿后，将新Repo的默认分支从<code>master</code> 改成了<code>main</code>。不讨论polotical Correctness。</p>
+  type: git
+  repo: git@github.com/GitHub用户名/GitHub用户名.github.io.git
+  branch: main
+</code></pre><p>注意repo使用git@才能ssh登录，改成https的话，每次deploy都需要输入密码，烦都烦死了。<br>再注意branch 要使用main，因为GitHub整顿后，将新Repo的默认分支从<code>master</code> 改成了<code>main</code>。不讨论political Correctness。</p>
 <p>回到项目根目录，打开terminal，输入</p>
 <pre><code>npm install hexo-deployer-git --save
 </code></pre><p>和</p>
@@ -306,8 +306,8 @@ hexo d
 <h3 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h3><p>打开你的GitHub，在博客Repo的Settings里面，找到左侧Pages，点进去，右边找到Custom domain，填入你先前注册的域名，再勾选下面的Enforce HTTPS，就搞定了。</p>
 <p>这时候可以回到第一步，把 <code>GitHub用户名.github.io</code>填入先前DNS解析的步骤。Host name填入www, 这样也可以解析www.开头的你的域名。</p>
 <p>我觉得需要图片，到时候再说。</p>
-<p>假说你博客的根目录是/,进入/source，理论上应该有一个<code>_posts</code>文件夹。在它的旁边创建名为<code>CNAME</code>的文件，输入<strong>不带www</strong>的你的域名。</p>
-<p>这时候打开浏览器在地址栏输入你的个性化域名将会直接进入你自己搭建的网站。</p>
+<p>假说你博客的根目录是/，现进入/source目录，理论上应该有一个<code>_posts</code>文件夹。在它的旁边创建名为<code>CNAME</code>的文件，输入<strong>不带www</strong>的你的域名。</p>
+<p>这时候打开浏览器在地址栏输入你的个性化域名将会直接进入你自己搭建的网站。如果没有，就deploy几次（莽撞</p>
 <p>不需要改动_config.yml里面的内容。</p>
 <h3 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h3><p>啊嘞，这个不需要我解释吧。在terminal里使用</p>
 <pre><code>hexo new 文章名
