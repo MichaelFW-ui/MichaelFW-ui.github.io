@@ -16,9 +16,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="电子设计实践大作业开始在即，即使力学考试就在眼前，我仍然花费一段时间来调试这样的程序。
-何等的敬业精神。
-在使用uVision建立新工程的时候，我发现过程相对繁琐且缺乏条理。于是便整理过程如下。">
+  <meta name="description" content="电子设计实践大作业开始在即，即使力学考试就在眼前，我仍然花费一段时间来调试这样的程序。何等的敬业精神。在使用uVision建立新工程的时候，我发现过程相对繁琐且缺乏条理。于是便整理过程如下。">
   <meta name="author" content="Michael Francis Williams">
   <meta name="keywords" content="">
   
@@ -244,19 +242,11 @@
             <h1 style="display: none">利用uVision5建立STM32F10x标准库工程</h1>
             
             <div class="markdown-body">
-              <p>电子设计实践大作业开始在即，即使力学考试就在眼前，我仍然花费一段时间来调试这样的程序。<br />
-何等的敬业精神。<br />
-在使用uVision建立新工程的时候，我发现过程相对繁琐且缺乏条理。于是便整理过程如下。</p>
-<span id="more"></span>
+              <p>电子设计实践大作业开始在即，即使力学考试就在眼前，我仍然花费一段时间来调试这样的程序。<br>何等的敬业精神。<br>在使用uVision建立新工程的时候，我发现过程相对繁琐且缺乏条理。于是便整理过程如下。<br><span id="more"></span></p>
 <p>本文依然无图（笑</p>
-<h2 id="下载stm32f10x-标准库"><a class="markdownIt-Anchor" href="#下载stm32f10x-标准库"></a> 下载STM32F10x 标准库</h2>
-<p>进入链接<a target="_blank" rel="noopener" href="https://www.st.com/en/embedded-software/stsw-stm32054.html">https://www.st.com/en/embedded-software/stsw-stm32054.html</a><br />
-下载即可。</p>
-<h2 id="新建工程"><a class="markdownIt-Anchor" href="#新建工程"></a> 新建工程</h2>
-<p>打开uVision5, 进入<code>Project</code> -&gt; <code>New uVision Project</code>,<br />
-选择工程文件目录，选择使用的芯片型号即可。</p>
-<h2 id="拷贝库文件"><a class="markdownIt-Anchor" href="#拷贝库文件"></a> 拷贝库文件</h2>
-<p>在工程文件目录附近新建几个文件夹，如下</p>
+<h2 id="下载STM32F10x-标准库"><a href="#下载STM32F10x-标准库" class="headerlink" title="下载STM32F10x 标准库"></a>下载STM32F10x 标准库</h2><p>进入链接<a target="_blank" rel="noopener" href="https://www.st.com/en/embedded-software/stsw-stm32054.html">https://www.st.com/en/embedded-software/stsw-stm32054.html</a><br>下载即可。</p>
+<h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><p>打开uVision5, 进入<code>Project</code> -&gt; <code>New uVision Project</code>,<br>选择工程文件目录，选择使用的芯片型号即可。</p>
+<h2 id="拷贝库文件"><a href="#拷贝库文件" class="headerlink" title="拷贝库文件"></a>拷贝库文件</h2><p>在工程文件目录附近新建几个文件夹，如下</p>
 <pre><code>Doc
 Libraries
     CMSIS
@@ -267,31 +257,20 @@ Project
     MDK
         xxx.uvprojx
 User
-</code></pre>
-<p>其中<code>CMSIS</code> <code>STM...</code>是下载好的标准库文件中的同名目录，<code>xxx.uvprojx</code>是你刚刚新建的工程文件。</p>
-<p>然后将标准库文件中的示例<code>Template</code>中的文件<code>stm32f10x_conf.h stm32f10x_it.c stm32f10x_it.h</code>文件复制到<code>User</code>目录下。<br />
-如果<code>stm32f10x_it.c</code>中有<code>#include &quot;main.h&quot;</code>，删去。如果Systick中断函数中有内容，全部注释掉即可。</p>
-<h2 id="将文件添加到工程"><a class="markdownIt-Anchor" href="#将文件添加到工程"></a> 将文件添加到工程</h2>
-<p>打开uVision5, 选中魔术棒右边的一个按钮，添加分组<code>Startup CMSIS STM32F10x_StdPeriph_Driver User DOc</code>。</p>
+</code></pre><p>其中<code>CMSIS</code> <code>STM...</code>是下载好的标准库文件中的同名目录，<code>xxx.uvprojx</code>是你刚刚新建的工程文件。</p>
+<p>然后将标准库文件中的示例<code>Template</code>中的文件<code>stm32f10x_conf.h stm32f10x_it.c stm32f10x_it.h</code>文件复制到<code>User</code>目录下。<br>如果<code>stm32f10x_it.c</code>中有<code>#include &quot;main.h&quot;</code>，删去。如果Systick中断函数中有内容，全部注释掉即可。</p>
+<h2 id="将文件添加到工程"><a href="#将文件添加到工程" class="headerlink" title="将文件添加到工程"></a>将文件添加到工程</h2><p>打开uVision5, 选中魔术棒右边的一个按钮，添加分组<code>Startup CMSIS STM32F10x_StdPeriph_Driver User DOc</code>。</p>
 <p>然后，分别点击<code>Add Files</code>，将对应的所有可以找到的.c文件添加到相关分组。</p>
-<p>注意，<code>Startup</code>分组中添加的是<code>startup_stm32f10x_hd.s</code>一个汇编文件。其位于<code>arm</code>目录下，<br />
-因为我们使用的是MDK的编译器，自然选择arm。</p>
-<h2 id="option中设计工程"><a class="markdownIt-Anchor" href="#option中设计工程"></a> Option中设计工程</h2>
-<p>点开魔术棒，进行如下设置：</p>
+<p>注意，<code>Startup</code>分组中添加的是<code>startup_stm32f10x_hd.s</code>一个汇编文件。其位于<code>arm</code>目录下，<br>因为我们使用的是MDK的编译器，自然选择arm。</p>
+<h2 id="Option中设计工程"><a href="#Option中设计工程" class="headerlink" title="Option中设计工程"></a>Option中设计工程</h2><p>点开魔术棒，进行如下设置：</p>
 <p><code>Target</code>栏目中，设置芯片默认主频为<code>8MHz</code>，这里没有计入倍频。使用armcc5的编译器，在<code>Code Generation</code>中设置。</p>
 <p><code>Output</code>栏目中，选择目录为先前创建的<code>Output</code>目录。勾选<code>Create HEX File</code>便于以后的使用。<code>Listing</code>栏目同理。</p>
-<p><code>C/C++</code>栏目中，<code>Define</code>填入<code>USE_STDPERIPH_DRIVER</code>，不需要填入芯片型号，因为Keil为你自动添加过了，再次添加会无法编译通过。<br />
-这是不同于网上教程的一点。</p>
+<p><code>C/C++</code>栏目中，<code>Define</code>填入<code>USE_STDPERIPH_DRIVER</code>，不需要填入芯片型号，因为Keil为你自动添加过了，再次添加会无法编译通过。<br>这是不同于网上教程的一点。</p>
 <p>接着，在<code>Include Paths</code>中填入所有你看到的含有.h文件的目录。</p>
 <p><code>Debug</code>栏目右上角，选择你使用的仿真器。</p>
-<p><code>Utilities</code>中选择<code>Use Debug Driver</code>，进入<code>Settings</code>，在<code>Flash Download</code>栏目中，检查Flash大小是不是与芯片实际大小一致。左翻进入<code>Debug</code>栏目，<code>Port</code>选择<code>SW</code>方式，<code>Clock</code>调整下载速度为1MHz。<br />
-然后确认退出即可。</p>
-<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
-<p>这个时候就可以加载LED测试代码检查是否配置完好了。</p>
-<p>配置过程中心思想就是，uVision对你的代码结构一无所知，对你的芯片需求一无所知。<br />
-你需要做的就是，在Group中告诉它你是如何组织代码的，告诉它代码放在哪里。<br />
-在Include Paths中告诉它你的头文件放在哪里。<br />
-在魔术棒菜单中，告诉它你的芯片是如何工作的。</p>
+<p><code>Utilities</code>中选择<code>Use Debug Driver</code>，进入<code>Settings</code>，在<code>Flash Download</code>栏目中，检查Flash大小是不是与芯片实际大小一致。左翻进入<code>Debug</code>栏目，<code>Port</code>选择<code>SW</code>方式，<code>Clock</code>调整下载速度为1MHz。<br>然后确认退出即可。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个时候就可以加载LED测试代码检查是否配置完好了。</p>
+<p>配置过程中心思想就是，uVision对你的代码结构一无所知，对你的芯片需求一无所知。<br>你需要做的就是，在Group中告诉它你是如何组织代码的，告诉它代码放在哪里。<br>在Include Paths中告诉它你的头文件放在哪里。<br>在魔术棒菜单中，告诉它你的芯片是如何工作的。</p>
 <p>仅此而已的工作。</p>
 
             </div>
@@ -531,6 +510,10 @@ User
 
 
 
+
+
+  
+<script src="/.js"></script>
 
 
 
