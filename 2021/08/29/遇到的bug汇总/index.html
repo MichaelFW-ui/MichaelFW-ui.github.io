@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="前言作为一个能力不足的人，在日常生活中，总会有那么一些bug让我难以接受。我将其中的部分汇总如下，聊以慰藉。">
+  <meta name="author" content="Michael Francis Williams">
+  <meta name="keywords" content="">
+  
+  <title>遇到的bug汇总 - 风平浪静的小小避难所</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>The Blog of Michael</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/05/22/gLpEiF.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="遇到的bug汇总">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-29 11:02" pubdate>
+        2021年8月29日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">遇到的bug汇总</h1>
+            
+            <div class="markdown-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个能力不足的人，在日常生活中，总会有那么一些bug让我难以接受。我将其中的部分汇总如下，聊以慰藉。</p>
+<span id="more"></span>
+<p>本文理论上是长期更新的，不要嫌文章短（</p>
+<h2 id="历史遗留问题"><a href="#历史遗留问题" class="headerlink" title="历史遗留问题"></a>历史遗留问题</h2><h3 id="PowerToys-的bug"><a href="#PowerToys-的bug" class="headerlink" title="PowerToys 的bug"></a>PowerToys 的bug</h3><p>作为Vim用户，交换Caps Lock和Esc键是常规操作了。为了体现Geek风范，我使用了 MicroSoft维护的PowerToys来实现键盘重映射。</p>
+<p>但是，我没有想到的是，当前版本的PowerToys存在假死的情况。假死过后，会强制软件激活Caps Lock，造成我编码的误操作。令人惊奇的是，激活的Caps Lock，我需要按两次才能取消。第一次是硬件激活，第二次是硬件取消。可以算是步调不一致了。</p>
+<h3 id="“-target”？-你从哪里来？"><a href="#“-target”？-你从哪里来？" class="headerlink" title="“-target”？ 你从哪里来？"></a>“-target”？ 你从哪里来？</h3><p>先前在调试clang的时候，在系统变量中添加了<code>CXXFLAGS</code> 和它的值 <code>-target XXXX</code>。后来因为clang 始终无法测试成功，便卸载了clang。但是，系统变量没有被删除。</p>
+<p>后来，我再调试CMake的时候，无论怎么make都会显示无法通过编译器测试，显示<code>Uknown command line &quot;-target&quot;</code>。</p>
+<p>我怎么想，都觉得不可思议。明明g++使用格式为<code>--target</code>，为什么CMake会这么不合常理地使用这样的编译选项，反而告诉我无法编译呢？</p>
+<p>可想而知，耗费三个小时后，我灵光一闪，删除了系统变量中的<code>CXXFLAGS</code>。编译通过了。</p>
+<p>所以clang和g++读取同一个系统变量，这种原因我不得而知。</p>
+<h3 id="关我Anaconda何事？"><a href="#关我Anaconda何事？" class="headerlink" title="关我Anaconda何事？"></a>关我Anaconda何事？</h3><p>首次使用VSCode编辑Qt6生成的CMake工程时，Intelligence总是提示错误的引用。仔细一看，include到了<code>Anaconda/Library/Qt</code>里面的文件。这就问题很大了。</p>
+<p>思索再三，我发现VSCode的<code>C/C++</code>扩展中对include path的定义，是先在系统环境变量中搜索的。那么，Anaconda的路径在Qt之前，便会直接从Anaconda中include，这就产生了错误。</p>
+<p>将环境变量的顺序调整了之后，问题不再复现。</p>
+<h2 id="编程技术菜菜菜"><a href="#编程技术菜菜菜" class="headerlink" title="编程技术菜菜菜"></a>编程技术菜菜菜</h2><h3 id="C语言篇"><a href="#C语言篇" class="headerlink" title="C语言篇"></a>C语言篇</h3><h4 id="忘记加括号"><a href="#忘记加括号" class="headerlink" title="忘记加括号"></a>忘记加括号</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">PWM_SetPWM_ByDutyCycle(SteerNumber, (<span class="hljs-keyword">uint16_t</span>)(angle * <span class="hljs-number">2.0</span> / <span class="hljs-number">180</span> + <span class="hljs-number">0.5</span>) / <span class="hljs-number">20</span> * <span class="hljs-number">4096</span>);<br></code></pre></td></tr></table></figure>
+<p>这样的代码会将任何angle输入，变成0的。因为uint16_t的作用对象错了，应该是整个表达式的值。表达式的类型是double，在进行计算的时候精度损失可以忽略。但是uint16_t位置不对，提前变换成了整型，这不是胡闹吗？</p>
+<p>正确修改如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">PWM_SetPWM_ByDutyCycle(SteerNumber, (<span class="hljs-keyword">uint16_t</span>)((angle * <span class="hljs-number">2.0</span> / <span class="hljs-number">180</span> + <span class="hljs-number">0.5</span>) / <span class="hljs-number">20</span> * <span class="hljs-number">4096</span>));<br></code></pre></td></tr></table></figure>
+<h4 id="volatile-并行计算需要好好学习"><a href="#volatile-并行计算需要好好学习" class="headerlink" title="volatile?并行计算需要好好学习"></a>volatile?并行计算需要好好学习</h4><p>多次读取一个变化的值，读出来的竟然是相同的。这是正常现象，编译器做出来的优化，只需要加上volatile关键词即可。问题的根本在于并行计算理解不够，有待更加深入学习并行计算理论了。</p>
+<h3 id="通病"><a href="#通病" class="headerlink" title="通病"></a>通病</h3><h4 id="无后效性提醒"><a href="#无后效性提醒" class="headerlink" title="无后效性提醒"></a>无后效性提醒</h4><p>在一次编程实践中，我发现系统出现了不应该的异常抖动。代码如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Motor_Decode</span><span class="hljs-params">(MotorInput_t x, MotorInput_t y, MotorInput_t w)</span> </span>&#123;<br><br>    <span class="hljs-comment">// 反向的速度才是正方向</span><br>    x = -x;<br>    y = -y;<br><br>    <span class="hljs-comment">// 保存速度结果，便于调试运动状态</span><br>    Motor_InputInstance.x = x;<br>    Motor_InputInstance.y = y;<br>    Motor_InputInstance.w = w;<br><br>    Motor_TargetSpeed[<span class="hljs-number">0</span>] = MotorDecodeOutputFix(Motor_InputInstance.Kx * x +<br>                                                Motor_InputInstance.Ky * y +<br>                                                Motor_InputInstance.Kw * w);<br>    Motor_TargetSpeed[<span class="hljs-number">1</span>] = MotorDecodeOutputFix(-Motor_InputInstance.Kx * x +<br>                                                Motor_InputInstance.Ky * y -<br>                                                Motor_InputInstance.Kw * w);<br>    Motor_TargetSpeed[<span class="hljs-number">2</span>] = MotorDecodeOutputFix(-Motor_InputInstance.Kx * x +<br>                                                Motor_InputInstance.Ky * y +<br>                                                Motor_InputInstance.Kw * w);<br>    Motor_TargetSpeed[<span class="hljs-number">3</span>] = MotorDecodeOutputFix(Motor_InputInstance.Kx * x +<br>                                                Motor_InputInstance.Ky * y -<br>                                                Motor_InputInstance.Kw * w);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>测试的时候，出现了异常的速度抖动，方向频繁切换。但是，使用如下代码就可以解决。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">Motor_Decode(new_x, new_y, new_z);<br>Motor_Decode(Motor_InputInstace.x, Motor_InputInstace.y, Motor_InputInstace.w);<br></code></pre></td></tr></table></figure>
+<p>需要我写两遍？</p>
+<p>不，真正的原因是，代码中的<code>x = -x; y = -y;</code>具有后效性，将速度反向放在这个地方没有任何道理，只会造成相同调用条件产生反向的输出结果。将这两行代码删除后，问题得到解决。</p>
+<h3 id="CMake篇"><a href="#CMake篇" class="headerlink" title="CMake篇"></a>CMake篇</h3><h4 id="“默认化的默认构造函数不能为constexpr”"><a href="#“默认化的默认构造函数不能为constexpr”" class="headerlink" title="“默认化的默认构造函数不能为constexpr”"></a>“默认化的默认构造函数不能为constexpr”</h4><p>首次尝试利用Qt Creator生成mingw工程并利用Visual Studio 2022调试时，就连最基本的代码都无法编译通过。报错就是标题内容，尽管是自动生成的代码。仔细检查后 发现，Visual Studio读取CMake文件时，没有读取到正确的CMake生成器，默认使用了Ninja，这个我可不会。</p>
+<p>在VS的某个界面中，修改CMake工程的生成器，为Unix Makefiles，这样就编译通过了。</p>
+<p>顺带一提，我还没有搞懂Qt Creator生成的MSVC工程如何利用VS 2022调试（</p>
+<h2 id="硬件壬的伤痛"><a href="#硬件壬的伤痛" class="headerlink" title="硬件壬的伤痛"></a>硬件壬的伤痛</h2><h3 id="程序设计"><a href="#程序设计" class="headerlink" title="程序设计"></a>程序设计</h3><h4 id="中断函数提高速度"><a href="#中断函数提高速度" class="headerlink" title="中断函数提高速度"></a>中断函数提高速度</h4><p>中断函数中一定不能写延时，中断函数的速度也需要尽可能提高。如果出现了中断重叠，可能会产生意料之外的错误。例如部分外设频繁死机之类，不容易检查的。</p>
+<h4 id="外设错误调用"><a href="#外设错误调用" class="headerlink" title="外设错误调用"></a>外设错误调用</h4><p>STM32中外设的使用需要提前调用。不仅如此，如果外设使用了某一种调用模式，而你却采用了另一种模式调用，也会出现严重问题，比如，卡死<code>HardFault</code>。举个例子，如果你外设没有配置DMA，或者配置DMA之后使用了阻塞模式，那么，当你下一次尝试使用DMA模式时，会进入<code>HardFault</code>。</p>
+<h3 id="接线错误"><a href="#接线错误" class="headerlink" title="接线错误"></a>接线错误</h3><h4 id="“target-dll-canceled”"><a href="#“target-dll-canceled”" class="headerlink" title="“target dll canceled”"></a>“target dll canceled”</h4><p>众所周知，STM32的调试口是PA13，PA14。由于PCB绘制过程中，出现了与USART1接口相邻的情况，接线员在接线时，误将串口线接在了PA14上。所以，无法进行任何烧写动作了。任何操作都会显示无法连接，毕竟STLink烧写只需要两根线连接PA13，PA14，坏掉一根怎么玩。</p>
+<p>重新将串口线接在USART1的接线柱上，问题得到解决。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/10/Minimal-TikZ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Minimal TikZ 学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/19/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3FOC%E5%92%8CSVPWM%E6%8A%80%E6%9C%AF/">
+                        <span class="hidden-mobile">如何理解FOC和SVPWM技术</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      jQuery('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      jQuery('#modalSearch').on('shown.bs.modal', function() {
+        jQuery('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
