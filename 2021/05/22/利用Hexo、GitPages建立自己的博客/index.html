@@ -297,7 +297,7 @@ hexo server
   type: git
   repo: git@github.com/GitHub用户名/GitHub用户名.github.io.git
   branch: main
-</code></pre><p>注意repo使用git@才能ssh登录，改成https的话，每次deploy都需要输入密码，烦都烦死了。<br>再注意branch 要使用main，因为GitHub整顿后，将新Repo的默认分支从<code>master</code> 改成了<code>main</code>。不讨论political Correctness。</p>
+</code></pre><p>注意repo使用git@才能ssh登录，改成https的话，每次deploy都需要输入密码。<br>再注意branch 要使用main，因为GitHub整顿后，将新Repo的默认分支从<code>master</code> 改成了<code>main</code>。</p>
 <p>回到项目根目录，打开terminal，输入</p>
 <pre><code>npm install hexo-deployer-git --save
 </code></pre><p>和</p>
@@ -311,7 +311,7 @@ hexo d
 <p>假说你博客的根目录是/，现进入/source目录，理论上应该有一个<code>_posts</code>文件夹。在它的旁边创建名为<code>CNAME</code>的文件，输入<strong>不带www</strong>的你的域名。</p>
 <p>这时候打开浏览器在地址栏输入你的个性化域名将会直接进入你自己搭建的网站。如果没有，就deploy几次（莽撞</p>
 <p>不需要改动_config.yml里面的内容。</p>
-<h3 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h3><p>啊嘞，这个不需要我解释吧。在terminal里使用</p>
+<h3 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h3><p>在terminal里使用</p>
 <pre><code>hexo new 文章名
 </code></pre><p>即可创建一篇文章，位于/source/_posts/目录下的一个.md文件。</p>
 <p>用markdown语法写文章即可。</p>
@@ -373,12 +373,6 @@ hexo deploy
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2021/05/21/%E6%97%A7%E6%96%87%E7%AB%A0%E5%BD%92%E6%A1%A3/">
-                        <span class="hidden-mobile">旧文章归档</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
