@@ -199,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      1.8k 字
     </span>
   
 
@@ -209,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      19
        分钟
     </span>
   
@@ -260,6 +260,7 @@
 <p>正确修改如下。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">PWM_SetPWM_ByDutyCycle(SteerNumber, (<span class="hljs-keyword">uint16_t</span>)((angle * <span class="hljs-number">2.0</span> / <span class="hljs-number">180</span> + <span class="hljs-number">0.5</span>) / <span class="hljs-number">20</span> * <span class="hljs-number">4096</span>));<br></code></pre></td></tr></table></figure>
 <h4 id="volatile-并行计算需要好好学习"><a href="#volatile-并行计算需要好好学习" class="headerlink" title="volatile?并行计算需要好好学习"></a>volatile?并行计算需要好好学习</h4><p>多次读取一个变化的值，读出来的竟然是相同的。这是正常现象，编译器做出来的优化，只需要加上volatile关键词即可。问题的根本在于并行计算理解不够，有待更加深入学习并行计算理论了。</p>
+<h4 id="造轮子是需要水平的，溢出是需要检查的"><a href="#造轮子是需要水平的，溢出是需要检查的" class="headerlink" title="造轮子是需要水平的，溢出是需要检查的"></a>造轮子是需要水平的，溢出是需要检查的</h4><p>课程要求我手动造轮子。可惜能力不足，出现了内存溢出。但是我怎么检查，怎么测试，都不可能出现溢出啊？最后发现，是<strong>没有赋初始值</strong>造成的数据错乱，而不是指向了释放的内存空间。所以，造轮子需谨慎，我仍然是一个菜鸡。</p>
 <h3 id="通病"><a href="#通病" class="headerlink" title="通病"></a>通病</h3><h4 id="无后效性提醒"><a href="#无后效性提醒" class="headerlink" title="无后效性提醒"></a>无后效性提醒</h4><p>在一次编程实践中，我发现系统出现了不应该的异常抖动。代码如下。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Motor_Decode</span><span class="hljs-params">(MotorInput_t x, MotorInput_t y, MotorInput_t w)</span> </span>&#123;<br><br>    <span class="hljs-comment">// 反向的速度才是正方向</span><br>    x = -x;<br>    y = -y;<br><br>    <span class="hljs-comment">// 保存速度结果，便于调试运动状态</span><br>    Motor_InputInstance.x = x;<br>    Motor_InputInstance.y = y;<br>    Motor_InputInstance.w = w;<br><br>    Motor_TargetSpeed[<span class="hljs-number">0</span>] = MotorDecodeOutputFix(Motor_InputInstance.Kx * x +<br>                                                Motor_InputInstance.Ky * y +<br>                                                Motor_InputInstance.Kw * w);<br>    Motor_TargetSpeed[<span class="hljs-number">1</span>] = MotorDecodeOutputFix(-Motor_InputInstance.Kx * x +<br>                                                Motor_InputInstance.Ky * y -<br>                                                Motor_InputInstance.Kw * w);<br>    Motor_TargetSpeed[<span class="hljs-number">2</span>] = MotorDecodeOutputFix(-Motor_InputInstance.Kx * x +<br>                                                Motor_InputInstance.Ky * y +<br>                                                Motor_InputInstance.Kw * w);<br>    Motor_TargetSpeed[<span class="hljs-number">3</span>] = MotorDecodeOutputFix(Motor_InputInstance.Kx * x +<br>                                                Motor_InputInstance.Ky * y -<br>                                                Motor_InputInstance.Kw * w);<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>测试的时候，出现了异常的速度抖动，方向频繁切换。但是，使用如下代码就可以解决。</p>
@@ -268,11 +269,15 @@
 <p>不，真正的原因是，代码中的<code>x = -x; y = -y;</code>具有后效性，将速度反向放在这个地方没有任何道理，只会造成相同调用条件产生反向的输出结果。将这两行代码删除后，问题得到解决。</p>
 <h3 id="CMake篇"><a href="#CMake篇" class="headerlink" title="CMake篇"></a>CMake篇</h3><h4 id="“默认化的默认构造函数不能为constexpr”"><a href="#“默认化的默认构造函数不能为constexpr”" class="headerlink" title="“默认化的默认构造函数不能为constexpr”"></a>“默认化的默认构造函数不能为constexpr”</h4><p>首次尝试利用Qt Creator生成mingw工程并利用Visual Studio 2022调试时，就连最基本的代码都无法编译通过。报错就是标题内容，尽管是自动生成的代码。仔细检查后 发现，Visual Studio读取CMake文件时，没有读取到正确的CMake生成器，默认使用了Ninja，这个我可不会。</p>
 <p>在VS的某个界面中，修改CMake工程的生成器，为Unix Makefiles，这样就编译通过了。</p>
-<p>顺带一提，我还没有搞懂Qt Creator生成的MSVC工程如何利用VS 2022调试（</p>
+<!-- 顺带一提，我还没有搞懂Qt Creator生成的MSVC工程如何利用VS 2022调试（ -->
 <h2 id="硬件壬的伤痛"><a href="#硬件壬的伤痛" class="headerlink" title="硬件壬的伤痛"></a>硬件壬的伤痛</h2><h3 id="程序设计"><a href="#程序设计" class="headerlink" title="程序设计"></a>程序设计</h3><h4 id="中断函数提高速度"><a href="#中断函数提高速度" class="headerlink" title="中断函数提高速度"></a>中断函数提高速度</h4><p>中断函数中一定不能写延时，中断函数的速度也需要尽可能提高。如果出现了中断重叠，可能会产生意料之外的错误。例如部分外设频繁死机之类，不容易检查的。</p>
 <h4 id="外设错误调用"><a href="#外设错误调用" class="headerlink" title="外设错误调用"></a>外设错误调用</h4><p>STM32中外设的使用需要提前调用。不仅如此，如果外设使用了某一种调用模式，而你却采用了另一种模式调用，也会出现严重问题，比如，卡死<code>HardFault</code>。举个例子，如果你外设没有配置DMA，或者配置DMA之后使用了阻塞模式，那么，当你下一次尝试使用DMA模式时，会进入<code>HardFault</code>。</p>
-<h3 id="接线错误"><a href="#接线错误" class="headerlink" title="接线错误"></a>接线错误</h3><h4 id="“target-dll-canceled”"><a href="#“target-dll-canceled”" class="headerlink" title="“target dll canceled”"></a>“target dll canceled”</h4><p>众所周知，STM32的调试口是PA13，PA14。由于PCB绘制过程中，出现了与USART1接口相邻的情况，接线员在接线时，误将串口线接在了PA14上。所以，无法进行任何烧写动作了。任何操作都会显示无法连接，毕竟STLink烧写只需要两根线连接PA13，PA14，坏掉一根怎么玩。</p>
+<h3 id="接线错误"><a href="#接线错误" class="headerlink" title="接线错误"></a>接线错误</h3><h4 id="“target-dll-canceled”"><a href="#“target-dll-canceled”" class="headerlink" title="“target dll canceled”"></a>“target dll canceled”</h4><p>众所周知，STM32的调试口是PA13，PA14。由于PCB绘制过程中，出现了与USART1接口相邻的情况，接线员在接线时，误将串口线接在了PA14上。所以，无法进行任何烧写动作了。任何操作都会显示无法连接，毕竟STLink烧写只需要两根线连接PA13，PA14，坏掉一根就有极大影响。</p>
 <p>重新将串口线接在USART1的接线柱上，问题得到解决。</p>
+<h3 id="异常现象"><a href="#异常现象" class="headerlink" title="异常现象"></a>异常现象</h3><h4 id="未知重启"><a href="#未知重启" class="headerlink" title="未知重启"></a>未知重启</h4><p>2021年10月1日的一次调试中，STM32芯片出现了多次的异常重启。经过分析，一共有两种原因，二者交替触发，造成问题难以定位。这两种原因分别是内存泄漏单片机挂起重启，和电压不稳芯片重启。</p>
+<p>正常情况下，内存泄漏应该进入HardFault中断中阻塞全部程序。但本次实验中，STM在遍历了全部内存空间后，产生了软件重启信号，形成了软件重启。表现为调试串口信号从起始位置重新开始。</p>
+<p>在之后的实验中，出现了杜邦线端口松动，电压断供的情况。表现为调试串口信号乱码。</p>
+<p>本人根据调试串口信号的复位信息得到了上述两种复位方式。在修复了相应漏洞后，程序恢复正常，</p>
 
             </div>
             <hr>
@@ -293,6 +298,8 @@
                       <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
                     
                       <a class="hover-with-bg" href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
                     
                   </div>
                 
