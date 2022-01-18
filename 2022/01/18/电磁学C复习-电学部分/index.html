@@ -244,9 +244,11 @@
             <div class="markdown-body">
               <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文章是作者在学习电磁学时进行期中复习时做出的笔记。</p>
 <span id="more"></span>
-<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="电荷守恒定律"><a href="#电荷守恒定律" class="headerlink" title="电荷守恒定律"></a>电荷守恒定律</h3><p>[<br>    \oiint_S \vec{j}\cdot\text{d}\vec{s} = -\frac{\partial}{\partial t} \iiint_V \rho \cdot \text{d}V<br>]</p>
-<p>即<br>[<br>    \nabla \cdot \vec{j} = -\frac{\partial \rho}{\partial t}<br>]</p>
-<h3 id="库仑定律"><a href="#库仑定律" class="headerlink" title="库仑定律"></a>库仑定律</h3><p>$\vec{F}_{12}$为2对1的作用力，有</p>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="电荷守恒定律"><a href="#电荷守恒定律" class="headerlink" title="电荷守恒定律"></a>电荷守恒定律</h3><script type="math/tex; mode=display">
+\newcommand{\oiint}{\subset\kern{-3pt}\supset\kern{-16.5pt}\iint}
+    \oiint_S \vec{j}\cdot\text{d}\vec{s} = -\frac{\partial}{\partial t} \iiint_V \rho \cdot \text{d}V</script><p>即</p>
+<script type="math/tex; mode=display">
+    \nabla \cdot \vec{j} = -\frac{\partial \rho}{\partial t}</script><h3 id="库仑定律"><a href="#库仑定律" class="headerlink" title="库仑定律"></a>库仑定律</h3><p>$\vec{F}_{12}$为2对1的作用力，有</p>
 <script type="math/tex; mode=display">
     \vec{F}_{12} = k\frac{q_1q_2}{r_{12}^2}\vec{e_r}</script><p>同时满足牛顿第三定律</p>
 <script type="math/tex; mode=display">
@@ -282,8 +284,8 @@ F_{12} = \frac{1}{4\pi\varepsilon_0}\iiint_{V_1}\iiint_{V_2}\frac{\rho_1(\boldsy
 <script type="math/tex; mode=display">
 \oiint_S \vec{E}\cdot \text{d}\vec{S} =\frac{1}{\varepsilon_0}\iiint_V\rho \text{d} V</script><p>由数学公式推导得到</p>
 <script type="math/tex; mode=display">
-\nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}</script><h3 id="环量"><a href="#环量" class="headerlink" title="环量"></a>环量</h3><p>$\oint_L\boldsymbol \cdot \text{d}\boldsymbol{L}$</p>
-<h3 id="静电场的环路定理"><a href="#静电场的环路定理" class="headerlink" title="静电场的环路定理"></a>静电场的环路定理</h3><script type="math/tex; mode=display">
+\nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}</script><h3 id="环量"><a href="#环量" class="headerlink" title="环量"></a>环量</h3><script type="math/tex; mode=display">
+\oint_L\boldsymbol \cdot \text{d}\boldsymbol{L}</script><h3 id="静电场的环路定理"><a href="#静电场的环路定理" class="headerlink" title="静电场的环路定理"></a>静电场的环路定理</h3><script type="math/tex; mode=display">
 \oint_L \vec{E}\cdot\text{d}\vec{l} = 0</script><p>由数学公式推导得到</p>
 <script type="math/tex; mode=display">
 \nabla \times \vec{E} = 0</script><h3 id="电势能"><a href="#电势能" class="headerlink" title="电势能"></a>电势能</h3><script type="math/tex; mode=display">
@@ -325,7 +327,7 @@ C=\frac{2\pi\varepsilon_0L}{\ln R_B/R_A}</script><h3 id="极化强度矢量"><a 
 <script type="math/tex; mode=display">
 \nabla \cdot \boldsymbol{P} = -\rho^{'}</script><p>边界上</p>
 <script type="math/tex; mode=display">
-\sigma ^{'} = -(\boldsymbol{P}_2 - \boldsymbol_1) \cdot \boldsymbol{n}</script><h3 id="极化强度与电场的关系"><a href="#极化强度与电场的关系" class="headerlink" title="极化强度与电场的关系"></a>极化强度与电场的关系</h3><p>各向同性电介质中</p>
+\sigma ^{'} = -(\boldsymbol{P}_2 - \boldsymbol{P}_1) \cdot \boldsymbol{n}</script><h3 id="极化强度与电场的关系"><a href="#极化强度与电场的关系" class="headerlink" title="极化强度与电场的关系"></a>极化强度与电场的关系</h3><p>各向同性电介质中</p>
 <script type="math/tex; mode=display">
 \boldsymbol{P} = \chi_e\varepsilon_0\boldsymbol{E}</script><p>$\chi_e$为电极化率，$\boldsymbol{E}$为极化后的总电场。</p>
 <script type="math/tex; mode=display">
@@ -335,7 +337,7 @@ C=\frac{2\pi\varepsilon_0L}{\ln R_B/R_A}</script><h3 id="极化强度矢量"><a 
 <script type="math/tex; mode=display">
 \oiint_S \boldsymbol{D} \cdot \text{d}\boldsymbol{S} = \sum_{S}q_0</script><p>而且</p>
 <script type="math/tex; mode=display">
-\boldsymbol{D} = \varepsilon_0\boldsymbol{E} + \boldsymbol{P} = \varepsilon_0\boldsymbol{E} + \chi_e\varepsilon_0\boldsymbol{E} = \varepsilon_r\varepsilon_0\boldsymbol{E} = \varepsilon\boldsymbol</script><p>写成连续形式也可以，将$q_0$换成$\iiint_V \rho_0\text{d}V$即可。</p>
+\boldsymbol{D} = \varepsilon_0\boldsymbol{E} + \boldsymbol{P} = \varepsilon_0\boldsymbol{E} + \chi_e\varepsilon_0\boldsymbol{E} = \varepsilon_r\varepsilon_0\boldsymbol{E} = \varepsilon\boldsymbol{E}</script><p>写成连续形式也可以，将$q_0$换成$\iiint_V \rho_0\text{d}V$即可。</p>
 <p>同时有微分形式</p>
 <script type="math/tex; mode=display">
 \nabla \cdot \boldsymbol{D} = \rho_0</script><p>介质中静电场仍然是一个无旋的保守场。</p>
@@ -413,7 +415,7 @@ W_e = \iiint_V\omega_e\text{d}V</script><p>PPT上用了复杂的方法推导这�
 \text{d}W = \delta A - \delta A^{'}</script><p>其中$\delta A$为外界电源做功，$\delta A^{‘}$为静电力做功。静电力作功与能量有着功能原理，所以是负号。<br>在连接外部电源时，有关系$\delta A = 2 \delta A^{‘}$，可以由电容的公式推广得到。</p>
 <p>所以自然有了虚功原理的公式。其中的符号也得到了解释。</p>
 <h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="电流强度"><a href="#电流强度" class="headerlink" title="电流强度"></a>电流强度</h3><script type="math/tex; mode=display">
-I = \frac{\text{d}Q}{\text{d}t}</script><h3 id="电流密度"><a href="#电流密度" class="headerlink" title="电流密度"></a>电流密度</h3><p>作一单位矢量为电流方向，取一面元$\Delta S_0$与$\boldsymbol_0$垂直，设通过$\Delta S_0$的电流强度为$\Delta I$，则电流密度为</p>
+I = \frac{\text{d}Q}{\text{d}t}</script><h3 id="电流密度"><a href="#电流密度" class="headerlink" title="电流密度"></a>电流密度</h3><p>作一单位矢量为电流方向，取一面元$\Delta S_0$与$\boldsymbol{n}_0$垂直，设通过$\Delta S_0$的电流强度为$\Delta I$，则电流密度为</p>
 <script type="math/tex; mode=display">
 \vec{j} = \frac{\Delta I}{\Delta S_0}\vec{n}_0</script><p>所以通过任意有限截面$S$的电流强度为</p>
 <script type="math/tex; mode=display">
