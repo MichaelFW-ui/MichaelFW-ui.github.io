@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,16 +9,23 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
   <link rel="icon" href="/img/icon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="Michael Francis Williams">
   <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="风平浪静的小小避难所">
+<meta property="og:url" content="https://pickupthefall.xyz/index.html">
+<meta property="og:site_name" content="风平浪静的小小避难所">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Michael Francis Williams">
+<meta name="twitter:card" content="summary_large_image">
+  
   
   <title>风平浪静的小小避难所</title>
 
@@ -42,7 +49,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -53,8 +60,9 @@
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>The Blog of Michael</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>The Blog of Michael</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -140,13 +148,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -204,9 +213,6 @@
       <p class="index-excerpt">
         <a href="/2022/01/18/%E7%94%B5%E7%A3%81%E5%AD%A6C%E5%A4%8D%E4%B9%A0-%E7%94%B5%E5%AD%A6%E9%83%A8%E5%88%86/" target="_self">
           
-          
-            
-          
           前言本文章是作者在学习电磁学时进行期中复习时做出的笔记。
         </a>
       </p>
@@ -260,9 +266,6 @@
       <p class="index-excerpt">
         <a href="/2021/09/10/Minimal-TikZ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
           
-          
-            
-          
           前言本文为A very minimal introduction to TikZ学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。
         </a>
       </p>
@@ -313,9 +316,6 @@
 
       <p class="index-excerpt">
         <a href="/2021/08/29/%E9%81%87%E5%88%B0%E7%9A%84bug%E6%B1%87%E6%80%BB/" target="_self">
-          
-          
-            
           
           前言作为一个能力不足的人，在日常生活中，总会有那么一些bug让我难以接受。我将其中的部分汇总如下，聊以慰藉。
         </a>
@@ -368,9 +368,6 @@
       <p class="index-excerpt">
         <a href="/2021/07/19/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3FOC%E5%92%8CSVPWM%E6%8A%80%E6%9C%AF/" target="_self">
           
-          
-            
-          
           前言期末考试结束，RoboGame的各种任务又接踵而至。 在电机的驱动方面，我发现野火的驱动方法不是简单的PWM。 这时，我才学习到，无刷直流电机的控制方法并不是一件简单的事情。
         </a>
       </p>
@@ -422,9 +419,6 @@
       <p class="index-excerpt">
         <a href="/2021/05/27/%E5%88%A9%E7%94%A8uVision5%E5%BB%BA%E7%AB%8BSTM32F10x%E6%A0%87%E5%87%86%E5%BA%93%E5%B7%A5%E7%A8%8B/" target="_self">
           
-          
-            
-          
           电子设计实践大作业开始在即，即使力学考试就在眼前，我仍然花费一段时间来调试这样的程序。何等的敬业精神。在使用uVision建立新工程的时候，我发现过程相对繁琐且缺乏条理。于是便整理过程如下。
         </a>
       </p>
@@ -474,9 +468,6 @@
       <p class="index-excerpt">
         <a href="/2021/05/22/%E5%88%A9%E7%94%A8Hexo%E3%80%81GitPages%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
           
-          
-            
-          
           介绍Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。
         </a>
       </p>
@@ -524,7 +515,7 @@
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -614,6 +605,10 @@
 <!-- Plugins -->
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
   
     <script  src="/js/img-lazyload.js" ></script>
   
@@ -623,14 +618,6 @@
   
 
 
-
-
-
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
 
 
@@ -645,24 +632,9 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      jQuery('#local-search-input').on('click', function() {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      });
-      jQuery('#modalSearch').on('shown.bs.modal', function() {
-        jQuery('#local-search-input').focus();
-      });
-    })()
   </script>
 
 

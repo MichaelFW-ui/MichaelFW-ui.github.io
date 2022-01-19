@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,16 +9,45 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
   <link rel="icon" href="/img/icon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前言期末考试结束，RoboGame的各种任务又接踵而至。 在电机的驱动方面，我发现野火的驱动方法不是简单的PWM。 这时，我才学习到，无刷直流电机的控制方法并不是一件简单的事情。">
   <meta name="author" content="Michael Francis Williams">
   <meta name="keywords" content="">
+  
+    <meta name="description" content="前言期末考试结束，RoboGame的各种任务又接踵而至。 在电机的驱动方面，我发现野火的驱动方法不是简单的PWM。 这时，我才学习到，无刷直流电机的控制方法并不是一件简单的事情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何理解FOC和SVPWM技术">
+<meta property="og:url" content="https://pickupthefall.xyz/2021/07/19/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3FOC%E5%92%8CSVPWM%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="风平浪静的小小避难所">
+<meta property="og:description" content="前言期末考试结束，RoboGame的各种任务又接踵而至。 在电机的驱动方面，我发现野火的驱动方法不是简单的PWM。 这时，我才学习到，无刷直流电机的控制方法并不是一件简单的事情。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/W8TODx.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/W87Mxs.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/W8HSe0.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/W8Hmex.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/W8HyXn.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/W8biHP.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/W8LElQ.png">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-ddb74b212baee03b36eecb32ec54e420_720w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-d15d057327992a5c50016aea5bb7201b_720w.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-d6116ce165ec51df51469ad6ddd4d134_720w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-92e0d6eaa15bff745a4cd024362f53eb_720w.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WGGiNj.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WGG5Ps.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WGYl11.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WGdnzj.md.png">
+<meta property="article:published_time" content="2021-07-19T00:01:25.000Z">
+<meta property="article:modified_time" content="2021-07-19T06:26:31.190Z">
+<meta property="article:author" content="Michael Francis Williams">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/07/19/W8TODx.md.png">
+  
   
   <title>如何理解FOC和SVPWM技术 - 风平浪静的小小避难所</title>
 
@@ -41,7 +70,6 @@
   
 
 
-
 <!-- 主题依赖的图标库，不要自行修改 -->
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
@@ -58,7 +86,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -69,8 +97,9 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>The Blog of Michael</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>The Blog of Michael</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -156,13 +185,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -196,21 +226,18 @@
 
 <div class="mt-1">
   
-    
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.1k 字
+      4.8k 字
     </span>
   
 
   
-    
     <span class="post-meta mr-2">
       <i class="iconfont icon-clock-fill"></i>
       
       
-      35
-       分钟
+      41 分钟
     </span>
   
 
@@ -507,7 +534,7 @@ U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}</script><
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -597,6 +624,10 @@ U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}</script><
 <!-- Plugins -->
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
   
     <script  src="/js/img-lazyload.js" ></script>
   
@@ -607,19 +638,18 @@ U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}</script><
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
 
 
 
@@ -634,24 +664,9 @@ U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}</script><
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      jQuery('#local-search-input').on('click', function() {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      });
-      jQuery('#modalSearch').on('shown.bs.modal', function() {
-        jQuery('#local-search-input').focus();
-      });
-    })()
   </script>
 
 
@@ -666,6 +681,9 @@ U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}</script><
       MathJax = {
         tex: {
           inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
         },
         options: {
           renderActions: {

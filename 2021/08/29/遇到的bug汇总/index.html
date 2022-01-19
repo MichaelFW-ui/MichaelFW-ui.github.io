@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -9,16 +9,30 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
   <link rel="icon" href="/img/icon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前言作为一个能力不足的人，在日常生活中，总会有那么一些bug让我难以接受。我将其中的部分汇总如下，聊以慰藉。">
   <meta name="author" content="Michael Francis Williams">
   <meta name="keywords" content="">
+  
+    <meta name="description" content="前言作为一个能力不足的人，在日常生活中，总会有那么一些bug让我难以接受。我将其中的部分汇总如下，聊以慰藉。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="遇到的bug汇总">
+<meta property="og:url" content="https://pickupthefall.xyz/2021/08/29/%E9%81%87%E5%88%B0%E7%9A%84bug%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="风平浪静的小小避难所">
+<meta property="og:description" content="前言作为一个能力不足的人，在日常生活中，总会有那么一些bug让我难以接受。我将其中的部分汇总如下，聊以慰藉。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-29T03:02:40.000Z">
+<meta property="article:modified_time" content="2021-10-01T14:46:28.101Z">
+<meta property="article:author" content="Michael Francis Williams">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="单片机">
+<meta property="article:tag" content="编程语言">
+<meta name="twitter:card" content="summary_large_image">
+  
   
   <title>遇到的bug汇总 - 风平浪静的小小避难所</title>
 
@@ -41,7 +55,6 @@
   
 
 
-
 <!-- 主题依赖的图标库，不要自行修改 -->
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
@@ -58,7 +71,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -69,8 +82,9 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>The Blog of Michael</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>The Blog of Michael</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -156,13 +170,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -196,21 +211,18 @@
 
 <div class="mt-1">
   
-    
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      3.3k 字
     </span>
   
 
   
-    
     <span class="post-meta mr-2">
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
-       分钟
+      28 分钟
     </span>
   
 
@@ -255,7 +267,7 @@
 <h3 id="关我Anaconda何事？"><a href="#关我Anaconda何事？" class="headerlink" title="关我Anaconda何事？"></a>关我Anaconda何事？</h3><p>首次使用VSCode编辑Qt6生成的CMake工程时，Intelligence总是提示错误的引用。仔细一看，include到了<code>Anaconda/Library/Qt</code>里面的文件。这就问题很大了。</p>
 <p>思索再三，我发现VSCode的<code>C/C++</code>扩展中对include path的定义，是先在系统环境变量中搜索的。那么，Anaconda的路径在Qt之前，便会直接从Anaconda中include，这就产生了错误。</p>
 <p>将环境变量的顺序调整了之后，问题不再复现。</p>
-<h2 id="编程技术菜菜菜"><a href="#编程技术菜菜菜" class="headerlink" title="编程技术菜菜菜"></a>编程技术菜菜菜</h2><h3 id="C语言篇"><a href="#C语言篇" class="headerlink" title="C语言篇"></a>C语言篇</h3><h4 id="忘记加括号"><a href="#忘记加括号" class="headerlink" title="忘记加括号"></a>忘记加括号</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">PWM_SetPWM_ByDutyCycle(SteerNumber, (<span class="hljs-keyword">uint16_t</span>)(angle * <span class="hljs-number">2.0</span> / <span class="hljs-number">180</span> + <span class="hljs-number">0.5</span>) / <span class="hljs-number">20</span> * <span class="hljs-number">4096</span>);<br></code></pre></td></tr></table></figure>
+<h2 id="编程技术菜菜菜"><a href="#编程技术菜菜菜" class="headerlink" title="编程技术菜菜菜"></a>编程技术菜菜菜</h2><h3 id="C语言篇"><a href="#C语言篇" class="headerlink" title="C语言篇"></a>C语言篇</h3><h4 id="忘记加括号"><a href="#忘记加括号" class="headerlink" title="忘记加括号"></a>忘记加括号</h4><figure class="highlight c"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs c">PWM_SetPWM_ByDutyCycle(SteerNumber, (<span class="hljs-keyword">uint16_t</span>)(angle * <span class="hljs-number">2.0</span> / <span class="hljs-number">180</span> + <span class="hljs-number">0.5</span>) / <span class="hljs-number">20</span> * <span class="hljs-number">4096</span>);<br></code></pre></td></tr></table></figure>
 <p>这样的代码会将任何angle输入，变成0的。因为uint16_t的作用对象错了，应该是整个表达式的值。表达式的类型是double，在进行计算的时候精度损失可以忽略。但是uint16_t位置不对，提前变换成了整型，这不是胡闹吗？</p>
 <p>正确修改如下。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">PWM_SetPWM_ByDutyCycle(SteerNumber, (<span class="hljs-keyword">uint16_t</span>)((angle * <span class="hljs-number">2.0</span> / <span class="hljs-number">180</span> + <span class="hljs-number">0.5</span>) / <span class="hljs-number">20</span> * <span class="hljs-number">4096</span>));<br></code></pre></td></tr></table></figure>
@@ -360,7 +372,7 @@
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -450,6 +462,10 @@
 <!-- Plugins -->
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
   
     <script  src="/js/img-lazyload.js" ></script>
   
@@ -460,19 +476,18 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
 
 
 
@@ -487,24 +502,9 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      jQuery('#local-search-input').on('click', function() {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      });
-      jQuery('#modalSearch').on('shown.bs.modal', function() {
-        jQuery('#local-search-input').focus();
-      });
-    })()
   </script>
 
 
