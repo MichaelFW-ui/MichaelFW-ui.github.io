@@ -1,0 +1,1017 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Michael Francis Williams">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言本文章是作者在学习电磁学时进行期末复习时做出的笔记。磁学内容较多，分为两个部分。这里是第一部分。 限于版权问题，复习的PPT不能够外传。本笔记仅提供提纲。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电磁学C复习-磁学部分一">
+<meta property="og:url" content="https://pickupthefall.xyz/2022/02/02/%E7%94%B5%E7%A3%81%E5%AD%A6C%E5%A4%8D%E4%B9%A0-%E7%A3%81%E5%AD%A6%E9%83%A8%E5%88%86%E4%B8%80/index.html">
+<meta property="og:site_name" content="风平浪静的小小避难所">
+<meta property="og:description" content="前言本文章是作者在学习电磁学时进行期末复习时做出的笔记。磁学内容较多，分为两个部分。这里是第一部分。 限于版权问题，复习的PPT不能够外传。本笔记仅提供提纲。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-02T09:11:39.000Z">
+<meta property="article:modified_time" content="2022-02-02T09:19:24.075Z">
+<meta property="article:author" content="Michael Francis Williams">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="物理">
+<meta property="article:tag" content="课内复习">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>电磁学C复习-磁学部分一 - 风平浪静的小小避难所</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>The Blog of Michael</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/05/22/gLpEiF.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="电磁学C复习-磁学部分一">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-02 17:11" pubdate>
+        2022年2月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      17k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      145 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">电磁学C复习-磁学部分一</h1>
+            
+            <div class="markdown-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文章是作者在学习电磁学时进行期末复习时做出的笔记。磁学内容较多，分为两个部分。这里是第一部分。</p>
+<p>限于版权问题，复习的PPT不能够外传。本笔记仅提供提纲。</p>
+<span id="more"></span>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><h3 id="第一节"><a href="#第一节" class="headerlink" title="第一节"></a>第一节</h3><h4 id="洛伦兹力公式"><a href="#洛伦兹力公式" class="headerlink" title="洛伦兹力公式"></a>洛伦兹力公式</h4><script type="math/tex; mode=display">
+\newcommand{\oiint}{\subset\kern{-3pt}\supset\kern{-16.5pt}\iint}
+\vec{F} = q\vec{v}\times \vec{B}</script><h4 id="安培力"><a href="#安培力" class="headerlink" title="安培力"></a>安培力</h4><p>电流密度公式</p>
+<script type="math/tex; mode=display">
+\boldsymbol{j} = nq\boldsymbol{u}</script><p>每个载流子收到的洛伦兹力为</p>
+<script type="math/tex; mode=display">
+q\boldsymbol{u}\times\boldsymbol{B}</script><p>则有安培力</p>
+<script type="math/tex; mode=display">
+\text{d}\boldsymbol{F} = n\text{d}V q\boldsymbol{u}\times\boldsymbol{B} = \boldsymbol{j}\times\boldsymbol{B}\text{d}V</script><p>其中可以替换电流元</p>
+<script type="math/tex; mode=display">
+\boldsymbol{j}\text{d}V = \boldsymbol{i}\text{d}S = I\text{d}\boldsymbol{l}</script><p>注意面电流元的表示方法。</p>
+<p>也有公式总结如</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}= \iiint_V\boldsymbol{j}\times\boldsymbol{B}\text{d}V</script><h4 id="安培定律"><a href="#安培定律" class="headerlink" title="安培定律"></a>安培定律</h4><p>两个电流源之间的作用力满足公式</p>
+<script type="math/tex; mode=display">
+\text{d}\boldsymbol{F}_{12} = \frac{\mu_0}{4\pi}\frac{I_2\text{d}\boldsymbol{l}_2\times (I_1\text{d}\boldsymbol{l}_1\times \boldsymbol{r}_{12})}{r_{12}^3}</script><p>对于面电流元和体电流元也可以这样表示</p>
+<script type="math/tex; mode=display">
+\text{d}\boldsymbol{F}_{12} = \frac{\mu_0}{4\pi}\frac{\boldsymbol{i}_2\text{d}{S}_2\times (\boldsymbol{i}_1\text{d}{S}_1\times \boldsymbol{r}_{12})}{r_{12}^3}</script><script type="math/tex; mode=display">
+\text{d}\boldsymbol{F}_{12} = \frac{\mu_0}{4\pi}\frac{\boldsymbol{j}_2\text{d}{V}_2\times (\boldsymbol{j}_1\text{d}{V}_1\times \boldsymbol{r}_{12})}{r_{12}^3}</script><p>电流元之间的相互作用力不一定满足牛顿第三定律，因为不存在孤立的恒稳电流元。</p>
+<p>电流元在外磁场中受到的安培力为</p>
+<script type="math/tex; mode=display">
+    \text{d}\boldsymbol{F} = I\text{d}\boldsymbol{l}\times \boldsymbol{B}</script><p>这在前文有所提及了。</p>
+<h4 id="磁矩"><a href="#磁矩" class="headerlink" title="磁矩"></a>磁矩</h4><p>定义磁矩$\boldsymbol{m}$</p>
+<script type="math/tex; mode=display">
+\boldsymbol{m} = I\boldsymbol{S}</script><h4 id="载流线圈在磁场中受到的力矩"><a href="#载流线圈在磁场中受到的力矩" class="headerlink" title="载流线圈在磁场中受到的力矩"></a>载流线圈在磁场中受到的力矩</h4><script type="math/tex; mode=display">
+\boldsymbol{L} = \boldsymbol{m}\times\boldsymbol{B}</script><p>作为对比，电偶极子在外电场中受到的力矩公式为$\boldsymbol{L} = \boldsymbol{P}\times\boldsymbol{E}$</p>
+<h3 id="电流的磁场"><a href="#电流的磁场" class="headerlink" title="电流的磁场"></a>电流的磁场</h3><h4 id="磁场叠加原理"><a href="#磁场叠加原理" class="headerlink" title="磁场叠加原理"></a>磁场叠加原理</h4><script type="math/tex; mode=display">
+\boldsymbol{B} = \sum \boldsymbol{B}_i</script><script type="math/tex; mode=display">
+\boldsymbol{B} = \oint_L \text{d}\boldsymbol{B}</script><h4 id="毕奥-萨法尔定律"><a href="#毕奥-萨法尔定律" class="headerlink" title="毕奥-萨法尔定律"></a>毕奥-萨法尔定律</h4><script type="math/tex; mode=display">
+\text{d}\boldsymbol{B} = \frac{\mu_0}{4\pi}I\text{d}\boldsymbol{l} \times \frac{\boldsymbol{r}}{r^3}</script><p>这个可以由安培定律比较推导出来</p>
+<script type="math/tex; mode=display">
+\text{d}\boldsymbol{F}_{12} = \frac{\mu_0}{4\pi}\frac{I_2\text{d}\boldsymbol{l}_2\times (I_1\text{d}\boldsymbol{l}_1\times \boldsymbol{r}_{12})}{r_{12}^3} = I_2\text{d}\boldsymbol{l}_2 \times \left(\frac{\mu_0}{4\pi}\frac{I_{1}\text{d}\boldsymbol{l}_1\times\boldsymbol{r_{12}}}{r_{12}^3}\right)</script><h4 id="积分形式"><a href="#积分形式" class="headerlink" title="积分形式"></a>积分形式</h4><script type="math/tex; mode=display">
+\boldsymbol{B} = \frac{\mu_0}{4\pi}\oint_L\frac{I\text{d}\boldsymbol{l}\times\boldsymbol{r}}{r^3}</script><h4 id="电流环产生的磁场"><a href="#电流环产生的磁场" class="headerlink" title="电流环产生的磁场"></a>电流环产生的磁场</h4><script type="math/tex; mode=display">
+\boldsymbol{B} = -\frac{\mu_0}{4\pi}\left(\frac{\boldsymbol{m}}{r^3}-\frac{3(\boldsymbol{m}\cdot\boldsymbol{r})\boldsymbol{r}}{r^5}\right)</script><p>任意均匀闭合回路均可。需要有几何中心。</p>
+<h4 id="亥姆赫兹线圈"><a href="#亥姆赫兹线圈" class="headerlink" title="亥姆赫兹线圈"></a>亥姆赫兹线圈</h4><p>要求线圈之间的距离$d$ 等于线圈的半径$R$</p>
+<script type="math/tex; mode=display">
+B_(x) = \frac{\mu_0NIR^2}{2\left(r^2+(\frac{d}{2}+x)^2\right)^{3/2}} + \frac{\mu_0NIR^2}{2\left(r^2+(\frac{d}{2}-x)^2\right)^{3/2}} = \left(\frac{4}{5}\right)^{3/2}\frac{\mu_0NI}{R}</script><h4 id="通电螺线管的磁场分布"><a href="#通电螺线管的磁场分布" class="headerlink" title="通电螺线管的磁场分布"></a>通电螺线管的磁场分布</h4><p>参考PPT4-2，太难了</p>
+<p>使用三角函数辅助计算的方法。</p>
+<script type="math/tex; mode=display">
+B = \frac{\mu_0nI}{2}(\cos \beta_1 - \cos\beta_2)</script><p>中间为$\mu_0nI$，两边为$\mu_0nI/2$</p>
+<h4 id="运动电荷的磁场"><a href="#运动电荷的磁场" class="headerlink" title="运动电荷的磁场"></a>运动电荷的磁场</h4><p>单个运动电荷产生的磁场推导如下</p>
+<script type="math/tex; mode=display">
+I=\frac{\Delta q}{\Delta t}  = nqvS</script><script type="math/tex; mode=display">
+\text{d}N = n\text{d}V = nS\text{d}l</script><p>所以</p>
+<script type="math/tex; mode=display">
+\boldsymbol{B} = \frac{\text{d}\boldsymbol{B}}{\text{d}N} = \frac{\mu_0}{4\pi}\frac{I\text{d}\boldsymbol{l}\times\boldsymbol{r}}{\text{d}Nr^3} = \frac{\mu_0}{4\pi}\frac{nqvS\text{d}\boldsymbol{l}\times\boldsymbol{r}}{\text{d}nS\text{d}lr^3} = \frac{\mu_0}{4\pi}\frac{q\boldsymbol{v}\times\boldsymbol{r}}{r^3}</script><p>可以得到</p>
+<script type="math/tex; mode=display">
+\boldsymbol{B} = \mu_0\varepsilon_0\boldsymbol{v}\times\boldsymbol{E} = \frac{1}{c^2}\boldsymbol{v}\times\boldsymbol{E}</script><h4 id="磁场对电流的力与力矩"><a href="#磁场对电流的力与力矩" class="headerlink" title="磁场对电流的力与力矩"></a>磁场对电流的力与力矩</h4><p>带电粒子</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F} = q\boldsymbol{v}\times \boldsymbol{B}</script><p>电流受到的安培力，相当于把前文的电流元安培力进行了积分处理。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F} = \oint_L I\text{d}\boldsymbol{l} \times \boldsymbol{B}</script><script type="math/tex; mode=display">
+\boldsymbol{F} = \iint_S\boldsymbol{i}\times\boldsymbol{B}\text{d}S</script><script type="math/tex; mode=display">
+\boldsymbol{F} = \iiint_V \boldsymbol{j}\times\boldsymbol{B}\text{d}V</script><p>力矩也是类似地进行了积分</p>
+<script type="math/tex; mode=display">
+\boldsymbol{L} = \oint_L \boldsymbol{r} \times\left( I\text{d}\boldsymbol{l} \times \boldsymbol{B}\right)</script><script type="math/tex; mode=display">
+\boldsymbol{L} =  \iint_S\boldsymbol{r}\times(\boldsymbol{i}\times\boldsymbol{B})\text{d}S</script><script type="math/tex; mode=display">
+\boldsymbol{L} = \iiint_V \boldsymbol{r}\times(\boldsymbol{j}\times\boldsymbol{B})\text{d}V</script><h4 id="载流线圈在非均匀磁场中受到的力和力矩"><a href="#载流线圈在非均匀磁场中受到的力和力矩" class="headerlink" title="载流线圈在非均匀磁场中受到的力和力矩"></a>载流线圈在非均匀磁场中受到的力和力矩</h4><script type="math/tex; mode=display">
+\boldsymbol{F} =  (\boldsymbol{m}\cdot \nabla) \boldsymbol{B}</script><script type="math/tex; mode=display">
+\boldsymbol{F} = \boldsymbol{m} \times \boldsymbol{B}</script><h3 id="静磁场基本定理"><a href="#静磁场基本定理" class="headerlink" title="静磁场基本定理"></a>静磁场基本定理</h3><h4 id="磁通量"><a href="#磁通量" class="headerlink" title="磁通量"></a>磁通量</h4><script type="math/tex; mode=display">
+\boldsymbol{B}\cdot \Delta \boldsymbol{S} = \Delta \Phi_B</script><p>or</p>
+<script type="math/tex; mode=display">
+\Phi_B = \iint_S \boldsymbol{B}\cdot\text{d}\boldsymbol{S}</script><p>单位韦伯Wb,1Wb = 1T$\cdot$m$^2$</p>
+<h4 id="高斯定理"><a href="#高斯定理" class="headerlink" title="高斯定理"></a>高斯定理</h4><p>通过任意闭合曲面$S$的磁通量为零。</p>
+<script type="math/tex; mode=display">
+\iint_S\boldsymbol{B}\cdot\text{d}\boldsymbol{S} = 0</script><h4 id="安培环路定理"><a href="#安培环路定理" class="headerlink" title="安培环路定理"></a>安培环路定理</h4><p>任意闭合曲线$L$的磁感应强度地环量等于穿过$L$的电流强度的代数和的$\mu_0$倍。</p>
+<script type="math/tex; mode=display">
+\oint_L \boldsymbol{B}\cdot\text{d}\boldsymbol{L} = \mu_0\sum_L\pm I_{\text{内}}</script><p>磁场有旋。方向按照右手定则确定。</p>
+<p>由斯托克斯公式</p>
+<script type="math/tex; mode=display">
+\oint_L \boldsymbol{B}\cdot\text{d}\boldsymbol{L} = \iint_S (\nabla \times \boldsymbol{B})\cdot \text{d}\boldsymbol{S}</script><p>由电流的求和</p>
+<script type="math/tex; mode=display">
+\sum I = \iint_S \boldsymbol{j} \cdot \text{d}\boldsymbol{S}</script><p>比较可得</p>
+<script type="math/tex; mode=display">
+\nabla \times \boldsymbol{B} = \mu_0\boldsymbol{j}</script><p>这里可以注意到，$\boldsymbol{j}\cdot\text{d}\boldsymbol{S}$和$i\text{d}\boldsymbol{S}$是不同的。这里考虑的电流是体分布的，而不是面分布的。</p>
+<h4 id="螺线管碎碎念"><a href="#螺线管碎碎念" class="headerlink" title="螺线管碎碎念"></a>螺线管碎碎念</h4><p>计算螺线管内部磁感应强度分布时，可以将螺线管看作电流环的叠加。</p>
+<p>计算外部磁感应强度时，需要将螺线管近似成无限长直导线。那么可以求得$B_{\bot} = \displaystyle\frac{\mu_0I}{2\pi r}$.</p>
+<h4 id="电流在外磁场中的受力问题"><a href="#电流在外磁场中的受力问题" class="headerlink" title="电流在外磁场中的受力问题"></a>电流在外磁场中的受力问题</h4><p>外磁场为处受力体电流之外所产生的磁场。</p>
+<p>同样的，有如下的关系成立</p>
+<script type="math/tex; mode=display">
+\boldsymbol{B} = \boldsymbol{B}_t - \boldsymbol{B}_1</script><p>因此应用毕奥萨法尔定理和环路定理得到磁感应分布，有</p>
+<ol>
+<li>体电流元$\boldsymbol{j}\text{d}V$在附近产生的磁感应强度为零。（使用毕奥定理论证）</li>
+<li>面电流元$\boldsymbol{i}\text{d}{S}$在两侧产生的磁感应强度存在间断，大小为$\mu_0i/2$，方向相反，与面元相切。（使用环路定理论证，这时候代入公式的不是电流元而是电流$i\text{d}l$）</li>
+<li>线电流元不能直接推广。必须引入有限截面，当作体电流元处理。（使用环路定理论证）</li>
+</ol>
+<p>外磁场$B$通常是连续的，总磁场$B_t$和自身磁场$B_1$通常是不连续的，但是相减后可以抵消。</p>
+<p>这里去好好看看PPT例题和作业题，太难了吧。</p>
+<h4 id="电流元"><a href="#电流元" class="headerlink" title="电流元"></a>电流元</h4><p>电流元既表示电流的大小，又表示电流的考察尺度和流动方向。通常的线电流元是</p>
+<script type="math/tex; mode=display">
+I\text{d}\boldsymbol{l}</script><p>如果电流沿面分布，可以考虑电流的面密度，即电流穿过一个横截线的大小，$i = \displaystyle\frac{\text{d}I}{\text{d}l}$，那么电流元可以表示为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{i}\text{d}S</script><p>如果电流在空间内分布，可以考虑电流的体密度，即电流穿过一个平面的大小，$j = \displaystyle\frac{\text{d}I}{\text{d}S}$，那么电流元可以表示为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{j}\text{d}V</script><p>它们的量纲都是相同的。</p>
+<p>PAGE 110 留念</p>
+<h3 id="带电粒子在磁场中的运动"><a href="#带电粒子在磁场中的运动" class="headerlink" title="带电粒子在磁场中的运动"></a>带电粒子在磁场中的运动</h3><h4 id="洛伦兹力"><a href="#洛伦兹力" class="headerlink" title="洛伦兹力"></a>洛伦兹力</h4><script type="math/tex; mode=display">
+\boldsymbol{F} = q\boldsymbol{v}\times\boldsymbol{B}</script><h4 id="洛伦兹力做功"><a href="#洛伦兹力做功" class="headerlink" title="洛伦兹力做功"></a>洛伦兹力做功</h4><p>洛伦兹力不做功</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F} \cdot \boldsymbol{v} = q\boldsymbol{v}\times\boldsymbol{B} \cdot \boldsymbol{v} = 0</script><h4 id="带电粒子在匀强磁场中的运动"><a href="#带电粒子在匀强磁场中的运动" class="headerlink" title="带电粒子在匀强磁场中的运动"></a>带电粒子在匀强磁场中的运动</h4><p>运动方程</p>
+<script type="math/tex; mode=display">
+m\frac{\text{d}\boldsymbol{v}}{\text{d}t} = q\boldsymbol{v}\times\boldsymbol{B}</script><p>$F$只在平面上有分布，假设为x-y平面，有</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+\frac{\text{d}v_x}{\text{d}t} &= \frac{q}{m}v_yB \\
+\frac{\text{d}v_y}{\text{d}t} &= -\frac{q}{m}v_xB \\
+v_z &= \text{const}
+\end{aligned}\right.</script><p>可以解出轨迹方程。</p>
+<p>回旋角频率</p>
+<script type="math/tex; mode=display">
+\omega = \frac{qB}{m}</script><p>回旋周期</p>
+<script type="math/tex; mode=display">
+T = \frac{2\pi m}{qB}</script><p>回旋半径</p>
+<script type="math/tex; mode=display">
+R = \frac{v_{\bot}}{\omega} = \frac{v_{\bot}m}{qB}</script><p>回旋频率</p>
+<script type="math/tex; mode=display">
+f = \frac{qB}{2\pi m}</script><h4 id="带电粒子在正交匀强电磁场中的运动"><a href="#带电粒子在正交匀强电磁场中的运动" class="headerlink" title="带电粒子在正交匀强电磁场中的运动"></a>带电粒子在正交匀强电磁场中的运动</h4><p>E沿y轴，B沿z轴，初速度$\boldsymbol{v}_0$</p>
+<script type="math/tex; mode=display">
+\boldsymbol{v}_0 = v_0\cos\alpha \boldsymbol{i} + v_o\cos\beta\boldsymbol{j}+v_0\cos\gamma\boldsymbol{k}</script><p>运动方程为</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+\frac{\text{d}v_x}{\text{d}t} &= \frac{q}{m}v_yB \\
+\frac{\text{d}v_y}{\text{d}t} &= \frac{q}{m}(E-v_xB) \\
+v_z &=\text{const}
+\end{aligned}\right.</script><p>解得</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+v_x &= \frac{E}{B} + v_{\bot}\sin(\omega t + \varphi) \\
+v_y &= v_{\bot}\cos(\omega t + \varphi) \\
+v_z& = v_0\cos\gamma
+\end{aligned}\right.</script><p>这里$\omega$为回旋角频率，$\varphi$得取值使得$\boldsymbol{v}|_{t=0} = \boldsymbol{v}_0$</p>
+<p>是一个漂移的圆周运动。</p>
+<h4 id="带电粒子在缓变非均匀磁场中的运动"><a href="#带电粒子在缓变非均匀磁场中的运动" class="headerlink" title="带电粒子在缓变非均匀磁场中的运动"></a>带电粒子在缓变非均匀磁场中的运动</h4><p>非均匀尺度远大于带电粒子回旋半径。非均匀性将破坏$v_{\bot}$和$v_{//}$的守恒性。</p>
+<p>在这一过程中，粒子的回旋磁矩是守恒的。带电粒子绕磁场的快速回旋形成了一个电流环，该电流环的磁矩称为粒子的回旋磁矩。</p>
+<p>推导过程看PPT，这里给出结论</p>
+<script type="math/tex; mode=display">
+\mu = I\Delta S = \frac{q\omega}{2\pi}\pi R^2 = \frac{\frac{1}{2}mv_{\bot}^2}{B} = \text{const}</script><p>回旋半径和回旋速度则可以使用回旋磁矩表示</p>
+<script type="math/tex; mode=display">
+R = \sqrt{\frac{2\mu m}{q^2B}}</script><script type="math/tex; mode=display">
+v_{\bot} = \sqrt{\frac{2\mu B}{m}}</script><p>同时也能发现磁场穿过圆形轨道的磁通量守恒</p>
+<script type="math/tex; mode=display">
+\Phi = BS = \pi R^2B = \frac{2\mu\pi m}{q^2} = \text{const}</script><p>这一节的应用，看PPT。</p>
+<h4 id="磁镜磁约束"><a href="#磁镜磁约束" class="headerlink" title="磁镜磁约束"></a>磁镜磁约束</h4><p>看PPT的图。在磁场最弱的地方，投入粒子，投掷角为$\theta$。投掷角定义为$v_0\sin\theta = v_{0\bot}$</p>
+<p>临界投掷角为$\theta_m$。由回旋磁矩守恒</p>
+<script type="math/tex; mode=display">
+\frac{1}{2}mv^2\sin^2\theta_m/B_0 = \frac{1}{2}mv^2/B_{max}</script><p>即</p>
+<script type="math/tex; mode=display">
+\sin^2\theta_m = \frac{B_0}{B_m} = \frac{1}{R_{mi}}</script><p>$R_{mi}$称为磁镜比。</p>
+<h4 id="球冠面积和体积"><a href="#球冠面积和体积" class="headerlink" title="球冠面积和体积"></a>球冠面积和体积</h4><p>这是基本微积分可以解决的问题！！</p>
+<p>有问题一定要考虑自己已经掌握了的知识！！我学过微积分了！我会积分的！</p>
+<script type="math/tex; mode=display">
+S = 2\pi R^2H</script><h3 id="霍尔效应"><a href="#霍尔效应" class="headerlink" title="霍尔效应"></a>霍尔效应</h3><p>洛伦兹力和电力平衡$E_hq = qvB$</p>
+<script type="math/tex; mode=display">
+V_h = E_hb = vbB</script><p>N型半导体中电子浓度为n，电流为</p>
+<script type="math/tex; mode=display">
+I = nebdv</script><p>推导得到</p>
+<script type="math/tex; mode=display">
+V_h = \frac{1}{ne}\frac{IB}{d} = R_h \frac{IB}{d} = K_hIB</script><p>物理量$\displaystyle R_h = \frac{1}{nq}$为霍尔系数，$K_h = R_h / d$为霍尔元件的灵敏度，$r_h = \displaystyle\frac{V_h}{I}=K_hB$为霍尔电阻。</p>
+<p>你需要知道什么是霍尔效应。看PPT去吧。霍尔电阻只是具有电阻的量纲，没有电阻效应。</p>
+<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><h3 id="磁介质及其磁化"><a href="#磁介质及其磁化" class="headerlink" title="磁介质及其磁化"></a>磁介质及其磁化</h3><p>有介质时的总磁场</p>
+<script type="math/tex; mode=display">
+\boldsymbol{B} = \boldsymbol{B}_0 + \boldsymbol{B}^{'} = \mu_r\boldsymbol{B}_0</script><h4 id="磁化电流"><a href="#磁化电流" class="headerlink" title="磁化电流"></a>磁化电流</h4><p>在磁化状态下，由于分子电流的有序排列，磁介质中将出现宏观电流，称为磁化电流。</p>
+<ol>
+<li>磁化电流不伴随电荷的宏观位移。</li>
+<li>磁化电流可存在于一切磁介质中，不具有焦耳热效应。</li>
+<li>在激发磁场和受磁场作用方面磁化电流和传导电流相同。</li>
+</ol>
+<h4 id="磁化强度"><a href="#磁化强度" class="headerlink" title="磁化强度"></a>磁化强度</h4><p>磁化强度定义为体积元内分子磁矩的矢量和。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M} = \frac{\sum \boldsymbol{m}_{\text{分子}}}{\Delta V}</script><p>$\boldsymbol{M}=0$时磁介质处于非磁化态。</p>
+<h4 id="分子平均磁矩"><a href="#分子平均磁矩" class="headerlink" title="分子平均磁矩"></a>分子平均磁矩</h4><p>分子平均磁矩定义为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{m}_a = \frac{\sum \boldsymbol{m}_{\text{分子}}}{n\Delta V} = \frac{\boldsymbol{M}}{n}</script><p>$\boldsymbol{m}_a$可以认为是平均分子电流产生的，电流强度为$I_a$，所围成的面积矢量为$S_a$，则</p>
+<script type="math/tex; mode=display">
+\boldsymbol{m}_a=I_a\boldsymbol{S}_a,\boldsymbol{M}_a=nI_a\boldsymbol{S}_a</script><h4 id="磁化电流与磁化强度"><a href="#磁化电流与磁化强度" class="headerlink" title="磁化电流与磁化强度"></a>磁化电流与磁化强度</h4><script type="math/tex; mode=display">
+\oint_L\boldsymbol{M}\cdot\text{d}\boldsymbol{l} = \sum I^{'}</script><p>即</p>
+<script type="math/tex; mode=display">
+\nabla \times \boldsymbol{M} = \boldsymbol{j}^{'}</script><p>均匀磁化介质内部，磁化电流为零。</p>
+<p>一般地，在介质表面和两种介质交界面上，会有面分布的磁化电流。</p>
+<p>在介质表面，磁化面电流可以这样求得</p>
+<script type="math/tex; mode=display">
+\boldsymbol{i}^{'} = \boldsymbol{M}\times\boldsymbol{n}</script><p>PAGE 184</p>
+<h3 id="磁性材料"><a href="#磁性材料" class="headerlink" title="磁性材料"></a>磁性材料</h3><p>磁介质在外磁场$B_0$中磁化，产生的磁化电流激发新的磁场$B^{‘}$，总磁场应为$B=B_0+B^{‘}$</p>
+<p>由高斯定理和安培环路定理</p>
+<script type="math/tex; mode=display">
+\oiint_S\boldsymbol{B}\cdot\text{d}\boldsymbol{S} = 0</script><script type="math/tex; mode=display">
+\oint_L \boldsymbol{B}\cdot\text{d}\boldsymbol{l} = \mu_0\sum I_0 + \mu_0 \sum I^{'}</script><h4 id="磁场强度"><a href="#磁场强度" class="headerlink" title="磁场强度"></a>磁场强度</h4><p>有安培环路定理</p>
+<script type="math/tex; mode=display">
+\oint_L \left(\frac{\boldsymbol{B}}{\mu_0}-\boldsymbol{M}\right)\cdot\text{d}\boldsymbol{l} = \sum I_0</script><p>令</p>
+<script type="math/tex; mode=display">
+\boldsymbol{H} = \frac{\boldsymbol{B}}{\mu_0} - \boldsymbol{M}</script><p>有磁介质中的静磁场安培环路定理</p>
+<script type="math/tex; mode=display">
+\oint_L \boldsymbol{H}\cdot\text{d}\boldsymbol{l} = \sum I_0</script><h4 id="介质的磁化规律"><a href="#介质的磁化规律" class="headerlink" title="介质的磁化规律"></a>介质的磁化规律</h4><script type="math/tex; mode=display">
+\boldsymbol{M} = \chi _m \boldsymbol{H}</script><p>其中$\chi_m$为磁化率。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{B}=\mu_0(\boldsymbol{H}+\boldsymbol{M}) = \mu_0(1+\chi_m)\boldsymbol{H} = \mu\boldsymbol{H}</script><p>$\mu = \mu_0(1+\chi_m)$为绝对磁导率。</p>
+<p>$\mu_r = \mu / \mu_0=  1+\chi_m$为相对磁导率</p>
+<p>线性各向同性介质中，$\chi_m$为常数。</p>
+<h4 id="磁场在磁介质界面上的边值关系"><a href="#磁场在磁介质界面上的边值关系" class="headerlink" title="磁场在磁介质界面上的边值关系"></a>磁场在磁介质界面上的边值关系</h4><p>分界面处$\boldsymbol{B}$法向连续</p>
+<p>取圆柱面使用高斯定理即可。侧面的高度趋近于0，则法向大小相抵消，连续。</p>
+<p>分界面的磁化电流，可以使用安培环路定理</p>
+<script type="math/tex; mode=display">
+\boldsymbol{i}^{'} = (\boldsymbol{M}_1 - \boldsymbol{M}_2) \times \boldsymbol{n}</script><p>方向参考右手系。</p>
+<p>分界面的传导电流，使用安培环路定理</p>
+<script type="math/tex; mode=display">
+\boldsymbol{i}_{0} = (\boldsymbol{H}_1 - \boldsymbol{H}_2) \times \boldsymbol{n}</script><p>如果没有传导电流的话，磁场强度在界面切向连续。</p>
+<script type="math/tex; mode=display">
+H_{\tau 1} = H_{\tau 2}</script><h4 id="界面磁感应线的折射定理"><a href="#界面磁感应线的折射定理" class="headerlink" title="界面磁感应线的折射定理"></a>界面磁感应线的折射定理</h4><p>B线和H线均有对应的折射性质。</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+B_{2n} &= B_{1n} \\
+H_{2\tau} &= H_{1\tau} \\
+B &= \mu H
+\end{aligned}
+\right.</script><p>推导出</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+B_{2\tau} &= \frac{\mu_2}{\mu_1}B_{1\tau} \\
+H_{2n} &= \frac{\mu_2}{\mu_1}H_{1n}
+\end{aligned}
+\right.</script><p>然后折射性便能很简单得到了。</p>
+<script type="math/tex; mode=display">
+\frac{\tan \theta_1}{\tan \theta_2} = \frac{\mu_1}{\mu_2}</script><p>角度对应关系自己推导一下。</p>
+<h4 id="介质表面与磁感应线重合"><a href="#介质表面与磁感应线重合" class="headerlink" title="介质表面与磁感应线重合"></a>介质表面与磁感应线重合</h4><p>这时候考虑切向的量。正好H有切向的分量关系。H线无视介质，先求H，传导电流。</p>
+<p>有一个奇怪的式子</p>
+<script type="math/tex; mode=display">
+M_1 - M_2 = (B_1/\mu_0 - H) - (B_2/\mu_0-H) = (B_1-B_2)/\mu_0</script><p>乍一看，好像搞错成了$M=B/\mu_0$。但其实，$M=B/\mu_0-H$，这里消去了相同的H。</p>
+<h4 id="介质表面与磁感应线垂直"><a href="#介质表面与磁感应线垂直" class="headerlink" title="介质表面与磁感应线垂直"></a>介质表面与磁感应线垂直</h4><p>B线无视介质。<br><strong>认为磁感应线是规律的！</strong> 不然不能做题了。</p>
+<p>由于磁化强度与界面垂直，而且连续，界面没有磁化面电流。</p>
+<p>这种情况就不用考虑磁化电流了吗？不是的，在其他有磁化强度的地方依然会产生磁化面电流。满足条件即会产生。</p>
+<p>题目中给出的”通过电缆的电流强度”是传导电流。考虑定义即可知道原因。</p>
+<p>传导电流的作用是传导，因此它是”通过电缆的电流”。磁化电流并不会通过电缆，不伴随电荷移动。</p>
+<p>因此解题方法方法为</p>
+<script type="math/tex; mode=display">
+\sum \oint_L \frac{\boldsymbol{B}}{\mu_i}\cdot\text{d}\boldsymbol{l} = \sum I</script><p>得到$\boldsymbol{B}$，无视介质。</p>
+<p>然后得到H，M。根据定义得到磁化面电流和传导面电流。</p>
+<p>这时候你忽然发现你又求到了传导面电流。它们一样吗？积分出来其实是一样的。</p>
+<p>综上，总是可以利用$H=B/\mu_0-M$和$M=\chi_mH$,$B=\mu H$的关系进行计算。</p>
+<p>题目给出的电流是传导电流，给出的电荷是总电荷。这是电学和磁学的不同之处。</p>
+<h3 id="磁性材料-1"><a href="#磁性材料-1" class="headerlink" title="磁性材料"></a>磁性材料</h3><h4 id="磁化规律"><a href="#磁化规律" class="headerlink" title="磁化规律"></a>磁化规律</h4><p>顺磁材料$\chi_m &gt; 0, \mu_r &gt; 1,\chi_m = 10^{-4}\sim 10^{-5}$，弱磁性<br>抗磁材料$\chi_m &lt; 0, \mu_r &lt; 1,-\chi_m = 10^{-5}\sim 10^{-7}$，弱磁性<br>铁磁材料$\chi_m \gg 0, \mu_r \gg 1, \chi_m = 10^{3}\sim 10^{6}$，强磁性</p>
+<h4 id="顺磁材料的磁化机制"><a href="#顺磁材料的磁化机制" class="headerlink" title="顺磁材料的磁化机制"></a>顺磁材料的磁化机制</h4><script type="math/tex; mode=display">
+\chi_m = \frac{b}{T} \propto\frac{1}{T}</script><h4 id="抗磁材料的磁化规律"><a href="#抗磁材料的磁化规律" class="headerlink" title="抗磁材料的磁化规律"></a>抗磁材料的磁化规律</h4><script type="math/tex; mode=display">
+\chi_m = -\frac{\mu_0n_0Ze^2\left<r^2\right>}{6m_e}</script><p>抗磁的本质是由轨道电子在外磁场中产生的<strong>附加磁矩</strong>造成的，而附加磁矩比轨道磁矩和自旋磁矩小得多，因此顺磁介质中抗磁效应也存在，但是远小于顺磁效应。</p>
+<h4 id="贴磁介质"><a href="#贴磁介质" class="headerlink" title="贴磁介质"></a>贴磁介质</h4><script type="math/tex; mode=display">
+\chi_m = \chi_m(\boldsymbol{H})</script><p>M的值和H间的函数关系复杂，而且取决于磁化的历史。</p>
+<p>外界环境改变的是H，通过材料的B，展现出M的大小，<br>因此可以通过B-H曲线表示磁化性质，即磁滞回线。</p>
+<p>软磁材料，硬磁材料，矩磁材料，看PPT</p>
+<h4 id="铁磁材料的居里温度"><a href="#铁磁材料的居里温度" class="headerlink" title="铁磁材料的居里温度"></a>铁磁材料的居里温度</h4><script type="math/tex; mode=display">
+\chi_m = \frac{c}{T-T_c}</script><h3 id="磁路定理与磁屏蔽"><a href="#磁路定理与磁屏蔽" class="headerlink" title="磁路定理与磁屏蔽"></a>磁路定理与磁屏蔽</h3><p>约束在磁心范围内的磁场叫做磁路。</p>
+<p>磁路与电路的对比看PPT249页。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>电路</th>
+<th>磁路</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\displaystyle\newcommand{\oiint}{\subset\kern{-3pt}\supset\kern{-16.5pt}\iint}\oiint \boldsymbol{j}\cdot\text{d}\boldsymbol{S}=0$</td>
+<td>$\displaystyle\oiint \boldsymbol{B}\cdot\text{d}\boldsymbol{S}=0$</td>
+</tr>
+<tr>
+<td>$I = \boldsymbol{j} \cdot\boldsymbol{S}=\text{const}$</td>
+<td>$\Phi = \boldsymbol{B}\cdot\boldsymbol{S}=\text{const}$</td>
+</tr>
+<tr>
+<td>$\boldsymbol{j} = \sigma \boldsymbol{E}$</td>
+<td>$\boldsymbol{B} = \mu\boldsymbol{H}$</td>
+</tr>
+<tr>
+<td>$R=\displaystyle\int\frac{\text{d}l}{\sigma S}$</td>
+<td>$R_m = \displaystyle\int \frac{\text{d}l}{\mu S}$</td>
+</tr>
+<tr>
+<td>$U=\displaystyle \int \boldsymbol{E}\cdot\text{d}\boldsymbol{l}=IR$</td>
+<td>$U_m = \displaystyle\int\boldsymbol{H}\cdot{\text{d}\boldsymbol{l}}{} = \Phi R_m$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="磁阻"><a href="#磁阻" class="headerlink" title="磁阻"></a>磁阻</h4><script type="math/tex; mode=display">
+R_m = \int \frac{\text{d}l}{\mu S}</script><p>PAGE 250</p>
+<h4 id="磁路定理"><a href="#磁路定理" class="headerlink" title="磁路定理"></a>磁路定理</h4><ol>
+<li>沿磁力线管的磁通量$\Phi$是常量.</li>
+<li>磁通与该段磁路的磁阻之积等于磁势降。</li>
+</ol>
+<script type="math/tex; mode=display">
+\int \boldsymbol{H}\cdot\text{d}\boldsymbol{l} = \int \frac{\boldsymbol{B}}{\mu}\cdot \text{d}\boldsymbol{l} = \int \frac{\Phi}{\mu S}\text{d}l = \Phi R_m = U_m</script><p>即</p>
+<script type="math/tex; mode=display">
+U_m = \Phi R_m</script><p>此即磁路定理</p>
+<h4 id="磁路"><a href="#磁路" class="headerlink" title="磁路"></a>磁路</h4><p>也有KVL：</p>
+<script type="math/tex; mode=display">
+\varepsilon_m = \Phi(R_m + r_m)</script><h4 id="理想磁路的条件"><a href="#理想磁路的条件" class="headerlink" title="理想磁路的条件"></a>理想磁路的条件</h4><p>闭合铁芯的磁导率远远大于$\mu_0$</p>
+<h4 id="磁路的基尔霍夫定律"><a href="#磁路的基尔霍夫定律" class="headerlink" title="磁路的基尔霍夫定律"></a>磁路的基尔霍夫定律</h4><ol>
+<li><p>对于磁路磁通量守恒，流入结点的磁通等于流出结点的磁通。</p>
+<script type="math/tex; mode=display">
+\sum \Phi_i = 0</script></li>
+<li><p>沿回路的磁势降之和等于线圈提供的磁动势之和，即</p>
+<script type="math/tex; mode=display">
+\sum \varepsilon_m = \sum \Phi R_m</script></li>
+</ol>
+<p>$\varepsilon$的方向按照右手定则。与回路绕行方向相同取正，反之取负。<br>$\Phi$的方向与回路绕行方向相同取正，反之取负。</p>
+<h4 id="磁路做题"><a href="#磁路做题" class="headerlink" title="磁路做题"></a>磁路做题</h4><p>磁动势取$NI$即可。<br>气隙当作磁导率为$\mu_0$的磁路。<br>磁路中不存在”导线”，所有部分都是磁阻。<br>磁通中的$S$和磁阻中的$S$消去了，可以只写$B$。</p>
+<p>示例如下</p>
+<script type="math/tex; mode=display">
+B(\frac{l}{\mu_r\mu_0}+\frac{l_0}{\mu_0}) = NI</script><h4 id="电磁铁"><a href="#电磁铁" class="headerlink" title="电磁铁"></a>电磁铁</h4><p>气隙截面积为$S_0$，气隙中磁感应强度为$B_0$。气隙宽度可以忽略时，如下。</p>
+<p>直流电磁铁吸力</p>
+<script type="math/tex; mode=display">
+F = \frac{B_0^2 S_0}{2\mu_0}</script><p>交流电磁铁吸力</p>
+<script type="math/tex; mode=display">
+F = \frac{B_0^2 S_0}{2\mu_0}\sin^2\omega t</script><p>平均吸力</p>
+<script type="math/tex; mode=display">
+\bar{F} = \frac{B_0^2 S_0}{4\mu_0}</script><h4 id="磁屏蔽"><a href="#磁屏蔽" class="headerlink" title="磁屏蔽"></a>磁屏蔽</h4><p>屏蔽系数定义为腔内场强$H_1$，与腔外场强$H_0$的比值</p>
+<script type="math/tex; mode=display">
+K=\frac{H_1}{H_0}</script><p>使用球壳屏蔽时，材料磁导率为$\mu_r$，有关系</p>
+<script type="math/tex; mode=display">
+K=\frac{2}{\mu_r(1-(R_1/R_2)^2)}</script><h2 id="电磁感应与磁场能量"><a href="#电磁感应与磁场能量" class="headerlink" title="电磁感应与磁场能量"></a>电磁感应与磁场能量</h2><h3 id="电磁感应定律，动生与感生"><a href="#电磁感应定律，动生与感生" class="headerlink" title="电磁感应定律，动生与感生"></a>电磁感应定律，动生与感生</h3><h4 id="法拉第电磁感应定律"><a href="#法拉第电磁感应定律" class="headerlink" title="法拉第电磁感应定律"></a>法拉第电磁感应定律</h4><script type="math/tex; mode=display">
+\varepsilon = -\frac{\text{d}\Phi}{\text{d}t}</script><p>1.多匝线圈</p>
+<script type="math/tex; mode=display">
+\varepsilon =  -\frac{\text{d}\Psi}{\text{d}t} = -\sum \frac{\text{d}\Phi_i}{\text{d}t}</script><p>若各匝线圈磁通量相同</p>
+<script type="math/tex; mode=display">
+\varepsilon =  -\frac{\text{d}\Psi}{\text{d}t} = - N \frac{\text{d}\Phi}{\text{d}t}</script><ol>
+<li>在回路中产生感应电动势的原因是通过回路平面的磁通量的变化，而不是磁通量本身。</li>
+</ol>
+<script type="math/tex; mode=display">
+\varepsilon = -\frac{\text{d}\Phi}{\text{d}t}= -\frac{\text{d}(BS\cos \theta)}{\text{d}t} = -S\cos\theta\frac{\text{d}B}{\text{d}t} -B\cos\theta\frac{\text{d}S}{\text{d}t} + BS\sin \theta\frac{\text{d}\theta}{\text{d}t}</script><p>三种引起磁通量变化的原因：磁感应强度随时间的变化，回路的面积的变化，回路与磁感应强度的夹角的变化。</p>
+<ol>
+<li>符号指明了感应电动势的方向。</li>
+</ol>
+<h4 id="楞次定律"><a href="#楞次定律" class="headerlink" title="楞次定律"></a>楞次定律</h4><p>由 感应电动势引起的感应电流 所产生的磁场 通过回路的磁通量 总是阻碍 引起感应电流的磁通量 的变化。</p>
+<p>由感应电动势引起的感应电流所产生的磁场通过回路的磁通量总是阻碍引起感应电流的磁通量的变化。</p>
+<p>这句话不能速读。</p>
+<p>当导体在磁场中运动时，导体中由于出现感应电流而收到的磁场力必然阻碍此导体的运动。</p>
+<p>楞次定律的实质是能量守恒定律。</p>
+<h4 id="动生电动势"><a href="#动生电动势" class="headerlink" title="动生电动势"></a>动生电动势</h4><p>首先由高级的微积分技术得到</p>
+<script type="math/tex; mode=display">
+\frac{\text{d}\boldsymbol{B}}{\text{d}t} = \frac{\partial \boldsymbol{B}}{\partial t} + \nabla \times(\boldsymbol{B}\times\boldsymbol{v})</script><p>v是什么鬼？这里是指选取的测量点的速度。如果测量点静止，那么自然只与时间有关。如果测量点在移动，正好磁场也是空间的函数。</p>
+<p>动生电动势情况下，$\displaystyle\frac{\partial \boldsymbol{B}}{\partial t} =0$</p>
+<p>所以</p>
+<script type="math/tex; mode=display">
+\varepsilon = -\iint_S\frac{\text{d}\boldsymbol{B}}{\text{d}t}\cdot\text{d}\boldsymbol{S} = -\iint_S\nabla\times(\boldsymbol{B}\times\boldsymbol{v})\cdot\text{d}\boldsymbol{S}</script><p>即</p>
+<script type="math/tex; mode=display">
+\varepsilon = \oint(\boldsymbol{v}\times\boldsymbol{B})\cdot\text{d}\boldsymbol{l}</script><p>任意导体棒的感应电动势都可以使用如下公式求解</p>
+<script type="math/tex; mode=display">
+\varepsilon = \int_A^B (\boldsymbol{v}\times\boldsymbol{B})\cdot\text{d}\boldsymbol{l}</script><p>直导体可以使用</p>
+<script type="math/tex; mode=display">
+\varepsilon = vBL</script><h4 id="恒定磁场"><a href="#恒定磁场" class="headerlink" title="恒定磁场"></a>恒定磁场</h4><p>恒定磁场不一定是均匀磁场</p>
+<p>!! !!!!!!!!!!  错了一次</p>
+<h4 id="感生电动势"><a href="#感生电动势" class="headerlink" title="感生电动势"></a>感生电动势</h4><p>磁场随时间变化时，在空间激发了新的电场，导体中的载流子在这个电场的作用下，在闭合回路中产生了感应电流。</p>
+<p>变化的磁场激发涡旋电场，涡旋电场产生感应电动势。</p>
+<p>对涡旋电场，</p>
+<script type="math/tex; mode=display">
+\varepsilon = \oint_L\boldsymbol{E}_{\text{旋}}\cdot\text{d}\boldsymbol{l} = -\frac{\text{d}}{\text{d}t}\iint_S\boldsymbol{B}\cdot\text{d}\boldsymbol{S} = -\iint_S\frac{\partial \boldsymbol{B}}{\partial t}\cdot\text{d}\boldsymbol{S}</script><p>时变磁场在周围空间激发涡旋电场，是非保守立场，即无势场。</p>
+<script type="math/tex; mode=display">
+\nabla\times \boldsymbol{E} = -\frac{\partial \boldsymbol{B}}{\partial t}</script><h4 id="磁矢势"><a href="#磁矢势" class="headerlink" title="磁矢势"></a>磁矢势</h4><script type="math/tex; mode=display">
+\boldsymbol{B} = \nabla\times\boldsymbol{A}</script><p>其中的$\boldsymbol{A}$就是磁矢势。</p>
+<p>可以根据毕奥-萨法尔定理推导出来</p>
+<script type="math/tex; mode=display">
+\boldsymbol{A}=\frac{\mu_0}{4\pi}\oint_L\frac{I\text{d}\boldsymbol{l}}{r}</script><p>所有有$B$的地方都可以带入$A$</p>
+<script type="math/tex; mode=display">
+\boldsymbol{E}_{\text{旋}} = -\frac{\partial \boldsymbol{A}}{\partial t}</script><script type="math/tex; mode=display">
+\Phi = \oint_L \boldsymbol{A}\cdot\text{d}\boldsymbol{l}</script><p>这时候可以回顾电场的公式</p>
+<script type="math/tex; mode=display">
+\boldsymbol{E} = -\nabla U - \frac{\partial \boldsymbol{A}}{\partial t}</script><p>左为库伦电场，右为涡旋电场</p>
+<p>PAGE 309</p>
+<p>记得复习马原精简版</p>
+<h4 id="涡旋电场的验证与应用"><a href="#涡旋电场的验证与应用" class="headerlink" title="涡旋电场的验证与应用"></a>涡旋电场的验证与应用</h4><p>涡电流</p>
+<p>金属中载流子在涡旋电场作用下运动产生的电流。</p>
+<p>感应加热</p>
+<p>金属的电阻很小，不大的感应电动势便能产生较强的涡电流，在金属中产生大量的焦耳热。</p>
+<p>电磁阻尼</p>
+<p>楞次定律</p>
+<p>PPT309</p>
+<p>焦耳热损耗</p>
+<p>高电阻材料，如硅钢(钢材料中加入硅)，不影响导磁性</p>
+<p>多层绝缘片叠加而成，减少涡电流的导体横截面积</p>
+<p>趋肤效应</p>
+<p>交变电流靠近导表面处。</p>
+<p>趋肤效应的结果使电流传输的有效横截面积减少，电阻增加，导体表面温度高。</p>
+<h3 id="互感和自感"><a href="#互感和自感" class="headerlink" title="互感和自感"></a>互感和自感</h3><p>当一个线圈中的电流发生变化时，将在周围空间中产生变化的磁场，从而在它附近的另一个线圈中产生感应电动势，这种现象称为互感现象。</p>
+<p>有</p>
+<script type="math/tex; mode=display">
+\Psi_{21} = M_{21}I_1</script><script type="math/tex; mode=display">
+\Psi_{12} = M_{12}I_2</script><p>可以证明</p>
+<script type="math/tex; mode=display">
+M_{12} = M_{21} = M</script><p>PAGE 319</p>
+<p>可以推导出来公式</p>
+<script type="math/tex; mode=display">
+M_{ij} = \frac{\mu_0}{4\pi}\oint_{L_i}\oint_{L_{j}}\frac{\text{d}\boldsymbol{l}_i\cdot\text{d}\boldsymbol{l}_j}{r_{ij}}</script><p>推导使用的公式为</p>
+<script type="math/tex; mode=display">
+\Psi = \oint_L\boldsymbol{A}\cdot\text{d}\boldsymbol{l}</script><p>和</p>
+<script type="math/tex; mode=display">
+M_{21}=\frac{\Psi_{21}}{I_1}</script><h4 id="互感电动势"><a href="#互感电动势" class="headerlink" title="互感电动势"></a>互感电动势</h4><p>$I_1$变化激发空间磁场引起线圈2中的感应电动势为</p>
+<script type="math/tex; mode=display">
+\varepsilon_2 = -\frac{\text{d}\Psi_{21}}{\text{d}t} = -M\frac{\text{d}I_1}{\text{d}t}</script><p>$I_2$变化激发空间磁场引起线圈1中的感应电动势为</p>
+<script type="math/tex; mode=display">
+\varepsilon_1 = -\frac{\text{d}\Psi_{12}}{\text{d}t} = -M\frac{\text{d}I_2}{\text{d}t}</script><h4 id="互感系数的计算方法"><a href="#互感系数的计算方法" class="headerlink" title="互感系数的计算方法"></a>互感系数的计算方法</h4><p>先假设电流，再计算磁通，利用$M=\Psi/I$求得。</p>
+<h4 id="重叠螺线管的互感系数"><a href="#重叠螺线管的互感系数" class="headerlink" title="重叠螺线管的互感系数"></a>重叠螺线管的互感系数</h4><script type="math/tex; mode=display">
+M=\mu_0n_1n_2V</script><p>推导过程：</p>
+<script type="math/tex; mode=display">
+B_1 = \mu_0n_1I_1</script><script type="math/tex; mode=display">
+\Phi_{21} = N_2B_1S = \mu_0n_1n_2SlI_1 = \mu_0n_1n_2VI_1</script><script type="math/tex; mode=display">
+M = \Phi_{21}/I_1 = \mu_0n_1n_2V</script><h4 id="自感现象"><a href="#自感现象" class="headerlink" title="自感现象"></a>自感现象</h4><p>当一个线圈中的电流发生变化时，它所激发的磁场穿过每匝线圈自身平面的磁通量也随之发生变化，从而使线圈产生感应电动势。<br>这种因线圈中的电流发生变化而在线圈自身中产生感应电动势的情况，称为自感应现象。所产生的感应电动势称为自感电动势。</p>
+<p>根据楞次定律，线圈产生的自感电动势总是反抗电流变化的。可以称之为<em>电惯性</em>。</p>
+<h4 id="自感系数"><a href="#自感系数" class="headerlink" title="自感系数"></a>自感系数</h4><p>穿过线圈的总磁通$\Psi$与电流$I$成正比</p>
+<script type="math/tex; mode=display">
+\Psi = LI</script><p>$L$称之为自感系数，简称自感，又叫电磁惯量。之和线圈回路几何形状和介质特性有关。单位与互感相同</p>
+<p>当电流随时间变化时，在线圈中产生的自感电动势为</p>
+<script type="math/tex; mode=display">
+\varepsilon = -\frac{\text{d}\Psi}{\text{d}t} =-L\frac{\text{d}I}{\text{d}t}</script><h4 id="自感系数的计算"><a href="#自感系数的计算" class="headerlink" title="自感系数的计算"></a>自感系数的计算</h4><script type="math/tex; mode=display">
+L=\frac{\Psi}{I} = -\varepsilon/\frac{\text{d}I}{\text{d}t} = \frac{2W_m}{I^2}</script><p>例如理想螺线管的自感系数</p>
+<script type="math/tex; mode=display">
+\Phi = NBS = NS\mu_0nI</script><script type="math/tex; mode=display">
+L=\Psi/I=NS\mu_0n = \mu_0n^2V</script><p>这里利用了$N=nl$</p>
+<h4 id="利用磁通求自感的电流交链问题"><a href="#利用磁通求自感的电流交链问题" class="headerlink" title="利用磁通求自感的电流交链问题"></a>利用磁通求自感的电流交链问题</h4><p>根据定义</p>
+<script type="math/tex; mode=display">
+L=\frac{\Psi}{I}</script><p>在利用磁通分析自感问题时，应当注意磁感应线未圈围全部电流的情形。</p>
+<p>有粗细的导线，看作电流$I$均匀在圆柱体内流动，则不同磁感应线将交链不同的电流$I^{‘}$，因此在算磁通时，应计算有效的磁通$\text{d}\Psi$，称为磁通匝链数；圈围的电流所占的份额$I/I^{‘}$，称为分数匝数</p>
+<p>PAGE 332</p>
+<p>一般外部磁场为零。</p>
+<p>还是看不懂。我太菜了。<br>PAGE335</p>
+<h4 id="电感的串并联"><a href="#电感的串并联" class="headerlink" title="电感的串并联"></a>电感的串并联</h4><p>同名端异名端：</p>
+<p>电流从<strong>同名端</strong>流入时，同一线圈的自感磁通和互感磁通同相。</p>
+<h4 id="串联线圈的自感"><a href="#串联线圈的自感" class="headerlink" title="串联线圈的自感"></a>串联线圈的自感</h4><p>顺接：电流从同名端流入<br>反接：电流从异名端流入</p>
+<p>顺接时，</p>
+<script type="math/tex; mode=display">
+L = L_1 + L_2 + 2M</script><p>推导：</p>
+<script type="math/tex; mode=display">
+\varepsilon_1 = -(L_1\frac{\text{d}I}{\text{d}t} + M\frac{\text{d}I}{\text{d}t}) = -(L_1+M)\frac{\text{d}I}{\text{d}t}</script><script type="math/tex; mode=display">
+\varepsilon_2 = -(M\frac{\text{d}I}{\text{d}t} + L_2\frac{\text{d}I}{\text{d}t}) = -(L_2+M)\frac{\text{d}I}{\text{d}t}</script><p>反接：</p>
+<script type="math/tex; mode=display">
+L=L_1+L_2-2M</script><p>$L&gt;0$即$L_1+L_2 &gt; 2M$</p>
+<h4 id="电感线圈的并联"><a href="#电感线圈的并联" class="headerlink" title="电感线圈的并联"></a>电感线圈的并联</h4><p>同名端并联</p>
+<script type="math/tex; mode=display">
+L=\frac{L_1L_2-M^2}{L_1+L_2-2M}</script><p>推导：</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+\varepsilon &= -(L_1\frac{\text{d}I_1}{\text{d}t} + M\frac{\text{d}I_2}{\text{d}t}) = -(L_2\frac{\text{d}I_2}{\text{d}t} + M\frac{\text{d}I_1}{\text{d}t}) \\
+\frac{\text{d}I}{\text{d}t} &= \frac{\text{d}I_1}{\text{d}t} + \frac{\text{d}I_2}{\text{d}t}\\
+\end{aligned}
+\right.</script><p>异名端：</p>
+<script type="math/tex; mode=display">
+L=\frac{L_1L_2-M^2}{L_1+L_2+2M}</script><h4 id="自感系数和互感系数的关系"><a href="#自感系数和互感系数的关系" class="headerlink" title="自感系数和互感系数的关系"></a>自感系数和互感系数的关系</h4><script type="math/tex; mode=display">
+M\leq \sqrt{L_1L_2}</script><p>即令</p>
+<script type="math/tex; mode=display">
+M=k\sqrt{L_1L_2},0\leq k\leq1</script><p>$k$为耦合系数。</p>
+<h3 id="似稳电路和暂态过程"><a href="#似稳电路和暂态过程" class="headerlink" title="似稳电路和暂态过程"></a>似稳电路和暂态过程</h3><p>似稳电路的条件：电源随时间变化很慢，电路的尺度远小于光在这一周期内的移动距离</p>
+<script type="math/tex; mode=display">
+\frac{1}{f} \gg \frac{l}{c}\rightarrow \lambda \equiv \frac{c}{f} \gg l</script><p>市电下，这一条件为6000km.</p>
+<h4 id="似稳电路"><a href="#似稳电路" class="headerlink" title="似稳电路"></a>似稳电路</h4><script type="math/tex; mode=display">
+\boldsymbol{j} = \sigma \boldsymbol{E} = \sigma (\boldsymbol{E}_{\text{位}}+\boldsymbol{E}_{\text{旋}}+\boldsymbol{K})</script><p>因为引入了涡旋电场，对总电路的基尔霍夫定律不再成立。</p>
+<script type="math/tex; mode=display">
+\oiint _S\boldsymbol{j}\cdot\text{d}\boldsymbol{S}\neq0,\oint_L\boldsymbol{E}\cdot\text{d}\boldsymbol{l}\neq0</script><p>但是对于$\boldsymbol{E}_{\text{位}}$，环路定理依然成立。</p>
+<p>PPT PAGE 362</p>
+<p>没看懂，做题吧</p>
+<h4 id="似稳电路的基本方程"><a href="#似稳电路的基本方程" class="headerlink" title="似稳电路的基本方程"></a>似稳电路的基本方程</h4><script type="math/tex; mode=display">
+\varepsilon = iR+\frac{1}{C}\int i\text{d}t + \left(L\frac{\text{d}i}{\text{d}t}+M\frac{\text{d}i^{'}}{\text{d}t}\right)</script><p>注意：这里与电路理论得到的方程不同。具体细分如下</p>
+<p>先前一直在使用的方程</p>
+<script type="math/tex; mode=display">
+\varepsilon = -L\frac{\text{d}i}{\text{d}t}</script><p>其中的符号表示产生的感应电动势阻碍电流，不表示参考方向。而且这里的$\varepsilon$应当算在电动势里面，而不是等式右边。所以正确性和电路理论相吻合。</p>
+<p>在进行分析的时候，建议使用电路理论的方程式</p>
+<script type="math/tex; mode=display">
+\varepsilon = L\frac{\text{d}i}{\text{d}t}</script><p>并使用同一参考方向，减少犯错误的可能性。</p>
+<p>接下来分析了RL，RC电路的暂态过程。看PPT366，写的很详细了。</p>
+<p>这部分电路理论可以直接分析。不需要电磁学知识，反而容易出错呢。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BE%E5%86%85%E5%A4%8D%E4%B9%A0/">课内复习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/02/%E7%94%B5%E7%A3%81%E5%AD%A6C%E5%A4%8D%E4%B9%A0-%E7%A3%81%E5%AD%A6%E9%83%A8%E5%88%86%E4%BA%8C/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电磁学C复习-磁学部分二</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/18/%E7%94%B5%E7%A3%81%E5%AD%A6C%E5%A4%8D%E4%B9%A0-%E7%94%B5%E5%AD%A6%E9%83%A8%E5%88%86/">
+                        <span class="hidden-mobile">电磁学C复习-电学部分</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
