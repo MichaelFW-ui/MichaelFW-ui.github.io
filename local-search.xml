@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>基础数学知识-Gamma函数和Beta函数</title>
+    <link href="/2022/03/31/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86-Gamma%E5%87%BD%E6%95%B0%E5%92%8CBeta%E5%87%BD%E6%95%B0/"/>
+    <url>/2022/03/31/%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86-Gamma%E5%87%BD%E6%95%B0%E5%92%8CBeta%E5%87%BD%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<p>由于在各种数学实践中出现了基础知识遗漏的问题，这里将需要着重记忆的数学知识再次回顾。</p><span id="more"></span><h2 id="Gamma函数"><a href="#Gamma函数" class="headerlink" title="Gamma函数"></a>Gamma函数</h2><p>$\Gamma(x)$，Gamma函数，通常被解释为阶乘的延拓。该函数在许多数学领域中均有重要的作用。</p><p>在实数域上，定义为</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}\Gamma (x) = \int_0^{+\infty}t^{x-1}\e^{-t}\d t(x > 0)</script><p>复数域上，可以延拓为</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}\Gamma (z) = \int_0^{+\infty}t^{z-1}\e^{-t}\d t (\mathrm{Re}(z) > 0)</script><p>通过变换，可以得到另一种表达方式</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}\Gamma (x) = 2\int_0^{+\infty}t^{2x-1}\e^{-t^2}\d t</script><p>通常使用的特殊值为</p><script type="math/tex; mode=display">\Gamma(1) = 1, \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}</script><p>通常我们需要记忆Gamma函数的如下性质：</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}\Gamma(x+1) = x\Gamma(x)</script><p>这个是Gamma函数作为阶乘延拓的主要性质。</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}B(m,n) = \frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}</script><p>我们还常见一个公式，称为<strong>余元公式</strong></p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}\Gamma(1-x)\Gamma(x) = \frac{\pi}{\sin \pi x}</script><p>在概率论、数理统计和随机过程这些课程中，我们还接触了<strong>Gamma分布</strong>，它有如下的概率密度函数</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}f(X) = \frac{X^{\alpha - 1}\lambda^{\alpha}\e^{-\lambda X}}{\Gamma(\alpha)}</script><h2 id="Beta函数"><a href="#Beta函数" class="headerlink" title="Beta函数"></a>Beta函数</h2><p>Beta函数称为欧拉第一积分，有如下定义</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}B(m,n)=\int^1_0x^{m-1}(1-x)^{n-1}\d x</script><p>积分成立的条件是$\mathrm{Re}(m)&gt;0,\mathrm{Re}(n)&gt;0$。</p><p>Beta函数性质</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}B(m,n) = B(n,m)</script><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}B(s,1-s) = \int_0^{+\infty}\frac{x^{s-1}}{1+x}\d x = \Gamma(s)\Gamma(1-s) = \frac{\pi}{\sin s\pi}</script><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}\int^{\frac{\pi}{2}}_0\sin^{p}\theta\cos ^{q}\theta \d \theta = \frac{1}{2}B(\frac{p+1}{2}, \frac{q+1}{2})</script><p>最常见的性质还是Beta函数和Gamma函数的转化，然后可以根据Gamma的阶乘性质化简成阶乘或双阶乘的形式。</p><script type="math/tex; mode=display">\newcommand{\e}{\mathrm{e}}\newcommand{\d}{\mathrm{d}}B(m,n) = \frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}</script><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在工科学习过程中，主要掌握的性质集中于计算方面。限于时间问题，上述性质均未在本文中得到证明。以上。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+      <category>数学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习</tag>
+      
+      <tag>数学</tag>
+      
+      <tag>课内复习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>电磁学C复习-磁学部分二</title>
     <link href="/2022/02/02/%E7%94%B5%E7%A3%81%E5%AD%A6C%E5%A4%8D%E4%B9%A0-%E7%A3%81%E5%AD%A6%E9%83%A8%E5%88%86%E4%BA%8C/"/>
     <url>/2022/02/02/%E7%94%B5%E7%A3%81%E5%AD%A6C%E5%A4%8D%E4%B9%A0-%E7%A3%81%E5%AD%A6%E9%83%A8%E5%88%86%E4%BA%8C/</url>
@@ -24,9 +55,9 @@
       
       <tag>学习</tag>
       
-      <tag>物理</tag>
-      
       <tag>课内复习</tag>
+      
+      <tag>物理</tag>
       
     </tags>
     
@@ -55,9 +86,9 @@
       
       <tag>学习</tag>
       
-      <tag>物理</tag>
-      
       <tag>课内复习</tag>
+      
+      <tag>物理</tag>
       
     </tags>
     
@@ -86,9 +117,9 @@
       
       <tag>学习</tag>
       
-      <tag>物理</tag>
-      
       <tag>课内复习</tag>
+      
+      <tag>物理</tag>
       
     </tags>
     
@@ -198,9 +229,9 @@
     
     <tags>
       
-      <tag>学习</tag>
-      
       <tag>博客</tag>
+      
+      <tag>学习</tag>
       
     </tags>
     
