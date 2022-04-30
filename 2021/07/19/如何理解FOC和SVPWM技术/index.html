@@ -41,9 +41,8 @@
 <meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WGYl11.md.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WGdnzj.md.png">
 <meta property="article:published_time" content="2021-07-19T00:01:25.000Z">
-<meta property="article:modified_time" content="2022-03-30T15:29:11.020Z">
+<meta property="article:modified_time" content="2022-04-30T00:22:04.383Z">
 <meta property="article:author" content="Michael Francis Williams">
-<meta property="article:tag" content="学习">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://z3.ax1x.com/2021/07/19/W8TODx.md.png">
@@ -271,7 +270,7 @@
             <div class="markdown-body">
               <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>期末考试结束，RoboGame的各种任务又接踵而至。 在电机的驱动方面，我发现野火的驱动方法不是简单的PWM。 这时，我才学习到，无刷直流电机的控制方法并不是一件简单的事情。</p>
 <span id="more"></span>
-<p>接下来，本人将简单梳理FOC和SVPWM的基础内容。 本文全程Copy自<a target="_blank" rel="noopener" href="http://www.pengzhihui.xyz">稚晖君</a>的个人博客。 仅供学习参考。有疑问处请参考原博主内容。</p>
+<p>接下来，本人将简单梳理FOC和SVPWM的基础内容。 本文是在互联网学习资源上的个人总结，仅供学习参考和备忘。有疑问处可以查找更加详细的资料。</p>
 <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="FOC-简介"><a href="#FOC-简介" class="headerlink" title="FOC 简介"></a>FOC 简介</h3><p>FOC，Field Oriented Control，是目前无刷直流电机(BLDC)和永磁同步电机(PMSM)高效 控制的最优方法之一。 FOC旨在通过精确地控制磁场大小与方向，使得电机的运动转矩平稳、噪声小、效率高，并且具有高速的动态响应。</p>
 <p>FOC具有如下优势：</p>
 <ul>
@@ -451,7 +450,6 @@ U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}</script><
 </div>
 <p>至此，SVPWM的任务完成，只需要在处理器中赋值给对应通道的捕获比较寄存器产生相应的三个PWM波形，控制MOS管的开关，进而产生期望的电压、电流和力矩。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>“矢量控制”事实上是一种<strong>解耦合</strong>，把相互耦合的三相磁链解耦为容易控制的两轴$I_q$和$I_d$，计算得到响应结果后，再将控制信号耦合传回电机。</p>
-<p>再次<strong>强调</strong>，本文来自稚晖君的个人博客。如有疑问，请参考原博文。</p>
 
             </div>
             <hr>
@@ -461,17 +459,13 @@ U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}</script><
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%AE%97%E6%B3%95/">算法</a>
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
                     
                   </div>
                 
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
                     
                       <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                     
@@ -485,6 +479,29 @@ U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}</script><
                   
                 </p>
               
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/29/%E9%81%87%E5%88%B0%E7%9A%84bug%E6%B1%87%E6%80%BB/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">遇到的bug汇总-初学者的Bug List!</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/27/%E5%88%A9%E7%94%A8uVision5%E5%BB%BA%E7%AB%8BSTM32F10x%E6%A0%87%E5%87%86%E5%BA%93%E5%B7%A5%E7%A8%8B/">
+                        <span class="hidden-mobile">利用uVision5建立STM32F10x标准库工程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
