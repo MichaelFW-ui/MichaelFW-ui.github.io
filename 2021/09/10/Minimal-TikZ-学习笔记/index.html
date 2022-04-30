@@ -18,15 +18,15 @@
   <meta name="author" content="Michael Francis Williams">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言本文为A very minimal introduction to TikZ学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。">
+    <meta name="description" content="本文为A very minimal introduction to TikZ学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Minimal TikZ 学习笔记">
 <meta property="og:url" content="https://pickupthefall.xyz/2021/09/10/Minimal-TikZ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="风平浪静的小小避难所">
-<meta property="og:description" content="前言本文为A very minimal introduction to TikZ学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。">
+<meta property="og:description" content="本文为A very minimal introduction to TikZ学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-09T23:43:54.000Z">
-<meta property="article:modified_time" content="2022-04-30T00:20:20.525Z">
+<meta property="article:modified_time" content="2022-04-30T01:20:36.893Z">
 <meta property="article:author" content="Michael Francis Williams">
 <meta property="article:tag" content="LaTeX">
 <meta name="twitter:card" content="summary_large_image">
@@ -254,7 +254,7 @@
             <h1 style="display: none">Minimal TikZ 学习笔记</h1>
             
             <div class="markdown-body">
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文为<code>A very minimal introduction to TikZ</code>学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。<br><span id="more"></span><br>该指南作者为Jacques Cr´emer，内容发表于2011年3月11日。</p>
+              <p>本文为<code>A very minimal introduction to TikZ</code>学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。<br><span id="more"></span><br>该指南作者为Jacques Cr´emer，内容发表于2011年3月11日。</p>
 <p>由于网站平台限制，文中的代码将无法执行，所以无法直观地看到输出结果。有兴趣的读者可以自行输入和编译并观察实验结果。</p>
 <h2 id="Picture环境"><a href="#Picture环境" class="headerlink" title="Picture环境"></a>Picture环境</h2><p>通常使用如下基本配置，实现中文环境下文章的编辑。通常情况下，我们会外套table环境用于图片定位。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs latex">\documentclass[tikz]&#123;article&#125;<br>\usepackage&#123;tikz&#125;<br>\usepackage[UTF8]&#123;ctex&#125;<br>\begin&#123;document&#125;<br>    \begin&#123;figure&#125;<br>        \begin&#123;tikzpicture&#125;<br>            code here<br>        \end&#123;tikzpicture&#125;<br>        \caption&#123;CAPTION&#125;<br>    \end&#123;figure&#125;<br>\end&#123;document&#125;<br></code></pre></td></tr></table></figure>
