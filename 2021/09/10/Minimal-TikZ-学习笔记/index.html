@@ -26,7 +26,7 @@
 <meta property="og:description" content="本文为A very minimal introduction to TikZ学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-09T23:43:54.000Z">
-<meta property="article:modified_time" content="2022-04-30T01:20:36.893Z">
+<meta property="article:modified_time" content="2022-04-30T02:12:09.173Z">
 <meta property="article:author" content="Michael Francis Williams">
 <meta property="article:tag" content="LaTeX">
 <meta name="twitter:card" content="summary_large_image">
@@ -213,7 +213,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      7.9k 字
+      12k 字
     </span>
   
 
@@ -222,7 +222,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      66 分钟
+      99 分钟
     </span>
   
 
@@ -255,7 +255,8 @@
             
             <div class="markdown-body">
               <p>本文为<code>A very minimal introduction to TikZ</code>学习笔记，主要将一些重点内容用中文记录下来。基本原因是我看英语看得头疼。<br><span id="more"></span><br>该指南作者为Jacques Cr´emer，内容发表于2011年3月11日。</p>
-<p>由于网站平台限制，文中的代码将无法执行，所以无法直观地看到输出结果。有兴趣的读者可以自行输入和编译并观察实验结果。</p>
+<!-- 由于网站平台限制，文中的代码将无法执行，所以无法直观地看到输出结果。有兴趣的读者可以自行输入和编译并观察实验结果。 -->
+<p>本文使用<code>TikZJax</code>进行<code>TikZ</code>代码执行。在网络不好的情况下无法显示出执行效果。请自行准备科学工具？</p>
 <h2 id="Picture环境"><a href="#Picture环境" class="headerlink" title="Picture环境"></a>Picture环境</h2><p>通常使用如下基本配置，实现中文环境下文章的编辑。通常情况下，我们会外套table环境用于图片定位。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs latex">\documentclass[tikz]&#123;article&#125;<br>\usepackage&#123;tikz&#125;<br>\usepackage[UTF8]&#123;ctex&#125;<br>\begin&#123;document&#125;<br>    \begin&#123;figure&#125;<br>        \begin&#123;tikzpicture&#125;<br>            code here<br>        \end&#123;tikzpicture&#125;<br>        \caption&#123;CAPTION&#125;<br>    \end&#123;figure&#125;<br>\end&#123;document&#125;<br></code></pre></td></tr></table></figure>
 <p>如果只希望进行配图的生成，使用如下配置。</p>
@@ -264,39 +265,155 @@
 <p>我们会建议用户使用结点<code>\node</code>来标记元素坐标，而不是直接使用立即数。但是，教程中我们采取了后者，为了清晰可见的视觉效果。</p>
 <h3 id="直线"><a href="#直线" class="headerlink" title="直线"></a>直线</h3><p>一条直线，注意分号是必须的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw (0, 0) -- (1, 2);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \draw (0, 0) -- (1, 2);
+  \end{tikzpicture}
+</script>
+
 <p>一条折线</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw (0, 0) -- (1, 2) -- (2, 3) -- (1, 0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw (0, 0) -- (1, 2) -- (2, 3) -- (1, 0);
+\end{tikzpicture}
+</script>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [help lines] (0, 0) grid (4, 4);<br>    \draw (0, 0) -- (1, 2) -- (2, 3) -- (1, 0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
 <p>带有辅助网格的折线，辅助网格可以帮助用户定位。辅助网格使用风格<code>help lines</code>，推荐在其他元素之前绘制，防止覆盖和叠加。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw[help lines] (0， 0) grid (2, 3);<br>    \draw (0, 0) -- (1, 2) -- (2, 3) -- (1, 0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [help lines] (0, 0) grid (4, 4);
+    \draw (0, 0) -- (1, 2) -- (2, 3) -- (1, 0);
+\end{tikzpicture}
+</script>
+
+
 <h3 id="图像缩放"><a href="#图像缩放" class="headerlink" title="图像缩放"></a>图像缩放</h3><p>通过在环境上添加<code>scale</code>的值，可以调整图片的缩放尺度。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;[scale=3]<br>    \draw (0, 0) -- (1, 1);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}[scale=3]
+    \draw (0, 0) -- (1, 1);
+\end{tikzpicture}
+</script>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;[xscale=2, yscale=3]<br>    \draw (0, 0) -- (1, 1);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}[xscale=2, yscale=3]
+    \draw (0, 0) -- (1, 1);
+\end{tikzpicture}
+</script>
+
 <h3 id="箭头，和对应衍生物"><a href="#箭头，和对应衍生物" class="headerlink" title="箭头，和对应衍生物"></a>箭头，和对应衍生物</h3><p>线可以添加相应的”装饰”。通常来说，箭头类装饰只会出现在线的两侧，折线也是如此。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [-&gt;] (0, 0) -- (2, 0);<br>    \draw [&lt;-] (0, -0.5) -- (2,-0.5);<br>\draw [|-&gt;] (0,-1) -- (2,-1);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [->] (0, 0) -- (2, 0);
+    \draw [<-] (0, -0.5) -- (2,-0.5);
+\draw [|->] (0,-1) -- (2,-1);
+\end{tikzpicture}
+</script>
+
 <p>双向箭头可以作为一种取巧的方式产生坐标系。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [&lt;-&gt;] (0,2) -- (0,0) -- (3,0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [<->] (0,2) -- (0,0) -- (3,0);
+\end{tikzpicture}
+</script>
+
 <h3 id="改变线的宽度"><a href="#改变线的宽度" class="headerlink" title="改变线的宽度"></a>改变线的宽度</h3><p>通过各种<code>decoration</code>来改变线的风格，宽度的风格有<code>ultra thin, very thin, thin, semithick, thick, very thick, ultra thick</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [ultra thick] (0,1) -- (2,1);<br>    \draw [thick] (0,0.5) -- (2,0.5);<br>    \draw [thin] (0,0) -- (2,0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [ultra thick] (0,1) -- (2,1);
+    \draw [thick] (0,0.5) -- (2,0.5);
+    \draw [thin] (0,0) -- (2,0);
+\end{tikzpicture}
+</script>
+
 <p>先前提及的<code>help lines</code>，其实是一种<code>fine gray</code>的装饰，可以用作各种辅助线。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [&lt;-&gt;] (0,2) -- (0,0) -- (4,0);<br>    \draw [thick] (0,1.5) -- (3,0);<br>    \draw [ultra thick] (0,0) -- (2,2);<br>    \draw [help lines] (1,0) -- (1,1) -- (0,1);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [<->] (0,2) -- (0,0) -- (4,0);
+    \draw [thick] (0,1.5) -- (3,0);
+    \draw [ultra thick] (0,0) -- (2,2);
+    \draw [help lines] (1,0) -- (1,1) -- (0,1);
+\end{tikzpicture}
+</script>
+
 <p>当然可以自由指定线宽。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [line width=12] (0,0) -- (2,0);<br>    \draw [line width=0.2cm] (4,.75) -- (5,.25);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [line width=12] (0,0) -- (2,0);
+    \draw [line width=0.2cm] (4,.75) -- (5,.25);
+\end{tikzpicture}
+</script>
+
 <h3 id="dashes-and-dots"><a href="#dashes-and-dots" class="headerlink" title="dashes and dots"></a>dashes and dots</h3><p>可以使用散点和散线。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [dashed, ultra thick] (0,1) -- (2,1);<br>    \draw [dashed] (0, 0.5) -- (2,0.5);<br>    \draw [dotted] (0,0) -- (2,0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [dashed, ultra thick] (0,1) -- (2,1);
+    \draw [dashed] (0, 0.5) -- (2,0.5);
+    \draw [dotted] (0,0) -- (2,0);
+\end{tikzpicture}
+</script>
+
 <h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>可以直接指定颜色，包括<code>red, green, blue, cyan, magenta, yellow, black, gray, darkgray, lightgray, brown, lime, olive, orange, pink, purple, teal, violet, white</code>，也可以通过不同方法定义自己的颜色。参考手册即可。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [gray] (0,1) -- (2,1);<br>    \draw [red] (0, 0.5) -- (2,0.5);<br>    \draw [blue] (0,0) -- (2,0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [gray] (0,1) -- (2,1);
+    \draw [red] (0, 0.5) -- (2,0.5);
+    \draw [blue] (0,0) -- (2,0);
+\end{tikzpicture}
+</script>
+
 <h3 id="文中符号和图形"><a href="#文中符号和图形" class="headerlink" title="文中符号和图形"></a>文中符号和图形</h3><p>事实上，如果不外套figure环境，你可以做到行内符号和图形。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125; \draw [yellow, line width=6] (0,0) -- (.5,0); \end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<p>限于工具的使用，这里就不在网页中展示行内符号的样式了。可以自行测试。</p>
 <h3 id="曲线"><a href="#曲线" class="headerlink" title="曲线"></a>曲线</h3><p>TikZ提供各种各样的曲线。示例如下。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>\draw [blue] (0,0) rectangle (1.5,1);<br>\draw [red, ultra thick] (3,0.5) circle [radius=0.5];<br>\draw [gray] (6,0) arc [radius=1, start angle=45, end angle= 120];<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+\draw [blue] (0,0) rectangle (1.5,1);
+\draw [red, ultra thick] (3,0.5) circle [radius=0.5];
+\draw [gray] (6,0) arc [radius=1, start angle=45, end angle= 120];
+\end{tikzpicture}
+</script>
+
 <p><code>arc</code>中，各个参数有这样的含义，即radius表示半径，start angle 表示起始点的角度，end angle 表示终止点的角度。</p>
 <p>TikZ也允许你获得圆滑的路径。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [&lt;-&gt;, rounded corners, thick, purple] (0,2) -- (0,0) -- (3,0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [<->, rounded corners, thick, purple] (0,2) -- (0,0) -- (3,0);
+\end{tikzpicture}
+</script>
+
 <p>其他的曲线呢？TikZ允许你通过大量的点，(x, y)模拟一条曲线。当然这不是最佳的选择。TikZ提供了数学工具，可以产生大致的曲线。不过你需要指定起点终点的倾角。这个倾角的取值范围为[0, 360)，大概。我没看手册，应该吧。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw[very thick] (0,0) to [out=90,in=195] (2,1.5);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw[very thick] (0,0) to [out=90,in=195] (2,1.5);
+\end{tikzpicture}
+</script>
+
 <p>注意这里使用了<code>to</code>关键词表示你制定了一条曲线。值得提醒的是，你也可以使用<code>&lt;-&gt;</code>之类的符号给曲线增加箭头。</p>
 <h3 id="数学作图"><a href="#数学作图" class="headerlink" title="数学作图"></a>数学作图</h3><p>TikZ允许你通过数学公式绘制图像。代码如下。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;[xscale=13,yscale=3.8]<br>    \draw [&lt;-&gt;] (0,0.8) -- (0,0) -- (0.5,0);<br>    \draw[green, ultra thick, domain=0:0.5] plot (\x, &#123;0.025+\x+\x*\x&#125;);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}[xscale=13,yscale=3.8]
+    \draw [<->] (0,0.8) -- (0,0) -- (0.5,0);
+    \draw[green, ultra thick, domain=0:0.5] plot (\x, {0.025+\x+\x*\x});
+\end{tikzpicture}
+</script>
+
 <p>这里的<code>\x</code>事实上是点的真实坐标。<code>domain</code>提供了定义域的范围。除了这些函数，TkiZ还提供了</p>
 <ul>
 <li><code>factorial(\x)</code></li>
@@ -307,7 +424,7 @@
 <li><code>log10(\x)</code></li>
 <li><code>log2(\x)</code></li>
 <li><code>abs(\x)</code>，x的绝对值。</li>
-<li><code>mod(\x, y</code>，x 模 y。</li>
+<li><code>mod(\x, y)</code>，x 模 y。</li>
 <li><code>round(\x)</code>，取值到最近的整数。</li>
 <li><code>floor(\x)</code>，下取整数。</li>
 <li><code>ceil(\x)</code>，上取整数。</li>
@@ -320,25 +437,124 @@
 <p>和<code>rnd</code>产生[0,1]中随机数的函数，和两个常数<code>e = 2.718281828, pi = 3.141592654</code>。</p>
 <p>下面的图象有不错的视觉效果。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [help lines, &lt;-&gt;] (0,0) -- (6.5,0);<br>    \draw [help lines, -&gt;] (0,-1.1) -- (0,1.1);<br>    \draw [green,domain=0:2*pi] plot (\x, &#123;(sin(\x r)* ln(\x+1))/2&#125;);<br>    \draw [red,domain=0:pi] plot (\x, &#123;sin(\x r)&#125;);<br>    \draw [blue, domain=pi:2*pi] plot (\x, &#123;cos(\x r)*exp(\x/exp(2*pi))&#125;);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [help lines, <->] (0,0) -- (6.5,0);
+    \draw [help lines, ->] (0,-1.1) -- (0,1.1);
+    \draw [green,domain=0:2*pi] plot (\x, {(sin(\x r)* ln(\x+1))/2});
+    \draw [red,domain=0:pi] plot (\x, {sin(\x r)});
+    \draw [blue, domain=pi:2*pi] plot (\x, {cos(\x r)*exp(\x/exp(2*pi))});
+\end{tikzpicture}
+</script>
+
 <h3 id="填充区域"><a href="#填充区域" class="headerlink" title="填充区域"></a>填充区域</h3><p>简单使用<code>fill</code>参数即可将闭曲线填充。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [fill=red,ultra thick] (0,0) rectangle (1,1);<br>    \draw [fill=red,ultra thick,red] (2,0) rectangle (3,1);<br>    \draw [blue, fill=blue] (4,0) -- (5,1) -- (4.75,0.15) -- (4,0);<br>    \draw [fill] (7,0.5) circle [radius=0.1];<br>    \draw [fill=orange] (9,0) rectangle (11,1);<br>    \draw [fill=white] (9.25,0.25) rectangle (10,1.5);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [fill=red,ultra thick] (0,0) rectangle (1,1);
+    \draw [fill=red,ultra thick,red] (2,0) rectangle (3,1);
+    \draw [blue, fill=blue] (4,0) -- (5,1) -- (4.75,0.15) -- (4,0);
+    \draw [fill] (7,0.5) circle [radius=0.1];
+    \draw [fill=orange] (9,0) rectangle (11,1);
+    \draw [fill=white] (9.25,0.25) rectangle (10,1.5);
+\end{tikzpicture}
+</script>
+
 <p><code>fill = red</code>告诉TikZ你想要用红色填充，<code>red</code>告诉TikZ你想用红色绘制路径。</p>
 <p>有的时候你不想看到路径，即边框线。那么可以使用<code>\path</code>指令实现这一功能。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>\path [fill=gray] (0,0) rectangle (1.5,1);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+\path [fill=gray] (0,0) rectangle (1.5,1);
+\end{tikzpicture}
+</script>
+
 <h3 id="复杂路径仍然可以填充"><a href="#复杂路径仍然可以填充" class="headerlink" title="复杂路径仍然可以填充"></a>复杂路径仍然可以填充</h3><p>只要路径的终点和起点相吻合，图形一样可以填充。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [ultra thick] (0,0) to [out=87,in=150] (1,1) -- (.85,.15) -- (0,0);<br>    \draw [ultra thick, fill=purple] (2,0) to [out=87,in=150] (3,1) -- (2.85,.15) -- (2,0);<br>    \path [fill=purple] (4,0) to [out=87,in=150] (5,1) -- (4.85,.15) -- (4,0);<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [ultra thick] (0,0) to [out=87,in=150] (1,1) -- (.85,.15) -- (0,0);
+    \draw [ultra thick, fill=purple] (2,0) to [out=87,in=150] (3,1) -- (2.85,.15) -- (2,0);
+    \path [fill=purple] (4,0) to [out=87,in=150] (5,1) -- (4.85,.15) -- (4,0);
+\end{tikzpicture}
+</script>
+
 <h3 id="图像中放置标签"><a href="#图像中放置标签" class="headerlink" title="图像中放置标签"></a>图像中放置标签</h3><p>标签的放置可以通过<code>\node</code>实现。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [thick, &lt;-&gt;] (0,2) -- (0,0) -- (2,0);<br>    \node at (1,1) &#123;yes&#125;;<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [thick, <->] (0,2) -- (0,0) -- (2,0);
+    \node at (1,1) {yes};
+\end{tikzpicture}
+</script>
+
 <p><code>\node</code> 可以添加标记，即<code>\node(node name)</code>。如果只是为了标记，可以使用<code>\node (node name) at (x, y)</code>定义坐标点。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [thick, &lt;-&gt;] (0,2) -- (0,0) -- (2,0);<br>    \draw [fill] (1,1) circle [radius=0.025];<br>    \node [below] at (1,1) &#123;below&#125;;<br>    \node [above] at (1,1) &#123;above&#125;;<br>    \node [left]  at (1,1) &#123;left&#125;;<br>    \node [right] at (1,1) &#123;right&#125;;<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [thick, <->] (0,2) -- (0,0) -- (2,0);
+    \draw [fill] (1,1) circle [radius=0.025];
+    \node [below] at (1,1) {below};
+    \node [above] at (1,1) {above};
+    \node [left]  at (1,1) {left};
+    \node [right] at (1,1) {right};
+\end{tikzpicture}
+</script>
+
 <p>也有更加绚丽的图片。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [thick, &lt;-&gt;] (0,1) -- (0,0) -- (1,0);<br>    \draw[fill] (1,1) circle [radius=0.025];<br>    \node [below right, red] at (.5,.75) &#123;below right&#125;;<br>    \node [above left, green] at (.5,.75) &#123;above left&#125;;<br>    \node [below left, purple] at (.5,.75) &#123;below left&#125;;<br>    \node [above right, magenta] at (.5,.75) &#123;above right&#125;;<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [thick, <->] (0,1) -- (0,0) -- (1,0);
+    \draw[fill] (1,1) circle [radius=0.025];
+    \node [below right, red] at (.5,.75) {below right};
+    \node [above left, green] at (.5,.75) {above left};
+    \node [below left, purple] at (.5,.75) {below left};
+    \node [above right, magenta] at (.5,.75) {above right};
+\end{tikzpicture}
+</script>
+
 <p>这种情况下，我们可以获得一个完美的坐标系。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [thick, &lt;-&gt;] (0,1) -- (0,0) -- (1,0);<br>    \node [below right] at (1,0) &#123;$x$&#125;;<br>    \node [left] at (0,1) &#123;$y$&#125;;<br>    \draw[fill] (.4,.6) circle [radius=.5pt];<br>    \node[above right] (.4,.6) &#123;$A$&#125;;<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [thick, <->] (0,1) -- (0,0) -- (1,0);
+    \node [below right] at (1,0) {$x$};
+    \node [left] at (0,1) {$y$};
+    \draw[fill] (.4,.6) circle [radius=.5pt];
+    \node[above right] (.4,.6) {$A$};
+\end{tikzpicture}
+</script>
+
 <p>当然我们可以将指令合在一起写，省去结点的声明。不过这样的话不符合我们先前约定的规范。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [thick, &lt;-&gt;] (0,1) node [left] &#123;$y$&#125;<br>        -- (0,0) -- (1,0) node [below right] &#123;$x$&#125;;<br>    \draw[fill] (.4,.6) circle [radius=.5pt]<br>        node[above right] (.4,.6) &#123;$A$&#125;;<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [thick, <->] (0,1) node [left] {$y$}
+        -- (0,0) -- (1,0) node [below right] {$x$};
+    \draw[fill] (.4,.6) circle [radius=.5pt]
+        node[above right] (.4,.6) {$A$};
+\end{tikzpicture}
+</script>
+
 <p>在一个结点内，如果你想要产生多行文字，你需要告诉TikZ你在哪个地方换行，使用<code>\\</code>符号。同时，你需要指定对齐方式，否则TikZ将不会渲染。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;tikzpicture&#125;<br>    \draw [thick] (0,0) -- (9,0);<br>    \draw (0,-.2) -- (0, .2);<br>    \draw (3,-.2) -- (3, .2);<br>    \draw (6,-.2) -- (6, .2);<br>    \draw (9,-.2) -- (9, .2);<br>    \node[align=left, below] at (1.5,-.5)%<br>        &#123;This happens\\in period 1\\and is aligned\\ left&#125;;<br>    \node[align=center, below] at (4.5,-.5)%<br>        &#123;This happens\\in period 2\\and is centered&#125;;<br>    \node[align=right, below] at (7.5,-.5)%<br>        &#123;This happens\\in period 2\\and is right\\aligned&#125;;<br>\end&#123;tikzpicture&#125;<br></code></pre></td></tr></table></figure>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \draw [thick] (0,0) -- (9,0);
+    \draw (0,-.2) -- (0, .2);
+    \draw (3,-.2) -- (3, .2);
+    \draw (6,-.2) -- (6, .2);
+    \draw (9,-.2) -- (9, .2);
+    \node[align=left, below] at (1.5,-.5)%
+        {This happens\\in period 1\\and is aligned\\ left};
+    \node[align=center, below] at (4.5,-.5)%
+        {This happens\\in period 2\\and is centered};
+    \node[align=right, below] at (7.5,-.5)%
+        {This happens\\in period 2\\and is right\\aligned};
+\end{tikzpicture}
+</script>
+
 <h3 id="集成进入Beamer"><a href="#集成进入Beamer" class="headerlink" title="集成进入Beamer"></a>集成进入Beamer</h3><p>Beamer 和 TikZ出于同一个作者之手，当然具有良好的集成性。在Beamer中，可以直接使用TikZ。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs latex">\begin&#123;frame&#125;<br>    a few lines<br>    \begin&#123;center&#125;<br>        \begin&#123;tikzpicture&#125;<br>            \draw [blue, ultra thick] (-1,2) -- (6,3);<br>            \uncover&lt;1&gt;&#123;\draw [green,thick] (-4,3) -- (2,2.5);&#125;<br>            \uncover&lt;2&gt;&#123;\draw [red,thick] (0,0) -- (0,5);&#125;<br>        \end&#123;tikzpicture&#125;<br>    \end&#123;center&#125;<br>    and something under.<br>\end&#123;frame&#125;<br></code></pre></td></tr></table></figure>
 <p>其中<code>\uncover</code>不能换成<code>\only</code>，否则其他元素的位置将会改变。</p>
