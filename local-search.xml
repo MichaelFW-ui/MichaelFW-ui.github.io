@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>在网页上使用TikZ!</title>
+    <link href="/2022/04/30/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%8A%E4%BD%BF%E7%94%A8TikZ/"/>
+    <url>/2022/04/30/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%8A%E4%BD%BF%E7%94%A8TikZ/</url>
+    
+    <content type="html"><![CDATA[<!-- TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍使用`TikZJax`在网页中绘制简单`TikZ`图形的方法。 --><p>TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里几种网页中绘制图形的方法。</p><span id="more"></span><h2 id="直接截图"><a href="#直接截图" class="headerlink" title="直接截图"></a>直接截图</h2><p>这恐怕是绝大多数网友使用的方法。使用多种绘图软件绘制图形，然后通过保存或者截图工具获得图像，放入图床网站然后导入网页中。<br>这种方法不免有所繁琐，但是这是需要前置知识最少的方法，简单粗暴。</p><h2 id="使用广泛的JS绘图库"><a href="#使用广泛的JS绘图库" class="headerlink" title="使用广泛的JS绘图库"></a>使用广泛的JS绘图库</h2><p>有一些特定的图表，已经被他人实现并编写成<code>JavaScript</code>库可供使用，例如</p><ul><li><a href="http://flowchart.js.org/">flowchart.js</a>提供了流程图(Flow Chart)的绘图工具</li><li><a href="https://bramp.github.io/js-sequence-diagrams/">JS-Sequence</a>提供了时序图(Sequence DIagrams)的绘图工具</li><li><a href="https://mermaid-js.github.io/mermaid/#/">mermaid</a>提供了甘特图、类图等常见图形的绘制方法</li></ul><p>这些在许多<code>Markdown</code>插件中已经移植过了，比如<code>Markdown Preview Enhanced</code>。但是毕竟网页上的显示方法和本地的<code>Markdown</code>插件还是有区别的。为了更好的视觉效果，自主在网页中添加上述库也是没有什么坏处的。有可能加载速度会变慢？本网站部署在<code>GitPages</code>上，加载速度本来就慢，无所谓了。</p><h2 id="使用TikZJax在网页中加载TikZ"><a href="#使用TikZJax在网页中加载TikZ" class="headerlink" title="使用TikZJax在网页中加载TikZ"></a>使用TikZJax在网页中加载TikZ</h2><p>这才是本篇杂谈的重点内容。<code>TikZJax</code>的工作原理是，将<code>TeX</code>代码交由<code>Web2js</code>编译，将编译结果转换成<code>svg</code>插入网页，从而实现了在网页中加载<code>TikZ</code>的功能。</p><p>要想使用本功能，需要在HTML的<code>&lt;head&gt;</code>区域加载如下代码</p><figure class="highlight html"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://tikzjax.com/v1/fonts.css&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://tikzjax.com/v1/tikzjax.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure><p>然后就可以使用如下代码框架绘制图形了。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/tikz&quot;</span>&gt;</span><br>  \begin&#123;tikzpicture&#125;<br>    \draw (0,0) circle (1in);<br>  \end&#123;tikzpicture&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure><p>如果网络连接良好，可以得到渲染图如下。</p><script type="text/tikz">  \begin{tikzpicture}    \draw (0,0) circle (1in);  \end{tikzpicture}</script><p>值得注意的是，该程序使用的<code>TeX</code>有如下内容</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tex"><span class="hljs-keyword">\documentclass</span>[margin=0pt]&#123;standalone&#125;<br><span class="hljs-keyword">\def</span><span class="hljs-keyword">\pgfsysdriver</span>&#123;pgfsys-ximera.def&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;tikz&#125;<br></code></pre></td></tr></table></figure><p>所以目前是无法使用其他<code>TikZ</code>宏包的。这是从一个使用者的角度出发的。学习知识并改善之是当前互联网精神的重要内核之一。将来会仔细研究相关知识，现在就先用着简单功能吧！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>LaTeX</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LaTeX</tag>
+      
+      <tag>杂谈</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数理方程复习-分离变量法</title>
     <link href="/2022/04/30/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E5%A4%8D%E4%B9%A0-%E5%88%86%E7%A6%BB%E5%8F%98%E9%87%8F%E6%B3%95/"/>
     <url>/2022/04/30/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E5%A4%8D%E4%B9%A0-%E5%88%86%E7%A6%BB%E5%8F%98%E9%87%8F%E6%B3%95/</url>
