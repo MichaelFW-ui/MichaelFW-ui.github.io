@@ -18,24 +18,30 @@
   <meta name="author" content="Michael Francis Williams">
   <meta name="keywords" content="">
   
-    <meta name="description" content="TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍几种网页中绘制图形的方法。">
+    <meta name="description" content="这里梳理步进电机的相关计算问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在网页上使用TikZ!">
-<meta property="og:url" content="https://pickupthefall.xyz/2022/04/30/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%8A%E4%BD%BF%E7%94%A8TikZ/index.html">
+<meta property="og:title" content="步进电机-相数？拍数？步距角？">
+<meta property="og:url" content="https://pickupthefall.xyz/2022/05/02/%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA-%E7%9B%B8%E6%95%B0%EF%BC%9F%E6%8B%8D%E6%95%B0%EF%BC%9F%E6%AD%A5%E8%B7%9D%E8%A7%92%EF%BC%9F/index.html">
 <meta property="og:site_name" content="无人问津的个人学习笔记站">
-<meta property="og:description" content="TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍几种网页中绘制图形的方法。">
+<meta property="og:description" content="这里梳理步进电机的相关计算问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-30T00:40:57.000Z">
-<meta property="article:modified_time" content="2022-04-30T01:54:35.626Z">
+<meta property="og:image" content="https://s1.ax1x.com/2022/05/02/OFF76J.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/05/02/OFAEr9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/05/02/OFZAKg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/05/02/OFe1Yt.png">
+<meta property="article:published_time" content="2022-05-02T14:00:51.000Z">
+<meta property="article:modified_time" content="2022-05-02T15:04:34.256Z">
 <meta property="article:author" content="Michael Francis Williams">
-<meta property="article:tag" content="LaTeX">
-<meta property="article:tag" content="杂谈">
+<meta property="article:tag" content="课内复习">
+<meta property="article:tag" content="执行器">
+<meta property="article:tag" content="电子设计">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/05/02/OFF76J.png">
   
   
     <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css"><script src="https://tikzjax.com/v1/tikzjax.js"></script>
   
-  <title>在网页上使用TikZ! - 无人问津的个人学习笔记站</title>
+  <title>步进电机-相数？拍数？步距角？ - 无人问津的个人学习笔记站</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -193,7 +199,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="在网页上使用TikZ!">
+            <span class="h2" id="subtitle" title="步进电机-相数？拍数？步距角？">
               
             </span>
 
@@ -203,8 +209,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-04-30 08:40" pubdate>
-        2022年4月30日 早上
+      <time datetime="2022-05-02 22:00" pubdate>
+        2022年5月2日 晚上
       </time>
     </span>
   
@@ -214,7 +220,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      2.9k 字
     </span>
   
 
@@ -223,7 +229,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11 分钟
+      25 分钟
     </span>
   
 
@@ -252,35 +258,84 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">在网页上使用TikZ!</h1>
+            <h1 style="display: none">步进电机-相数？拍数？步距角？</h1>
             
             <div class="markdown-body">
-              <!-- TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍使用`TikZJax`在网页中绘制简单`TikZ`图形的方法。 -->
-<p>TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍几种网页中绘制图形的方法。</p>
+              <p>这里梳理步进电机的相关计算问题。</p>
 <span id="more"></span>
-<h2 id="直接截图"><a href="#直接截图" class="headerlink" title="直接截图"></a>直接截图</h2><p>这恐怕是绝大多数网友使用的方法。使用多种绘图软件绘制图形，然后通过保存或者截图工具获得图像，放入图床网站然后导入网页中。<br>这种方法不免有所繁琐，但是这是需要前置知识最少的方法，简单粗暴。</p>
-<h2 id="使用广泛的JS绘图库"><a href="#使用广泛的JS绘图库" class="headerlink" title="使用广泛的JS绘图库"></a>使用广泛的JS绘图库</h2><p>有一些特定的图表，已经被他人实现并编写成<code>JavaScript</code>库可供使用，例如</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://flowchart.js.org/">flowchart.js</a>提供了流程图(Flow Chart)的绘图工具</li>
-<li><a target="_blank" rel="noopener" href="https://bramp.github.io/js-sequence-diagrams/">JS-Sequence</a>提供了时序图(Sequence DIagrams)的绘图工具</li>
-<li><a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/">mermaid</a>提供了甘特图、类图等常见图形的绘制方法</li>
-</ul>
-<p>这些在许多<code>Markdown</code>插件中已经移植过了，比如<code>Markdown Preview Enhanced</code>。但是毕竟网页上的显示方法和本地的<code>Markdown</code>插件还是有区别的。为了更好的视觉效果，自主在网页中添加上述库也是没有什么坏处的。有可能加载速度会变慢？本网站部署在<code>GitPages</code>上，加载速度本来就慢，无所谓了。</p>
-<h2 id="使用TikZJax在网页中加载TikZ"><a href="#使用TikZJax在网页中加载TikZ" class="headerlink" title="使用TikZJax在网页中加载TikZ"></a>使用TikZJax在网页中加载TikZ</h2><p>这才是本篇杂谈的重点内容。<code>TikZJax</code>的工作原理是，将<code>TeX</code>代码交由<code>Web2js</code>编译，将编译结果转换成<code>svg</code>插入网页，从而实现了在网页中加载<code>TikZ</code>的功能。</p>
-<p>要想使用本功能，需要在HTML的<code>&lt;head&gt;</code>区域加载如下代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://tikzjax.com/v1/fonts.css&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://tikzjax.com/v1/tikzjax.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>然后就可以使用如下代码框架绘制图形了。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/tikz&quot;</span>&gt;</span><br>  \begin&#123;tikzpicture&#125;<br>    \draw (0,0) circle (1in);<br>  \end&#123;tikzpicture&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>如果网络连接良好，可以得到渲染图如下。</p>
-<script type="text/tikz">
-  \begin{tikzpicture}
-    \draw (0,0) circle (1in);
-  \end{tikzpicture}
-</script>
-
-<p>值得注意的是，该程序使用的<code>TeX</code>有如下内容</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tex"><span class="hljs-keyword">\documentclass</span>[margin=0pt]&#123;standalone&#125;<br><span class="hljs-keyword">\def</span><span class="hljs-keyword">\pgfsysdriver</span>&#123;pgfsys-ximera.def&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;tikz&#125;<br></code></pre></td></tr></table></figure>
-<p>所以目前是无法使用其他<code>TikZ</code>宏包的。这是从一个使用者的角度出发的。学习知识并改善之是当前互联网精神的重要内核之一。将来会仔细研究相关知识，现在就先用着简单功能吧！</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>本课程中主要强调了的是磁阻式步进电机。磁阻式步进电机的力矩来源于磁路使磁阻最小的能力。下面是一个四相步进电机的图例。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OFF76J"><img src="https://s1.ax1x.com/2022/05/02/OFF76J.png" srcset="/img/loading.gif" lazyload alt="OFF76J.png"></a></p>
+<p>步进电机分为定子和转子两大部分。定子主要需要注意的是磁极。对于$p$相步进电机，通常定子中有$2p$个绕组，也就是$2p$个磁极。也就是说，绕组数等于磁极数。每一相有两个绕组，位于直径的两端。</p>
+<p>磁极表面有均匀分布的小齿。转子上也均匀分布着小齿。但是二者数目不是一一对应的。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OFAEr9"><img src="https://s1.ax1x.com/2022/05/02/OFAEr9.png" srcset="/img/loading.gif" lazyload alt="OFAEr9.png"></a></p>
+<p><strong>齿距角</strong>的定义是相邻两齿中心线的夹角，设$Z_r$位转子齿数，有齿距角$\theta_t$</p>
+<script type="math/tex; mode=display">
+\theta _t = \frac{360^{o}}{Z_r}</script><p>对于转子齿数的规定是，要求转子转动一半时(即转子从同一相的一个磁极转到了同一相的另一个磁极)，定子和转子的齿数相差1。换用课本上的话说，就是</p>
+<blockquote>
+<p>相邻磁极下的定子转子齿之间错开转子齿距角的$\frac{1}{m}$倍。</p>
+</blockquote>
+<p>注意到$m=p$，所以上面两种定义是相同的。写成数学语言便是</p>
+<script type="math/tex; mode=display">
+\frac{Z_r}{2p} = K \pm \frac{1}{m}</script><script type="math/tex; mode=display">
+Z_r = 2pK \pm 2</script><p>因此每一个极距下的转子齿数不是整数。这里正负号通常使转子齿数多一点，即正号。</p>
+<h2 id="拍数和步距角"><a href="#拍数和步距角" class="headerlink" title="拍数和步距角"></a>拍数和步距角</h2><p>步进电机的控制通常为一个周期$N$个通电状态。在一个周期中，步进电机各绕组的不同通电状态的数量成为<strong>拍数</strong>。</p>
+<p>根据同步电动机的相关知识，每个通电周期之后，步进电机的定子磁场将旋转半周。相应的转子和定子之间的小齿也将在半周内进行同步。因为上面规定了转子和定子齿数的关系，所以<strong>每个通电周期转子转过一个齿距角</strong>。</p>
+<p><strong>步距角</strong>的定义是，改变一次通电状态，转过的角度。假设一个通电周期有$N$拍，那么步距角$\theta_b$</p>
+<script type="math/tex; mode=display">
+\theta_b = \frac{\theta_t}{N} = \frac{360^{o}}{Z_rN}</script><h2 id="常见的通电模式"><a href="#常见的通电模式" class="headerlink" title="常见的通电模式"></a>常见的通电模式</h2><p>以四相步进电机为例。常见的通电模式为四相单四拍、四相双四拍、四相八拍。</p>
+<p>四相单四拍的通电规律为</p>
+<script type="math/tex; mode=display">
+A \rightarrow B \rightarrow C \rightarrow D \rightarrow A \rightarrow \dots</script><p>四相双四拍的通电规律为</p>
+<script type="math/tex; mode=display">
+AB \rightarrow BC \rightarrow CD \rightarrow DA \rightarrow AB \rightarrow \dots</script><p>四相八拍的通电规律为</p>
+<script type="math/tex; mode=display">
+A\rightarrow AB \rightarrow B\rightarrow BC \rightarrow C\rightarrow CD \rightarrow D\rightarrow DA \rightarrow \dots</script><p>其中有拍数和相数的关系</p>
+<script type="math/tex; mode=display">
+N=km</script><p>$k$的值为1时，称其为单拍制，为2时，称其为双拍制。可以看到，四相单四拍和四相双四拍均为单拍制，而四相八拍为双拍制。</p>
+<p>单拍制下，步距角为$\displaystyle \frac{1}{m}$的齿距角，双拍制下步距角为$\displaystyle \frac{1}{2m}$的齿距角。</p>
+<h2 id="引入电角度"><a href="#引入电角度" class="headerlink" title="引入电角度"></a>引入电角度</h2><p>和之前的电机不同，步进电机中电角度等于转子齿数乘以机械角度，即</p>
+<script type="math/tex; mode=display">
+\theta _e = Z_r\theta</script><p>那么齿距角应该是</p>
+<script type="math/tex; mode=display">
+\theta_{te} = \frac{360^{o}}{Z_r}Z_r = 2\pi \mathrm{rad}</script><p>步距角自然是</p>
+<script type="math/tex; mode=display">
+\theta_{be} = \frac{2\pi}{N}</script><h2 id="研究力矩"><a href="#研究力矩" class="headerlink" title="研究力矩"></a>研究力矩</h2><p>转矩是失调角的周期函数，周期为转子的一个齿距角，即$2\pi$rad电角。</p>
+<p>单相通电的时候，静态力矩的基波分量为</p>
+<script type="math/tex; mode=display">
+T = -T_m\sin(\theta_e - \theta_{e0})</script><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OFZAKg"><img src="https://s1.ax1x.com/2022/05/02/OFZAKg.png" srcset="/img/loading.gif" lazyload alt="OFZAKg.png"></a></p>
+<p>这时的力矩是否为稳定平衡？图中标识了稳定平衡点，这里取了$\theta_{e0}=0$。总之齿正好对齐的时候最稳定。</p>
+<p>多相通电的时候，就需要考虑不同相之间的电角差距了。</p>
+<p>电角的差距应该和步距角相同，那么在$m$相步进电机$n$相同时通电时，静态转矩应该为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+T &= \sum_{i}^{n}T_i \\
+&= T_m\sum_{i=1}^{n}\sin(\theta_e - (i-1)\theta_{be})\\
+&= -T_m\frac{\sin\dfrac{n\theta_{be}}{2}}{\sin\dfrac{\theta_{be}}{2}}\sin(\theta_e-\frac{n-1}{2}\theta_{be}) \\
+\end{aligned}</script><p>单拍制下，步距角有公式</p>
+<script type="math/tex; mode=display">
+\theta_{be} = \frac{2\pi}{m}</script><p>所以最大静转矩为</p>
+<script type="math/tex; mode=display">
+\frac{T_{m(n)}}{T_m} = \frac{\sin{\dfrac{n\pi}{m}}}{\sin\dfrac{\pi}{m}}</script><h2 id="启动转矩"><a href="#启动转矩" class="headerlink" title="启动转矩"></a>启动转矩</h2><p>接下来考虑启动转矩。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OFe1Yt"><img src="https://s1.ax1x.com/2022/05/02/OFe1Yt.png" srcset="/img/loading.gif" lazyload alt="OFe1Yt.png"></a></p>
+<p>正常启动需要让<strong>相邻通电状态的合成转矩大于负载转矩</strong>。这是因为在正常的通电切换时，不同的通电状态是合成的正弦波，因此力矩最小值通常在切换时取得。</p>
+<p>计算启动力矩，需要先得到步距角$\theta_{be}$，因为相邻的磁极的相位差即为步距角。</p>
+<p>如果是单相通电，如四相单四拍，那么要考虑的是$\sin(\theta_e)$和$\sin(\theta_e - \theta_{be})$的交点，即</p>
+<script type="math/tex; mode=display">
+T_{start1} = T_m\sin(\dfrac{\pi}{2} + \dfrac{\theta_{be}}{2})</script><p>其中$\dfrac{\pi}{2}$是因为取最高点后面的第一个交点，二分之一的步距角是两个三角函数的交点距离最高点的相位差。</p>
+<p>如果是双相通电，如四相双四拍，那么就要考虑两项通电时候的合成磁场。</p>
+<script type="math/tex; mode=display">
+T_{AB} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta_{be}))</script><script type="math/tex; mode=display">
+T_{BC} = -T_m(\sin(\theta_e - \theta{be}) + \sin(\theta_e - 2\theta_{be}))</script><p>为了取交点，让$T_{AB}=T_{BC}$，得到</p>
+<script type="math/tex; mode=display">
+\sin(\theta_e) = \sin(\theta_e - 2\theta_{be})</script><p>通常让$\theta_e$在$[0,\pi]$区间中，得到$\theta_e = \pi$</p>
+<p>那么将该数值带进$T_{AB}$得到$T_m$，即为启动转矩。</p>
+<p>如果是四相八拍，这时候注意步距角发生了变化！同样是进行合成</p>
+<script type="math/tex; mode=display">
+T_{AB} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta_{be}))</script><script type="math/tex; mode=display">
+T_{ABC} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta{be}) + \sin(\theta_e - 2\theta_{be}))</script><p>令它们相等得到$\sin(\theta_e - \theta_{be}) = 0$，也可以取$\theta_e = \pi$，得到起动转矩为$T_m$。</p>
+<p>对于五相步进电机，上面求得的电角度分别是$0.7\pi$，$0.9\pi$，$0.4\pi$，求得到的转矩分别为$0.809T_m$，$1.30T_m$，$1.54T_m$。</p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>我写这篇笔记是因为我上课没听，而同时把这些角度全部搞混了，所以写不来作业题。很惭愧，上课摸鱼了造成这个悲剧。。。</p>
+<h2 id="图片来源"><a href="#图片来源" class="headerlink" title="图片来源"></a>图片来源</h2><p>本文图片来自《自动控制元件及线路》，系本课程课本。如有侵权我会及时删除。</p>
 
             </div>
             <hr>
@@ -290,7 +345,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/LaTeX/">LaTeX</a>
+                      <a class="hover-with-bg" href="/categories/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a>
                     
                   </div>
                 
@@ -298,9 +353,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/LaTeX/">LaTeX</a>
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BE%E5%86%85%E5%A4%8D%E4%B9%A0/">课内复习</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+                      <a class="hover-with-bg" href="/tags/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
                     
                   </div>
                 
@@ -317,18 +374,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/02/%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA-%E7%9B%B8%E6%95%B0%EF%BC%9F%E6%8B%8D%E6%95%B0%EF%BC%9F%E6%AD%A5%E8%B7%9D%E8%A7%92%EF%BC%9F/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">步进电机-相数？拍数？步距角？</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/30/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E5%A4%8D%E4%B9%A0-%E5%88%86%E7%A6%BB%E5%8F%98%E9%87%8F%E6%B3%95/">
-                        <span class="hidden-mobile">数理方程复习-分离变量法</span>
+                      <a href="/2022/04/30/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%8A%E4%BD%BF%E7%94%A8TikZ/">
+                        <span class="hidden-mobile">在网页上使用TikZ!</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
