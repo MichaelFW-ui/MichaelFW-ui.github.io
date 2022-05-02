@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2022/05/02/OFZAKg.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/05/02/OFe1Yt.png">
 <meta property="article:published_time" content="2022-05-02T14:00:51.000Z">
-<meta property="article:modified_time" content="2022-05-02T15:04:34.256Z">
+<meta property="article:modified_time" content="2022-05-02T15:08:46.151Z">
 <meta property="article:author" content="Michael Francis Williams">
 <meta property="article:tag" content="课内复习">
 <meta property="article:tag" content="执行器">
@@ -220,7 +220,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.9k 字
+      3k 字
     </span>
   
 
@@ -285,9 +285,9 @@ Z_r = 2pK \pm 2</script><p>因此每一个极距下的转子齿数不是整数�
 \theta_b = \frac{\theta_t}{N} = \frac{360^{o}}{Z_rN}</script><h2 id="常见的通电模式"><a href="#常见的通电模式" class="headerlink" title="常见的通电模式"></a>常见的通电模式</h2><p>以四相步进电机为例。常见的通电模式为四相单四拍、四相双四拍、四相八拍。</p>
 <p>四相单四拍的通电规律为</p>
 <script type="math/tex; mode=display">
-A \rightarrow B \rightarrow C \rightarrow D \rightarrow A \rightarrow \dots</script><p>四相双四拍的通电规律为</p>
+A \rightarrow B \rightarrow C \rightarrow D  \rightarrow \dots</script><p>四相双四拍的通电规律为</p>
 <script type="math/tex; mode=display">
-AB \rightarrow BC \rightarrow CD \rightarrow DA \rightarrow AB \rightarrow \dots</script><p>四相八拍的通电规律为</p>
+AB \rightarrow BC \rightarrow CD \rightarrow DA \rightarrow \dots</script><p>四相八拍的通电规律为</p>
 <script type="math/tex; mode=display">
 A\rightarrow AB \rightarrow B\rightarrow BC \rightarrow C\rightarrow CD \rightarrow D\rightarrow DA \rightarrow \dots</script><p>其中有拍数和相数的关系</p>
 <script type="math/tex; mode=display">
@@ -325,16 +325,18 @@ T_{start1} = T_m\sin(\dfrac{\pi}{2} + \dfrac{\theta_{be}}{2})</script><p>其中$
 <p>如果是双相通电，如四相双四拍，那么就要考虑两项通电时候的合成磁场。</p>
 <script type="math/tex; mode=display">
 T_{AB} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta_{be}))</script><script type="math/tex; mode=display">
-T_{BC} = -T_m(\sin(\theta_e - \theta{be}) + \sin(\theta_e - 2\theta_{be}))</script><p>为了取交点，让$T_{AB}=T_{BC}$，得到</p>
+T_{BC} = -T_m(\sin(\theta_e - \theta_{be}) + \sin(\theta_e - 2\theta_{be}))</script><p>为了取交点，让$T_{AB}=T_{BC}$，得到</p>
 <script type="math/tex; mode=display">
 \sin(\theta_e) = \sin(\theta_e - 2\theta_{be})</script><p>通常让$\theta_e$在$[0,\pi]$区间中，得到$\theta_e = \pi$</p>
 <p>那么将该数值带进$T_{AB}$得到$T_m$，即为启动转矩。</p>
 <p>如果是四相八拍，这时候注意步距角发生了变化！同样是进行合成</p>
 <script type="math/tex; mode=display">
 T_{AB} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta_{be}))</script><script type="math/tex; mode=display">
-T_{ABC} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta{be}) + \sin(\theta_e - 2\theta_{be}))</script><p>令它们相等得到$\sin(\theta_e - \theta_{be}) = 0$，也可以取$\theta_e = \pi$，得到起动转矩为$T_m$。</p>
+T_{ABC} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta_{be}) + \sin(\theta_e - 2\theta_{be}))</script><p>令它们相等得到$\sin(\theta_e - \theta_{be}) = 0$，也可以取$\theta_e = \pi$，得到起动转矩为$T_m$。</p>
 <p>对于五相步进电机，上面求得的电角度分别是$0.7\pi$，$0.9\pi$，$0.4\pi$，求得到的转矩分别为$0.809T_m$，$1.30T_m$，$1.54T_m$。</p>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>我写这篇笔记是因为我上课没听，而同时把这些角度全部搞混了，所以写不来作业题。很惭愧，上课摸鱼了造成这个悲剧。。。</p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>我写这篇笔记是因为我上课没听，而同时把这些角度全部搞混了，所以写不来作业题。很惭愧，上课摸鱼了造成这个悲剧…</p>
+<p>如果以后接着上课摸鱼，恐怕需要摸出来许许多多的课程笔记…</p>
+<p>还有其他的知识点我没有写，因为作业里没有。遇到了再整理。</p>
 <h2 id="图片来源"><a href="#图片来源" class="headerlink" title="图片来源"></a>图片来源</h2><p>本文图片来自《自动控制元件及线路》，系本课程课本。如有侵权我会及时删除。</p>
 
             </div>
@@ -550,6 +552,48 @@ T_{ABC} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta{be}) + \sin(\theta_e - 2\
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
 
 
 
