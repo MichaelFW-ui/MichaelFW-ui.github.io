@@ -20,7 +20,7 @@
   
     <meta name="description" content="在先前的一次电子设计中，我使用到了一种利用双向可控硅(TRIAC)控制市电通断的方法。经过一段时间的资料收集，我发现关于这方面的中文资料比较少。这里记录了我的学习结果。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="可控硅和双向可控硅">
+<meta property="og:title" content="SCR,TRIAC,Photo TRIAC-四两拨千斤的光耦隔离电路">
 <meta property="og:url" content="https://pickupthefall.xyz/2022/05/17/%E5%8F%AF%E6%8E%A7%E7%A1%85%E5%92%8C%E5%8F%8C%E5%90%91%E5%8F%AF%E6%8E%A7%E7%A1%85/index.html">
 <meta property="og:site_name" content="无人问津的个人学习笔记站">
 <meta property="og:description" content="在先前的一次电子设计中，我使用到了一种利用双向可控硅(TRIAC)控制市电通断的方法。经过一段时间的资料收集，我发现关于这方面的中文资料比较少。这里记录了我的学习结果。">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2022/05/22/OvbN6O.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/05/17/OIKu8A.png">
 <meta property="article:published_time" content="2022-05-17T14:32:23.000Z">
-<meta property="article:modified_time" content="2022-05-22T01:26:58.405Z">
+<meta property="article:modified_time" content="2022-05-22T01:31:30.991Z">
 <meta property="article:author" content="Michael Francis Williams">
 <meta property="article:tag" content="电子设计">
 <meta name="twitter:card" content="summary_large_image">
@@ -46,7 +46,7 @@
   
     <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css"><script src="https://tikzjax.com/v1/tikzjax.js"></script>
   
-  <title>可控硅和双向可控硅 - 无人问津的个人学习笔记站</title>
+  <title>SCR,TRIAC,Photo TRIAC-四两拨千斤的光耦隔离电路 - 无人问津的个人学习笔记站</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -204,7 +204,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="可控硅和双向可控硅">
+            <span class="h2" id="subtitle" title="SCR,TRIAC,Photo TRIAC-四两拨千斤的光耦隔离电路">
               
             </span>
 
@@ -263,13 +263,13 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">可控硅和双向可控硅</h1>
+            <h1 style="display: none">SCR,TRIAC,Photo TRIAC-四两拨千斤的光耦隔离电路</h1>
             
             <div class="markdown-body">
               <p>在先前的一次电子设计中，我使用到了一种利用双向可控硅(TRIAC)控制市电通断的方法。经过一段时间的资料收集，我发现关于这方面的中文资料比较少。这里记录了我的学习结果。</p>
 <span id="more"></span>
 <h2 id="产生问题的电路图"><a href="#产生问题的电路图" class="headerlink" title="产生问题的电路图"></a>产生问题的电路图</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OIKu8A"><img src="https://s1.ax1x.com/2022/05/17/OIKu8A.png" srcset="/img/loading.gif" lazyload alt="OIKu8A.png"></a></p>
-<p>图中是一个比较典型的MOC3041芯片的应用电路。前一路的光电TRIAC控制了后端的功率TRIAC的G端，从而实现了小电流控制大功率的目的。我们可以看到电路中有许多外加电阻电容和MOS管。它们的作用是什么？为什么TRIAC可以实现控制电流的通断。本文章将一一解答。</p>
+<p>图中是一个比较典型的MOC3041芯片的应用电路。前一路的光电TRIAC控制了后端的功率TRIAC的G端，从而实现了小电流控制大功率的目的。我们可以看到电路中有许多外加电阻电容和MOS管。它们的作用是什么？为什么TRIAC可以实现控制电流的通断？本文章将一一解答。</p>
 <h2 id="资料现象"><a href="#资料现象" class="headerlink" title="资料现象"></a>资料现象</h2><p>目前可以查到的中文资料基本上集中于可控硅的性质，而较少有涉及到可控硅的内部结构问题。不过还是有几篇文章值得阅读的。同时在英文互联网上我也找到了一些资料，将这些东西整理起来就可以对这些问题进行更加合理的解释了。</p>
 <h2 id="可控硅"><a href="#可控硅" class="headerlink" title="可控硅"></a>可控硅</h2><p>可控硅，英文名Silicon Controlled Rectifier, 也即SCR，硅可控整流器，是一种大功率电器元件，又名晶闸管。在控制系统中，通常用于使用小功率控件控制大功率设备。</p>
 <p>通常使用的可控硅分为<strong>单向可控硅</strong>和<strong>双向可控硅</strong>，而双向可控硅通常称为三端双相可控硅，又名TRIAC，即TRIad AC semiconductor switch。如名字所提示，单向可控硅可以控制单向电流的通断，通常用于直流电的控制或者交流电的整流设备。双向可控硅可以控制双向电流的通断，可以用于控制大功率交流电机。</p>
