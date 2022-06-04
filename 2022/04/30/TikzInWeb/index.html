@@ -18,23 +18,24 @@
   <meta name="author" content="Michael Francis Williams">
   <meta name="keywords" content="">
   
-    <meta name="description" content="电子设计实践大作业开始在即，即使力学考试就在眼前，我仍然花费一段时间来调试这样的程序。何等的敬业精神。在使用uVision建立新工程的时候，我发现过程相对繁琐且缺乏条理。于是便整理过程如下。">
+    <meta name="description" content="TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍几种网页中绘制图形的方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用uVision5建立STM32F10x标准库工程">
-<meta property="og:url" content="https://pickupthefall.xyz/2021/05/27/%E5%88%A9%E7%94%A8uVision5%E5%BB%BA%E7%AB%8BSTM32F10x%E6%A0%87%E5%87%86%E5%BA%93%E5%B7%A5%E7%A8%8B/index.html">
+<meta property="og:title" content="在网页上使用TikZ!">
+<meta property="og:url" content="https://pickupthefall.xyz/2022/04/30/TikzInWeb/index.html">
 <meta property="og:site_name" content="无人问津的个人学习笔记站">
-<meta property="og:description" content="电子设计实践大作业开始在即，即使力学考试就在眼前，我仍然花费一段时间来调试这样的程序。何等的敬业精神。在使用uVision建立新工程的时候，我发现过程相对繁琐且缺乏条理。于是便整理过程如下。">
+<meta property="og:description" content="TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍几种网页中绘制图形的方法。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-27T12:11:35.000Z">
-<meta property="article:modified_time" content="2022-04-30T00:18:27.056Z">
+<meta property="article:published_time" content="2022-04-30T00:40:57.000Z">
+<meta property="article:modified_time" content="2022-04-30T01:54:35.626Z">
 <meta property="article:author" content="Michael Francis Williams">
-<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="LaTeX">
+<meta property="article:tag" content="杂谈">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css"><script src="https://tikzjax.com/v1/tikzjax.js"></script>
   
-  <title>利用uVision5建立STM32F10x标准库工程 - 无人问津的个人学习笔记站</title>
+  <title>在网页上使用TikZ! - 无人问津的个人学习笔记站</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -192,7 +193,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="利用uVision5建立STM32F10x标准库工程">
+            <span class="h2" id="subtitle" title="在网页上使用TikZ!">
               
             </span>
 
@@ -202,8 +203,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-27 20:11" pubdate>
-        2021年5月27日 晚上
+      <time datetime="2022-04-30 08:40" pubdate>
+        2022年4月30日 早上
       </time>
     </span>
   
@@ -213,7 +214,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.3k 字
     </span>
   
 
@@ -222,7 +223,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      11 分钟
     </span>
   
 
@@ -251,39 +252,35 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">利用uVision5建立STM32F10x标准库工程</h1>
+            <h1 style="display: none">在网页上使用TikZ!</h1>
             
             <div class="markdown-body">
-              <p>电子设计实践大作业开始在即，即使力学考试就在眼前，我仍然花费一段时间来调试这样的程序。<br>何等的敬业精神。<br>在使用uVision建立新工程的时候，我发现过程相对繁琐且缺乏条理。于是便整理过程如下。<br><span id="more"></span></p>
-<p>本文依然无图（笑</p>
-<h2 id="下载STM32F10x-标准库"><a href="#下载STM32F10x-标准库" class="headerlink" title="下载STM32F10x 标准库"></a>下载STM32F10x 标准库</h2><p>进入链接<a target="_blank" rel="noopener" href="https://www.st.com/en/embedded-software/stsw-stm32054.html">https://www.st.com/en/embedded-software/stsw-stm32054.html</a><br>下载即可。</p>
-<h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><p>打开uVision5, 进入<code>Project</code> -&gt; <code>New uVision Project</code>,<br>选择工程文件目录，选择使用的芯片型号即可。</p>
-<h2 id="拷贝库文件"><a href="#拷贝库文件" class="headerlink" title="拷贝库文件"></a>拷贝库文件</h2><p>在工程文件目录附近新建几个文件夹，如下</p>
-<div class="code-wrapper"><pre><code class="hljs">Doc
-Libraries
-    CMSIS
-    STM32F10x_StdPeriph_Driver
-Listing
-Output
-Project
-    MDK
-        xxx.uvprojx
-User
-</code></pre></div><p>其中<code>CMSIS</code> <code>STM...</code>是下载好的标准库文件中的同名目录，<code>xxx.uvprojx</code>是你刚刚新建的工程文件。</p>
-<p>然后将标准库文件中的示例<code>Template</code>中的文件<code>stm32f10x_conf.h stm32f10x_it.c stm32f10x_it.h</code>文件复制到<code>User</code>目录下。<br>如果<code>stm32f10x_it.c</code>中有<code>#include &quot;main.h&quot;</code>，删去。如果Systick中断函数中有内容，全部注释掉即可。</p>
-<h2 id="将文件添加到工程"><a href="#将文件添加到工程" class="headerlink" title="将文件添加到工程"></a>将文件添加到工程</h2><p>打开uVision5, 选中魔术棒右边的一个按钮，添加分组<code>Startup CMSIS STM32F10x_StdPeriph_Driver User DOc</code>。</p>
-<p>然后，分别点击<code>Add Files</code>，将对应的所有可以找到的.c文件添加到相关分组。</p>
-<p>注意，<code>Startup</code>分组中添加的是<code>startup_stm32f10x_hd.s</code>一个汇编文件。其位于<code>arm</code>目录下，<br>因为我们使用的是MDK的编译器，自然选择arm。</p>
-<h2 id="Option中设计工程"><a href="#Option中设计工程" class="headerlink" title="Option中设计工程"></a>Option中设计工程</h2><p>点开魔术棒，进行如下设置：</p>
-<p><code>Target</code>栏目中，设置芯片默认主频为<code>8MHz</code>，这里没有计入倍频。使用armcc5的编译器，在<code>Code Generation</code>中设置。</p>
-<p><code>Output</code>栏目中，选择目录为先前创建的<code>Output</code>目录。勾选<code>Create HEX File</code>便于以后的使用。<code>Listing</code>栏目同理。</p>
-<p><code>C/C++</code>栏目中，<code>Define</code>填入<code>USE_STDPERIPH_DRIVER</code>，不需要填入芯片型号，因为Keil为你自动添加过了，再次添加会无法编译通过。<br>这是不同于网上教程的一点。</p>
-<p>接着，在<code>Include Paths</code>中填入所有你看到的含有.h文件的目录。</p>
-<p><code>Debug</code>栏目右上角，选择你使用的仿真器。</p>
-<p><code>Utilities</code>中选择<code>Use Debug Driver</code>，进入<code>Settings</code>，在<code>Flash Download</code>栏目中，检查Flash大小是不是与芯片实际大小一致。左翻进入<code>Debug</code>栏目，<code>Port</code>选择<code>SW</code>方式，<code>Clock</code>调整下载速度为1MHz。<br>然后确认退出即可。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个时候就可以加载LED测试代码检查是否配置完好了。</p>
-<p>配置过程中心思想就是，uVision对你的代码结构一无所知，对你的芯片需求一无所知。<br>你需要做的就是，在Group中告诉它你是如何组织代码的，告诉它代码放在哪里。<br>在Include Paths中告诉它你的头文件放在哪里。<br>在魔术棒菜单中，告诉它你的芯片是如何工作的。</p>
-<p>仅此而已的工作。</p>
+              <!-- TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍使用`TikZJax`在网页中绘制简单`TikZ`图形的方法。 -->
+<p>TikZ是LaTeX users极为热爱的绘图工具。基于LaTeX，编程化的排版语言，TikZ在诸多图形绘制中相比传统的计算机绘制方法有较大优势。这里介绍几种网页中绘制图形的方法。</p>
+<span id="more"></span>
+<h2 id="直接截图"><a href="#直接截图" class="headerlink" title="直接截图"></a>直接截图</h2><p>这恐怕是绝大多数网友使用的方法。使用多种绘图软件绘制图形，然后通过保存或者截图工具获得图像，放入图床网站然后导入网页中。<br>这种方法不免有所繁琐，但是这是需要前置知识最少的方法，简单粗暴。</p>
+<h2 id="使用广泛的JS绘图库"><a href="#使用广泛的JS绘图库" class="headerlink" title="使用广泛的JS绘图库"></a>使用广泛的JS绘图库</h2><p>有一些特定的图表，已经被他人实现并编写成<code>JavaScript</code>库可供使用，例如</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://flowchart.js.org/">flowchart.js</a>提供了流程图(Flow Chart)的绘图工具</li>
+<li><a target="_blank" rel="noopener" href="https://bramp.github.io/js-sequence-diagrams/">JS-Sequence</a>提供了时序图(Sequence DIagrams)的绘图工具</li>
+<li><a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/">mermaid</a>提供了甘特图、类图等常见图形的绘制方法</li>
+</ul>
+<p>这些在许多<code>Markdown</code>插件中已经移植过了，比如<code>Markdown Preview Enhanced</code>。但是毕竟网页上的显示方法和本地的<code>Markdown</code>插件还是有区别的。为了更好的视觉效果，自主在网页中添加上述库也是没有什么坏处的。有可能加载速度会变慢？本网站部署在<code>GitPages</code>上，加载速度本来就慢，无所谓了。</p>
+<h2 id="使用TikZJax在网页中加载TikZ"><a href="#使用TikZJax在网页中加载TikZ" class="headerlink" title="使用TikZJax在网页中加载TikZ"></a>使用TikZJax在网页中加载TikZ</h2><p>这才是本篇杂谈的重点内容。<code>TikZJax</code>的工作原理是，将<code>TeX</code>代码交由<code>Web2js</code>编译，将编译结果转换成<code>svg</code>插入网页，从而实现了在网页中加载<code>TikZ</code>的功能。</p>
+<p>要想使用本功能，需要在HTML的<code>&lt;head&gt;</code>区域加载如下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://tikzjax.com/v1/fonts.css&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://tikzjax.com/v1/tikzjax.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>然后就可以使用如下代码框架绘制图形了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/tikz&quot;</span>&gt;</span><br>  \begin&#123;tikzpicture&#125;<br>    \draw (0,0) circle (1in);<br>  \end&#123;tikzpicture&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>如果网络连接良好，可以得到渲染图如下。</p>
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \draw (0,0) circle (1in);
+  \end{tikzpicture}
+</script>
+
+<p>值得注意的是，该程序使用的<code>TeX</code>有如下内容</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tex"><span class="hljs-keyword">\documentclass</span>[margin=0pt]&#123;standalone&#125;<br><span class="hljs-keyword">\def</span><span class="hljs-keyword">\pgfsysdriver</span>&#123;pgfsys-ximera.def&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;tikz&#125;<br></code></pre></td></tr></table></figure>
+<p>所以目前是无法使用其他<code>TikZ</code>宏包的。这是从一个使用者的角度出发的。学习知识并改善之是当前互联网精神的重要内核之一。将来会仔细研究相关知识，现在就先用着简单功能吧！</p>
 
             </div>
             <hr>
@@ -293,7 +290,7 @@ User
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a>
+                      <a class="hover-with-bg" href="/categories/LaTeX/">LaTeX</a>
                     
                   </div>
                 
@@ -301,7 +298,9 @@ User
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a>
+                      <a class="hover-with-bg" href="/tags/LaTeX/">LaTeX</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
                     
                   </div>
                 
@@ -318,9 +317,9 @@ User
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/19/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3FOC%E5%92%8CSVPWM%E6%8A%80%E6%9C%AF/">
+                      <a href="/2022/05/02/stepmotor/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何理解FOC和SVPWM技术</span>
+                        <span class="hidden-mobile">步进电机-相数？拍数？步距角？</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -328,8 +327,8 @@ User
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/22/%E5%88%A9%E7%94%A8Hexo%E3%80%81GitPages%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">
-                        <span class="hidden-mobile">利用Hexo&GitPages建立自己的博客</span>
+                      <a href="/2022/04/30/EquationsCP01/">
+                        <span class="hidden-mobile">数理方程复习-分离变量法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
