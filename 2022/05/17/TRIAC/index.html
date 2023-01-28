@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2022/05/22/OvbN6O.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/05/17/OIKu8A.png">
 <meta property="article:published_time" content="2022-05-17T14:32:23.000Z">
-<meta property="article:modified_time" content="2023-01-28T08:30:31.218Z">
+<meta property="article:modified_time" content="2023-01-28T08:34:14.261Z">
 <meta property="article:author" content="Michael Francis Williams">
 <meta property="article:tag" content="电子设计">
 <meta name="twitter:card" content="summary_large_image">
@@ -279,7 +279,7 @@
 <p>可以将可控硅的内层半导体分开来等效观察。我们发现左右两个三层半导体结构正好组成了PNP和NPN三极管，它们的等效电路如右图所示。</p>
 <h3 id="电路分析"><a href="#电路分析" class="headerlink" title="电路分析"></a>电路分析</h3><p>预设K点为零电位，我们可以对这个电路进行分析。首先在G端口输入正的变化，经由Q2管的B-C进行放大，再由Q1管的B-C放大，可以发现这是一个正反馈过程。</p>
 <p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OX2ZJs"><img src="https://s1.ax1x.com/2022/05/21/OX2ZJs.png" srcset="/img/loading.gif" lazyload alt="OX2ZJs.png"></a></p>
-<p>添加上需要的负载$R_{Load}$<br>和必要的电压偏置$V_{GK}, V_{AK}$，我们得到了这样的电路图。</p>
+<p>添加上需要的负载$R_{Load}$和必要的电压偏置$V_{GK}, V_{AK}$，我们得到了这样的电路图。</p>
 <p>在$V_{GK}$等于零的时候，Q2管处于截止状态。回路中没有电流经过，Q1也处于截止状态。在Q1的BE管上没有压降，$V_{AK}$的电压全部加在Q2管的CE端口。</p>
 <p>当电压$V_{GK}$逐渐抬升的时候，电流$I_{G}$逐渐提高，经过Q2放大得到的电流$I_{C2}$也在提高。回路电流逐渐增加，且呈正反馈趋势。</p>
 <p>在正反馈的作用下，当$V_{GK}$和$I_{G}$提高到某一个值之后，两个三极管将趋于饱和状态。这时等效电路如下。</p>
