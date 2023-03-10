@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2023/03/10/ppnOlOP.png">
 <meta property="og:image" content="https://s1.ax1x.com/2023/03/10/ppnOQyt.png">
 <meta property="article:published_time" content="2023-03-10T01:48:18.000Z">
-<meta property="article:modified_time" content="2023-03-10T01:50:57.315Z">
+<meta property="article:modified_time" content="2023-03-10T01:52:12.838Z">
 <meta property="article:author" content="Michael Francis Williams">
 <meta property="article:tag" content="编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -217,7 +217,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6.5k 字
+      6.4k 字
     </span>
   
 
@@ -261,7 +261,55 @@
               <p>这里介绍如何在Qt里面使用OpenGL功能。代码在macOS 13 M1 平台上测试通过。<br><span id="more"></span></p>
 <h1 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h1><p>在Qt 6中使用OpenGL，需要知道Qt接管了OpenGL的什么功能。在普通的OpenGL程序中，有GLFW和GLAD两部分对OpenGL进行了功能加强，前者提供了窗口管理版本管理等功能，后者负责从系统中获得OpenGL函数地址。在Qt中，前者的窗口管理功能由Qt本身替代，而版本管理和其他属性设置，由<code>QSurfaceFormat</code>管理。这个名字里面没有出现OpenGL，很是惬意。而GLAD则不用理睬，Qt也处理好了这一方面。</p>
 <p>在初次学习中，犯的最大的错误是忽视了SurfaceFormat的介绍。因此首先讲解SurfaceFormat是什么。</p>
-<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-6/qsurfaceformat.html">QSurfaceFormat Class | Qt GUI 6.4.2</a>，是Qt对于各种Surface提供的配置文件。其中的函数<code>QSurfaceFormat::setDefaultFormat</code>则是为所有Surface设置配置文件。Surface不是只有OpenGL的，而是可以有多种type，比如：<br>| Constant | Value | Description |<br>| — | — | — |<br>| <code>QSurface::RasterSurface</code> |  <code>0</code>| The surface is is composed of pixels and can be rendered to using a software rasterizer like Qt’s raster paint engine. |<br>|<code>QSurface::OpenGLSurface</code>|  <code>1</code> |  The surface is an OpenGL compatible surface and can be used in conjunction with <a target="_blank" rel="noopener" href="https://doc.qt.io/qt-6/qopenglcontext.html">QOpenGLContext</a>. |<br>| <code>QSurface::RasterGLSurface</code> | <code>2</code> |  The surface can be rendered to using a software rasterizer, and also supports OpenGL. This surface type is intended for internal Qt use, and requires the use of private API. |<br>| <code>QSurface::OpenVGSurface</code> |  <code>3</code> |  The surface is an OpenVG compatible surface and can be used in conjunction with OpenVG contexts. |<br>|<code>QSurface::VulkanSurface</code> |  <code>4</code> |  The surface is a Vulkan compatible surface and can be used in conjunction with the Vulkan graphics API.|<br>| <code>QSurface::MetalSurface</code> | <code>5</code> | The surface is a Metal compatible surface and can be used in conjunction with Apple’s Metal graphics API. This surface type is only supported on macOS and iOS.|<br>| <code>QSurface::Direct3DSurface</code>| <code>6</code>| The surface is a Direct 3D 11 and 12 compatible surface and can be used in conjunction with the DXGI and Direct3D APIs. This surface type is only supported on Windows.|</p>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-6/qsurfaceformat.html">QSurfaceFormat Class | Qt GUI 6.4.2</a>，是Qt对于各种Surface提供的配置文件。其中的函数<code>QSurfaceFormat::setDefaultFormat</code>则是为所有Surface设置配置文件。Surface不是只有OpenGL的，而是可以有多种type，比如：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>QSurface::RasterSurface</code></td>
+<td><code>0</code></td>
+<td>The surface is is composed of pixels and can be rendered to using a software rasterizer like Qt’s raster paint engine.</td>
+</tr>
+<tr>
+<td><code>QSurface::OpenGLSurface</code></td>
+<td><code>1</code></td>
+<td>The surface is an OpenGL compatible surface and can be used in conjunction with <a target="_blank" rel="noopener" href="https://doc.qt.io/qt-6/qopenglcontext.html">QOpenGLContext</a>.</td>
+</tr>
+<tr>
+<td><code>QSurface::RasterGLSurface</code></td>
+<td><code>2</code></td>
+<td>The surface can be rendered to using a software rasterizer, and also supports OpenGL. This surface type is intended for internal Qt use, and requires the use of private API.</td>
+</tr>
+<tr>
+<td><code>QSurface::OpenVGSurface</code></td>
+<td><code>3</code></td>
+<td>The surface is an OpenVG compatible surface and can be used in conjunction with OpenVG contexts.</td>
+</tr>
+<tr>
+<td><code>QSurface::VulkanSurface</code></td>
+<td><code>4</code></td>
+<td>The surface is a Vulkan compatible surface and can be used in conjunction with the Vulkan graphics API.</td>
+</tr>
+<tr>
+<td><code>QSurface::MetalSurface</code></td>
+<td><code>5</code></td>
+<td>The surface is a Metal compatible surface and can be used in conjunction with Apple’s Metal graphics API. This surface type is only supported on macOS and iOS.</td>
+</tr>
+<tr>
+<td><code>QSurface::Direct3DSurface</code></td>
+<td><code>6</code></td>
+<td>The surface is a Direct 3D 11 and 12 compatible surface and can be used in conjunction with the DXGI and Direct3D APIs. This surface type is only supported on Windows.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>而QSurfaceFormat与其说是QSurface的配置，不如说是为了OpenGL专用的设置。因为其中大部分设置都是专属于OpenGL的。</p>
 <p>初次学习时犯下的一个重要错误是，没有仔细阅读文档中的注意事项。比如：</p>
 <ol>
