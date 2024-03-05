@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Michael Francis Williams">
+  <meta name="keywords" content="">
+
+  <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+  <script src="http://tikzjax.com/v1/tikzjax.js"></script> 
+
+  
+    <meta name="description" content="Blender学习中的记录。不定期更新。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="blender实用技巧和典型案例">
+<meta property="og:url" content="https://pickupthefall.xyz/2023/12/05/blender/index.html">
+<meta property="og:site_name" content="无人问津的个人学习笔记站">
+<meta property="og:description" content="Blender学习中的记录。不定期更新。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-05T03:47:20.000Z">
+<meta property="article:modified_time" content="2024-03-05T14:58:10.222Z">
+<meta property="article:author" content="Michael Francis Williams">
+<meta property="article:tag" content="经验分享">
+<meta property="article:tag" content="建模">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css"><script src="https://tikzjax.com/v1/tikzjax.js"></script>
+  
+  <title>blender实用技巧和典型案例 - 无人问津的个人学习笔记站</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>The Blog of Michael</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/05/22/gLpEiF.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="blender实用技巧和典型案例">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-12-05 11:47" pubdate>
+        2023年12月5日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">blender实用技巧和典型案例</h1>
+            
+            <div class="markdown-body">
+              <p>Blender学习中的记录。不定期更新。</p>
+<span id="more"></span>
+<h1 id="基本建模技巧">基本建模技巧</h1>
+<h2 id="tips">Tips</h2>
+<p>大部分的指令不能通过 <code>ESC</code> 退出，即使 ESC
+了也会起作用，比如： - 环切的时候，esc 表示在中间环切。 - extrude
+的时候，esc 表示创建新边，但是不挤出。这时候进行缩放会发现是原地缩放。 -
+Shift+C，让 3D 游标回到世界中心。 -
+ctrl+A，选择应用所有的变换。变换进行了之后，会在变换界面显示出来。如果使用阵列等命令，会在变换之前的基础上进行操作。所以为了防止原形毕露，需要应用变换，使得新的样式变成基本的样式。
+- H 隐藏选中的物体。Alt+H 取消全部隐藏。 - F 可以连接选中的
+primitives。点和线都可以。</p>
+<h2 id="开口封口">开口封口</h2>
+<p>内容较为简单，直接叙述。 在选中需要封口的一个环形的边之后，使用快捷键
+<code>F</code> 就可以封口。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDGbNT"><img
+src="https://s11.ax1x.com/2024/03/05/pFDGbNT.png" srcset="/img/loading.gif" lazyload
+alt="pFDGbNT.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDGOCF"><img
+src="https://s11.ax1x.com/2024/03/05/pFDGOCF.png" srcset="/img/loading.gif" lazyload
+alt="pFDGOCF.png" /></a></p>
+<p>如果直接按 <code>F</code>
+的时候，产生的是黑色的面，证明你选择边的顺序不对，生成了重叠的面。去掉部分的边，然后多次按
+<code>F</code> 也能达到最佳的效果。</p>
+<h2 id="快速选中循环边">快速选中循环边</h2>
+<p>使用 <code>Option/Alt + LMB</code> 可以快速选中一条边的循环边。</p>
+<h2 id="平面开圆">平面开圆</h2>
+<p>首先通过调整吸附模式，通过拖动 3D
+游标让它吸附到你需要的地方的中心点（圆心）。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDGjgJ"><img
+src="https://s11.ax1x.com/2024/03/05/pFDGjgJ.png" srcset="/img/loading.gif" lazyload
+alt="pFDGjgJ.png" /></a></p>
+<p>删掉中间的面。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDGzuR"><img
+src="https://s11.ax1x.com/2024/03/05/pFDGzuR.png" srcset="/img/loading.gif" lazyload
+alt="pFDGzuR.png" /></a></p>
+<p>然后在中间 <code>shift+A</code>，添加一个圆。调整使之符合要求。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDJpHx"><img
+src="https://s11.ax1x.com/2024/03/05/pFDJpHx.png" srcset="/img/loading.gif" lazyload
+alt="pFDJpHx.png" /></a></p>
+<p>选中两条循环边之后，右键合并循环边。注意边是有顺序的，如果顺序不对，会发现中间被填上了。这样是错误的。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDJPUK"><img
+src="https://s11.ax1x.com/2024/03/05/pFDJPUK.png" srcset="/img/loading.gif" lazyload
+alt="pFDJPUK.png" /></a></p>
+<p>然后 extrude 即可。任务完成。</p>
+<h2 id="旋转阵列">旋转阵列</h2>
+<p>两种方法，第一种是使用编辑模式下的 Spin 工具，在 3D
+游标处展开旋转轴。而且可以自动 merge。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDcmsP"><img
+src="https://s21.ax1x.com/2024/03/05/pFDcmsP.png" srcset="/img/loading.gif" lazyload
+alt="pFDcmsP.png" /></a></p>
+<p>第二种办法是使用阵列修改器。好处是可以实时查看。坏处是操作繁琐。
+在进行阵列修改之前，先在需要的原点处设置一个空物体，然后将空物体设置成阵列修改的依据，对空物体进行操作即可。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDcnqf"><img
+src="https://s21.ax1x.com/2024/03/05/pFDcnqf.png" srcset="/img/loading.gif" lazyload
+alt="pFDcnqf.png" /></a></p>
+<p>两种办法都会出现的问题是，物体的 origin 可能和 3D
+游标不是你想象的那样和谐。需要在 Object 模式下，右键重设 Origin。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDcKZ8"><img
+src="https://s21.ax1x.com/2024/03/05/pFDcKZ8.png" srcset="/img/loading.gif" lazyload
+alt="pFDcKZ8.png" /></a></p>
+<h2 id="shifts">Shift+S</h2>
+<p>Shift+S 可以调出 cursor 的移动面板，方便的选择 Cursor
+的位置。特别地，可以让 Cursor
+移动到面的中心，不用像之前一样手动划分了。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDcMdS"><img
+src="https://s21.ax1x.com/2024/03/05/pFDcMdS.png" srcset="/img/loading.gif" lazyload
+alt="pFDcMdS.png" /></a></p>
+<h2 id="模拟小键盘">模拟小键盘</h2>
+<p>在没有小键盘的情况下，参考手册 <a
+target="_blank" rel="noopener" href="https://docs.blender.org/manual/en/latest/editors/preferences/input.html">Input
+— Blender Manual</a> 可以调节出来模拟小键盘的功能。通常不使用。</p>
+<h2 id="间隔选中">间隔选中</h2>
+<p>菜单里面，select-&gt;checker deselect 可以隔一个取消选中一个。</p>
+<h2 id="合并点到中心">合并点到中心</h2>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDc1iQ"><img
+src="https://s21.ax1x.com/2024/03/05/pFDc1iQ.png" srcset="/img/loading.gif" lazyload
+alt="pFDc1iQ.png" /></a></p>
+<p>这种情况属于 " 合并 "，使用快捷键 m
+调出合并菜单，合并到中心即可。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDc3Gj"><img
+src="https://s21.ax1x.com/2024/03/05/pFDc3Gj.png" srcset="/img/loading.gif" lazyload
+alt="pFDc3Gj.png" /></a></p>
+<h2 id="平滑着色">平滑着色</h2>
+<p>右键可以进行平滑着色。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDcYMq"><img
+src="https://s21.ax1x.com/2024/03/05/pFDcYMq.png" srcset="/img/loading.gif" lazyload
+alt="pFDcYMq.png" /></a></p>
+<p>如果着色不对，说明法向量没有正确的计算，需要在侧变量手动勾选法向的自动平滑。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDcts0"><img
+src="https://s21.ax1x.com/2024/03/05/pFDcts0.png" srcset="/img/loading.gif" lazyload
+alt="pFDcts0.png" /></a></p>
+<h2 id="点的基本操作">点的基本操作</h2>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1To4y1G7SV">【5分钟Blender小技巧】-编辑点_哔哩哔哩_bilibili</a>
+这个视频教了很多。</p>
+<h3 id="点的移动">点的移动</h3>
+<p>GG，按照边移动。 ctrl+shift+B，能够对点倒角。ctrl+B，只能对边倒角。 J
+连接两个点。</p>
+<h3 id="横切面">横切面</h3>
+<p>在一条边上选中若干个点，按 V 可以切开</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDLPXT"><img
+src="https://s21.ax1x.com/2024/03/05/pFDLPXT.png" srcset="/img/loading.gif" lazyload
+alt="pFDLPXT.png" /></a></p>
+<p>按 alt+V 可以切开的同时在中间连接面。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDLFnU"><img
+src="https://s21.ax1x.com/2024/03/05/pFDLFnU.png" srcset="/img/loading.gif" lazyload
+alt="pFDLFnU.png" /></a></p>
+<h3 id="点的平滑">点的平滑</h3>
+<p>选中多个点，然后右键，选择平滑点</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDLA74"><img
+src="https://s21.ax1x.com/2024/03/05/pFDLA74.png" srcset="/img/loading.gif" lazyload
+alt="pFDLA74.png" /></a></p>
+<p>然后可以 shift+R 重复这一操作直到满足要求。</p>
+<h3 id="点的对齐">点的对齐</h3>
+<p>点吸附模式下，即使仅在一个轴上运动，也能进行对齐。</p>
+<p>如果有多个点需要对齐，可以考虑使用缩放模式的缩放功能。原理是这样的：</p>
+<blockquote>
+<p>选中多个点，让它们在某一个轴上缩放，这时候如果缩放倍数为
+0，那么它们在这个轴上的距离就都是零了，也就意味着在同一条直线上。</p>
+</blockquote>
+<p>这时候就相当于对齐了。好妙的思路。</p>
+<h3 id="顶点组">顶点组</h3>
+<p>ctrl+G，定义新的顶点组。可以用来快速选择，在顶点组界面进行 select
+就直接选中了。 还有其他功能，刷参数之类的。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDLVAJ"><img
+src="https://s21.ax1x.com/2024/03/05/pFDLVAJ.png" srcset="/img/loading.gif" lazyload
+alt="pFDLVAJ.png" /></a></p>
+<h3 id="球化点">球化点</h3>
+<p>alt+shift+S，可以让选中的所有点球化分布。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pFDLZN9"><img
+src="https://s21.ax1x.com/2024/03/05/pFDLZN9.png" srcset="/img/loading.gif" lazyload
+alt="pFDLZN9.png" /></a></p>
+<h1 id="基本操作误解">基本操作误解</h1>
+<h2 id="挤出选区-extrude">挤出选区 Extrude</h2>
+<p>挤出 Extrude 有五种不同的操作，即 - Extrude Region - Extrude Manifold
+- Extrude Along Normals - Extrude Individuals - Extrude to Cursor
+具体细节参考 <a
+target="_blank" rel="noopener" href="https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/extrude.html">Extrude
+— Blender Manual</a>，这里给出大致的理解： - 挤出选择的区域 -
+挤出选择的区域，并且作为 Manifold 处理，冲突的边和面都会被转化，使之符合
+Manifold 定义。 - 各选区按照自己的法线方向挤出，而不是一个统一的方向。 -
+各选区挤出之后，各自获得单独的中心点，因此之后按照中心点操作的时候，各面是独立的。也就是说，相接触的边不会被合并成一条边。
+- 直接挤出到鼠标点击的位置。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BB%BA%E6%A8%A1/">建模</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/01/update/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2024已来</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/01/tc/">
+                        <span class="hidden-mobile">路过图床的一点小知识</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

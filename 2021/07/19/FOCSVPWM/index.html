@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Michael Francis Williams">
+  <meta name="keywords" content="">
+
+  <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+  <script src="http://tikzjax.com/v1/tikzjax.js"></script> 
+
+  
+    <meta name="description" content="期末考试结束，RoboGame的各种任务又接踵而至。 在电机的驱动方面，我发现野火的驱动方法不是简单的PWM。 这时，我才学习到，无刷直流电机的控制方法并不是一件简单的事情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何理解FOC和SVPWM技术">
+<meta property="og:url" content="https://pickupthefall.xyz/2021/07/19/FOCSVPWM/index.html">
+<meta property="og:site_name" content="无人问津的个人学习笔记站">
+<meta property="og:description" content="期末考试结束，RoboGame的各种任务又接踵而至。 在电机的驱动方面，我发现野火的驱动方法不是简单的PWM。 这时，我才学习到，无刷直流电机的控制方法并不是一件简单的事情。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-19T00:01:25.000Z">
+<meta property="article:modified_time" content="2023-04-06T07:48:53.583Z">
+<meta property="article:author" content="Michael Francis Williams">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css"><script src="https://tikzjax.com/v1/tikzjax.js"></script>
+  
+  <title>如何理解FOC和SVPWM技术 - 无人问津的个人学习笔记站</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>The Blog of Michael</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/05/22/gLpEiF.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="如何理解FOC和SVPWM技术">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-19 08:01" pubdate>
+        2021年7月19日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      42 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何理解FOC和SVPWM技术</h1>
+            
+            <div class="markdown-body">
+              <p>期末考试结束，RoboGame的各种任务又接踵而至。
+在电机的驱动方面，我发现野火的驱动方法不是简单的PWM。
+这时，我才学习到，无刷直流电机的控制方法并不是一件简单的事情。</p>
+<span id="more"></span>
+<p>接下来，本人将简单梳理FOC和SVPWM的基础内容。
+本文是在互联网学习资源上的个人总结，仅供学习参考和备忘。有疑问处可以查找更加详细的资料。</p>
+<h2 id="基础知识">基础知识</h2>
+<h3 id="foc-简介">FOC 简介</h3>
+<p>FOC，Field Oriented
+Control，是目前无刷直流电机(BLDC)和永磁同步电机(PMSM)高效
+控制的最优方法之一。
+FOC旨在通过精确地控制磁场大小与方向，使得电机的运动转矩平稳、噪声小、效率高，并且具有高速的动态响应。</p>
+<p>FOC具有如下优势：</p>
+<ul>
+<li>低转速下控制
+由于控制原理的区别，无刷电调只能控制电机工作在高转速下，低速下无法控制；而FOC控制器则完全没有这个限制，不论在什么转速下都可以实现精确控制。</li>
+<li>电机换向
+同上面的理由，由于电调无法反馈转子位置，因此很难实现电机正反转的换向（当然有感电调可以实现）；而FOC驱动器的换向性能极其优秀，最高转速下正反转切换可以非常顺畅；此外FOC还可以以能量回收的形式进行刹车控制。</li>
+<li>力矩控制
+普通电调都只能控制电机转速，而FOC可以进行电流（力矩）、速度、位置三个闭环控制。</li>
+<li>噪音
+FOC驱动器的噪音会比电调小很多，原因是普通电调采用方波驱动，而FOC是正弦波。</li>
+</ul>
+<h3 id="三相星形联结无刷电机">三相星形联结无刷电机</h3>
+<p>三相星形联结无刷电机中，三相的连接方式是，<strong>每一相引出导线的一头，而另一头和其他相两两相连</strong>。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/W8TODx"><img
+src="https://z3.ax1x.com/2021/07/19/W8TODx.md.png" srcset="/img/loading.gif" lazyload
+alt="W8TODx.md.png" /></a></p>
+<p>对其中两极施加电压，通过右手螺旋定则和磁感应强度的合成，可以判断线圈磁极的方向。
+在这种情况下，转子会倾向于转动到力矩最小的角度，这时转子将会与磁极连线平行，
+且磁铁<strong>内部磁力线</strong>方向和磁极间磁力线方向一致。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/W87Mxs"><img
+src="https://z3.ax1x.com/2021/07/19/W87Mxs.png" srcset="/img/loading.gif" lazyload
+alt="W87Mxs.png" /></a></p>
+<p>因此，无刷电机是通过电子转向来驱动转子不停地转动，换向的频率决定了电机的转速。</p>
+<h3 id="bldc和pmsm">BLDC和PMSM</h3>
+<p>无刷电机其实可以分为<strong>无刷直流电机</strong>（BLDC）和<strong>永磁同步电机</strong>（PMSM），结构大同小异，主要区别在于制造方式（线圈绕组方式）不同导致的一些特性差异（比如反电动势的波形）。</p>
+<p>BLDC是从硬件出发，采用方波驱动，增加了电机槽和极对数，降低了转子转动的“颗粒感”，达到了平滑驱动的目的。</p>
+<p>PMSM是从软件出发，抛弃了方波，而是使用<strong>正弦波</strong>来完成驱动的平滑化。自然在产生良好特性的正弦波、旋转磁场的同时，会大大
+增加驱动器、控制算法的复杂程度。好在野火有例程（</p>
+<h3 id="驱动电路">驱动电路</h3>
+<p>无刷电机的驱动电力主要使用<strong>三相逆变电路</strong>实现。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/W8HSe0"><img
+src="https://z3.ax1x.com/2021/07/19/W8HSe0.md.png" srcset="/img/loading.gif" lazyload
+alt="W8HSe0.md.png" /></a></p>
+<p>逆变电路是指，将<strong>直流电</strong>变换为<strong>交流电</strong>的电路。
+逆变电路的具体实现通常是<strong>半路MOS电路</strong>，原型很简单，
+由两个MOS管组成<strong>上桥臂</strong>和<strong>下桥臂</strong>，中间引出输出线即可。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/W8Hmex"><img
+src="https://z3.ax1x.com/2021/07/19/W8Hmex.md.png" srcset="/img/loading.gif" lazyload
+alt="W8Hmex.md.png" /></a></p>
+<p>用3个半桥电路就可以组合成三相逆变电路，每个半桥引出的一根输出线跟无刷电机的一根相线相连，就完成了最基本的无刷驱动电路。</p>
+<p>值得注意的是，原作者在这里提醒到，半桥上下同时导通，则电源短路；同时关闭，则产生了力矩浪费。所以通常半桥工作时，上下两桥臂有且仅有一个导通。</p>
+<h3 id="三相电机波形">三相电机波形</h3>
+<p>手动转动无刷电机的转子，利用示波器观察它的三相输出电压，可以得到三根正弦曲线，两两相位差为<span
+class="math inline">\(120^{\text{o}}\)</span>。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/W8HyXn"><img
+src="https://z3.ax1x.com/2021/07/19/W8HyXn.md.png" srcset="/img/loading.gif" lazyload
+alt="W8HyXn.md.png" /></a></p>
+<p>相反地，在三相无刷电机的三相线圈上输入这样的三相正弦电压，就可以驱动无刷电机平稳旋转。</p>
+<p>于此，可以提出FOC主要驱动手段，即<strong>计算所需电压矢量，利用SVPWM技术产生调试信号，驱动三相逆变电路，合成等效的三相正弦电压驱动电机</strong>。</p>
+<h2 id="foc控制原理">FOC控制原理</h2>
+<p>一个基本的FOC控制流程如下所示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/W8biHP"><img
+src="https://z3.ax1x.com/2021/07/19/W8biHP.md.png" srcset="/img/loading.gif" lazyload
+alt="W8biHP.md.png" /></a></p>
+<!-- 这里的MathJax把我害惨了！！！！！ -->
+<p>该流程的作用是，利用输入的$I_q <span
+class="math inline">\(\_\)</span>ref<span
+class="math inline">\(和\)</span>I_d <span
+class="math inline">\(\_\)</span>
+ref$，使电机始终产生一个恒定的力矩。</p>
+<p>控制流程为</p>
+<ol type="1">
+<li>对电机三相电流进行采样得到<span class="math inline">\(I_a, I_b,
+I_c\)</span>。</li>
+<li>将<span class="math inline">\(I_a, I_b, I_c\)</span>经过
+<code>Clark变换</code>得到<span class="math inline">\(I_{\alpha},
+I_{\beta}\)</span>。</li>
+<li>将<span class="math inline">\(I_{\alpha},
+I_{\beta}\)</span>经过<code>Park变换</code>得到<span
+class="math inline">\(I_q, I_d\)</span>。</li>
+<li>计算<span class="math inline">\(I_q, I_d\)</span>和其设定值<span
+class="math inline">\(I_q\)</span>_<span
+class="math inline">\(ref\)</span> $I_d <span
+class="math inline">\(\_\)</span> ref$的误差。</li>
+<li>将误差输入PID控制器，得到输出的控制电压<span
+class="math inline">\(U_q, U_d\)</span>。</li>
+<li>将<span class="math inline">\(U_q, U_d\)</span>进行
+<code>反Park变换</code> 得到<span class="math inline">\(U_{\alpha},
+U_{\beta}\)</span>。</li>
+<li>用<span class="math inline">\(U_{\alpha},
+U_{\beta}\)</span>合成电压空间矢量，输入<code>SVPWM模块</code>进行调制，输出此时刻三个半桥的状态编码值。</li>
+<li>按照状态编码值控制三相逆变器的MOS开关，驱动电机。</li>
+<li>循环以上步骤。</li>
+</ol>
+<h3 id="clark变换">Clark变换</h3>
+<p>首先需要对电机的三个相电流进行采用。</p>
+<p>根据基尔霍夫定律(KCL)，在任一时刻，流入节点的电流之和等于流出节点的电流之和，也就是说
+<span class="math display">\[
+    I_a + I_b + I_c = 0
+\]</span></p>
+<p>因此，三相电流事实上只需要两相即可确定。</p>
+<p>三相坐标系<span class="math inline">\((I_a, I_b,
+I_c)\)</span>如下。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/W8LElQ"><img
+src="https://z3.ax1x.com/2021/07/19/W8LElQ.png" srcset="/img/loading.gif" lazyload
+alt="W8LElQ.png" /></a></p>
+<p>利用线性代数中的基变换，我们将三相电流转换为直角坐标系下的参量。令新的直角坐标系为<span
+class="math inline">\(\alpha - \beta\)</span>坐标系。</p>
+<p><span class="math display">\[
+    \begin{cases}
+    I_\alpha = I_a - \cos (\frac{\pi}{3})I_b - \cos (\frac{2\pi}{3})I_c
+\\
+    I_\beta = \sin (\frac{\pi}{3})I_b - \sin(\frac{\pi}{3})I_c
+    \end{cases}
+\]</span></p>
+<p>或表示为矩阵形式 <span class="math display">\[
+    \begin{pmatrix}
+        I_\alpha \\
+        I_\beta \\
+    \end{pmatrix} =
+    \begin{pmatrix}
+        1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} \\
+        0 &amp; \frac{\sqrt{3}}{2} &amp; -\frac{\sqrt{3}}{2}
+    \end{pmatrix}
+    \begin{pmatrix}
+        I_a \\
+        I_b \\
+        I_c
+    \end{pmatrix}
+\]</span></p>
+<p>便可以减少一维变量。</p>
+<figure>
+<img
+src="https://pic1.zhimg.com/80/v2-ddb74b212baee03b36eecb32ec54e420_720w.jpg" srcset="/img/loading.gif" lazyload
+alt="pic" />
+<figcaption aria-hidden="true">pic</figcaption>
+</figure>
+<h3 id="park变换">Park变换</h3>
+<p>Park变换可以将<span class="math inline">\(I_{\alpha},
+I_{\beta}\)</span> 转换为线性的。工作原理依然是线性代数原理，即将<span
+class="math inline">\(\alpha - \beta\)</span>坐标系旋转<span
+class="math inline">\(\theta\)</span>角度，其中<span
+class="math inline">\(\theta\)</span>是转子当前的角度。</p>
+<figure>
+<img
+src="https://pic4.zhimg.com/80/v2-d15d057327992a5c50016aea5bb7201b_720w.jpg" srcset="/img/loading.gif" lazyload
+alt="pic" />
+<figcaption aria-hidden="true">pic</figcaption>
+</figure>
+<p>变换公式如下</p>
+<p><span class="math display">\[
+    \begin{cases}
+        I_d = I_\alpha \cos (\theta) + I_\beta \sin(\theta) \\
+        I_q = -I_\alpha \sin(\theta) + I_\beta \cos(\theta)
+    \end{cases}
+\]</span></p>
+<p>或者为矩阵形式</p>
+<p><span class="math display">\[
+    \begin{pmatrix}
+        I_d \\
+        I_q
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \cos \theta &amp; \sin \theta \\
+        -\sin \theta &amp; \cos \theta
+    \end{pmatrix}
+    \begin{pmatrix}
+        I_\alpha \\
+        I_\beta
+    \end{pmatrix}
+\]</span></p>
+<p>其中<span
+class="math inline">\(\theta\)</span>的获取，需要编码器实时输入转子的实时旋转角度。经过Park变换，一个匀速旋转的向量被转化成了一个定值，两个控制变量也被线性化了。</p>
+<figure>
+<img
+src="https://pic1.zhimg.com/80/v2-d6116ce165ec51df51469ad6ddd4d134_720w.jpg" srcset="/img/loading.gif" lazyload
+alt="pic" />
+<figcaption aria-hidden="true">pic</figcaption>
+</figure>
+<p>接下里以<span class="math inline">\(I_q,
+I_d\)</span>两个值作为反馈控制的对象，可以用一些线性控制器来进行控制。工业界偏爱PID（</p>
+<h3 id="pid-控制">PID 控制</h3>
+<p>FOC控制中主要使用三个PID环，分别是电流环、速度环和位置环。</p>
+<p>具体流程为<strong>通过电流反馈控制电机电流（扭矩）</strong> -&gt;
+<strong>通过控制扭矩来控制电机的转速</strong> -&gt;
+<strong>通过控制电机ed转速控制电机位置</strong>。</p>
+<h4 id="电流控制环">电流控制环</h4>
+<p>电流环具有如下控制框图。</p>
+<figure>
+<img
+src="https://pic4.zhimg.com/80/v2-92e0d6eaa15bff745a4cd024362f53eb_720w.jpg" srcset="/img/loading.gif" lazyload
+alt="pic" />
+<figcaption aria-hidden="true">pic</figcaption>
+</figure>
+<p>其中的<span class="math inline">\(I_q，
+I_d\)</span>的物理意义如下。</p>
+<ul>
+<li><span class="math inline">\(I_d\)</span>
+为转子旋转的切向变量，是期望的力矩输出。</li>
+<li><span class="math inline">\(I_q\)</span>
+为转子旋转的径向变量，是不期望的力矩输出，期望值为0</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/WGGiNj"><img
+src="https://z3.ax1x.com/2021/07/19/WGGiNj.jpg" srcset="/img/loading.gif" lazyload
+alt="WGGiNj.jpg" /></a></p>
+<p>事实上，<code>Clark变换</code> 和
+<code>Park变换</code>将转子磁链解耦成了转子旋转的<strong>径向</strong>和<strong>切向</strong>两个方向的变量。</p>
+<p>我们希望通过PID控制器，利用上述输入（电流采样，编码器反馈）和输出（MOS管开关状态）完成对电机电流的闭环控制。</p>
+<h4 id="速度控制环">速度控制环</h4>
+<p>在电流环的外部嵌套速度环，即可获得速度-电流双环控制。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/WGG5Ps"><img
+src="https://z3.ax1x.com/2021/07/19/WGG5Ps.md.png" srcset="/img/loading.gif" lazyload
+alt="WGG5Ps.md.png" /></a></p>
+<p><span class="math inline">\(Speed_{ref}\)</span> 是速度设定值，<span
+class="math inline">\(\omega\)</span>是电机的转速反馈，可以通过电机编码器或者霍尔传感器计算得到。
+将电机速度<span class="math inline">\(\omega\)</span>和速度设定值<span
+class="math inline">\(Speed_{ref}\)</span>进行误差值计算，带入速度环PI，计算的结果作为电流环的输入，就实现了速度-电流的双闭环控制。</p>
+<h4 id="位置控制环">位置控制环</h4>
+<p>在电流环外部嵌套位置环，即可获得位置-电流双环控制。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/WGYl11"><img
+src="https://z3.ax1x.com/2021/07/19/WGYl11.md.png" srcset="/img/loading.gif" lazyload
+alt="WGYl11.md.png" /></a></p>
+<p>由于不存在速度环，这里位置环使用了完整的PID控制。具体原因是，位置的微分是速度，德阳可以减小位置控制的震荡，加快收敛；积分项可以消除静态误差。</p>
+<h3 id="空间电压矢量和svpwm">空间电压矢量和SVPWM</h3>
+<h4 id="空间电压矢量">空间电压矢量</h4>
+<p>SVPWM的目的，是使用三相桥的开关状态把在空间中旋转的矢量表示出来，这个矢量被称为<strong>空间电压矢量</strong>。</p>
+<p>对于三项桥的任意一种状态，利用数学工具，我们可以计算出三项桥产生的电压矢量<span
+class="math inline">\(\vec{U}\)</span>具有特定的幅值，即相电压峰值<span
+class="math inline">\(U_{dc}\)</span>。这个电压矢量应当具有<span
+class="math inline">\(\omega=2\pi
+f\)</span>的角速度，才能满足旋转的需要。</p>
+<p>使用数学公式 <span class="math display">\[
+    \begin{cases}
+    U_A(t) = U_{dc}\cos(2\pi f t) \\
+    U_B(t) = U_{dc}\cos(2\pi ft - \frac{2\pi}{3}) \\
+    U_C(t) = U_{dc}\cos(2\pi ft + \frac{2\pi}{3})
+    \end{cases}
+\]</span>
+<!-- 两个inline math 的\$ 连在一起，挂掉了我的vscode 的\$\$解析 --></p>
+<p>定义开关函数<span class="math inline">\(S_x(x\in a, b,
+c)\)</span>。</p>
+<p><span class="math display">\[
+    S_x = \begin{cases}
+        1, &amp; \text{上桥臂导通} \\
+        0, &amp; \text{下桥臂导通}
+    \end{cases}
+\]</span></p>
+<p><span class="math inline">\((S_a, S_b,
+S_c)\)</span>的全部可能组合共有8中，其中有6个非零矢量 <span
+class="math display">\[
+    U_1(001),U_2(010),U_3(011),U_4(100),U_5(101),U_6(110)
+\]</span> 和两个零矢量 <span class="math display">\[
+    U_0(000), U_7(111)
+\]</span></p>
+<p>可以绘制出各矢量的图像。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/WGdnzj"><img
+src="https://z3.ax1x.com/2021/07/19/WGdnzj.md.png" srcset="/img/loading.gif" lazyload
+alt="WGdnzj.md.png" /></a></p>
+<h4 id="svpwm技术">SVPWM技术</h4>
+<p>利用这6个空间电压矢量作为基向量，可以合成任意矢量。在每一个扇区，选取相邻的两个电压矢量以及零矢量，按照<strong>伏秒平衡原则</strong>来合成每个扇区内的任意电压矢量，即：
+<span class="math display">\[
+    \int^T_0 U_{ref}\text{d}t = \int^{T_x}_0 U_x\text{d}t + \int^{T_x +
+T_y}_{T_x} U_y\text{d}t + \int^{T}_{T_x+T_y} U_0^{*}\text{d}t
+\]</span></p>
+<p>离散化获得公式 <span class="math display">\[
+U_{ref}\cdot T = U_x \cdot T_x + U_y \cdot T_y + U_0^{*} \cdot T_0^{*}
+\]</span></p>
+<p>其中<span
+class="math inline">\(U_{ref}\)</span>是我们期望的电压矢量，T是一个PWM周期。</p>
+<p><span class="math inline">\(U_x, U_y\)</span>的选取，应当是<span
+class="math inline">\(U_{ref}\)</span>所在扇区的两侧。</p>
+<p><span
+class="math inline">\(U_0^{*}\)</span>指的是两个零矢量，可以是<span
+class="math inline">\(U_0\)</span>或者<span
+class="math inline">\(U_7\)</span>，零矢量的选择比较灵活，通过合理地配置零向量可以让空间电压矢量的切换更平缓。</p>
+<p>因此，只需要周期性的切换不同空间电压矢量，合理配置不同基向量在一个周期中的占空比，就可以合成出等效的任意空间电压矢量。</p>
+<h4 id="七段式svpwm调制法">七段式SVPWM调制法</h4>
+<p>七段式SVPWM是指，合理安排SVPWM中的各空间矢量的占空位置，使得MOS管的开关次数最小，最大限度地减少开关损耗的一种调制思路。</p>
+<p>依照<span
+class="math inline">\(U_{ref}\)</span>的所在扇区，可以计算得到如下开关切换顺序</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(U_{ref}\)</span> 所在扇区</th>
+<th>开关切换顺序</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ⅰ区</td>
+<td><span class="math inline">\(...0-4-6-7-7-6-4-0...\)</span></td>
+</tr>
+<tr class="even">
+<td>Ⅱ区</td>
+<td><span class="math inline">\(...0-2-6-7-7-6-2-0...\)</span></td>
+</tr>
+<tr class="odd">
+<td>Ⅲ区</td>
+<td><span class="math inline">\(...0-2-3-7-7-3-2-0...\)</span></td>
+</tr>
+<tr class="even">
+<td>Ⅳ区</td>
+<td><span class="math inline">\(...0-1-3-7-7-3-1-0...\)</span></td>
+</tr>
+<tr class="odd">
+<td>Ⅴ区</td>
+<td><span class="math inline">\(...0-1-5-7-7-5-1-0...\)</span></td>
+</tr>
+<tr class="even">
+<td>Ⅵ区</td>
+<td><span class="math inline">\(...0-4-5-7-7-5-4-0...\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>至此，SVPWM的任务完成，只需要在处理器中赋值给对应通道的捕获比较寄存器产生相应的三个PWM波形，控制MOS管的开关，进而产生期望的电压、电流和力矩。</p>
+<h2 id="总结">总结</h2>
+<p>“矢量控制”事实上是一种<strong>解耦合</strong>，把相互耦合的三相磁链解耦为容易控制的两轴<span
+class="math inline">\(I_q\)</span>和<span
+class="math inline">\(I_d\)</span>，计算得到响应结果后，再将控制信号耦合传回电机。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/29/Bugs/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">遇到的bug汇总-初学者的Bug List!</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/27/STM32SPL/">
+                        <span class="hidden-mobile">利用uVision5建立STM32F10x标准库工程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

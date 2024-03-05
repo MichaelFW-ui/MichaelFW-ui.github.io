@@ -1,0 +1,715 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Michael Francis Williams">
+  <meta name="keywords" content="">
+
+  <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+  <script src="http://tikzjax.com/v1/tikzjax.js"></script> 
+
+  
+    <meta name="description" content="这里梳理步进电机的相关计算问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="步进电机-相数、拍数和步距角的相关计算">
+<meta property="og:url" content="https://pickupthefall.xyz/2022/05/02/stepmotor/index.html">
+<meta property="og:site_name" content="无人问津的个人学习笔记站">
+<meta property="og:description" content="这里梳理步进电机的相关计算问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-02T14:00:51.000Z">
+<meta property="article:modified_time" content="2022-07-15T08:10:31.373Z">
+<meta property="article:author" content="Michael Francis Williams">
+<meta property="article:tag" content="课内复习">
+<meta property="article:tag" content="电子设计">
+<meta property="article:tag" content="电机">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css"><script src="https://tikzjax.com/v1/tikzjax.js"></script>
+  
+  <title>步进电机-相数、拍数和步距角的相关计算 - 无人问津的个人学习笔记站</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>The Blog of Michael</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/05/22/gLpEiF.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="步进电机-相数、拍数和步距角的相关计算">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-02 22:00" pubdate>
+        2022年5月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">步进电机-相数、拍数和步距角的相关计算</h1>
+            
+            <div class="markdown-body">
+              <p>这里梳理步进电机的相关计算问题。</p>
+<span id="more"></span>
+<h2 id="基本概念">基本概念</h2>
+<p>本课程中主要强调了的是磁阻式步进电机。磁阻式步进电机的力矩来源于磁路使磁阻最小的能力。下面是一个四相步进电机的图例。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OFF76J"><img
+src="https://s1.ax1x.com/2022/05/02/OFF76J.png" srcset="/img/loading.gif" lazyload
+alt="OFF76J.png" /></a></p>
+<p>步进电机分为定子和转子两大部分。定子主要需要注意的是磁极。对于<span
+class="math inline">\(p\)</span>相步进电机，通常定子中有<span
+class="math inline">\(2p\)</span>个绕组，也就是<span
+class="math inline">\(2p\)</span>个磁极。也就是说，绕组数等于磁极数。每一相有两个绕组，位于直径的两端。</p>
+<p>磁极表面有均匀分布的小齿。转子上也均匀分布着小齿。但是二者数目不是一一对应的。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OFAEr9"><img
+src="https://s1.ax1x.com/2022/05/02/OFAEr9.png" srcset="/img/loading.gif" lazyload
+alt="OFAEr9.png" /></a></p>
+<p><strong>齿距角</strong>的定义是相邻两齿中心线的夹角，设<span
+class="math inline">\(Z_r\)</span>位转子齿数，有齿距角<span
+class="math inline">\(\theta_t\)</span> <span class="math display">\[
+\theta _t = \frac{360^{o}}{Z_r}
+\]</span></p>
+<p>对于转子齿数的规定是，要求转子转动一半时(即转子从同一相的一个磁极转到了同一相的另一个磁极)，定子和转子的齿数相差1。换用课本上的话说，就是
+&gt; 相邻磁极下的定子转子齿之间错开转子齿距角的<span
+class="math inline">\(\frac{1}{m}\)</span>倍。</p>
+<p>注意到<span
+class="math inline">\(m=p\)</span>，所以上面两种定义是相同的。写成数学语言便是
+<span class="math display">\[
+\frac{Z_r}{2p} = K \pm \frac{1}{m}
+\]</span></p>
+<p><span class="math display">\[
+Z_r = 2pK \pm 2
+\]</span></p>
+<p>因此每一个极距下的转子齿数不是整数。这里正负号通常使转子齿数多一点，即正号。</p>
+<h2 id="拍数和步距角">拍数和步距角</h2>
+<p>步进电机的控制通常为一个周期<span
+class="math inline">\(N\)</span>个通电状态。在一个周期中，步进电机各绕组的不同通电状态的数量成为<strong>拍数</strong>。</p>
+<p>根据同步电动机的相关知识，每个通电周期之后，步进电机的定子磁场将旋转半周。相应的转子和定子之间的小齿也将在半周内进行同步。因为上面规定了转子和定子齿数的关系，所以<strong>每个通电周期转子转过一个齿距角</strong>。</p>
+<p><strong>步距角</strong>的定义是，改变一次通电状态，转过的角度。假设一个通电周期有<span
+class="math inline">\(N\)</span>拍，那么步距角<span
+class="math inline">\(\theta_b\)</span> <span class="math display">\[
+\theta_b = \frac{\theta_t}{N} = \frac{360^{o}}{Z_rN}
+\]</span></p>
+<h2 id="常见的通电模式">常见的通电模式</h2>
+<p>以四相步进电机为例。常见的通电模式为四相单四拍、四相双四拍、四相八拍。</p>
+<p>四相单四拍的通电规律为 <span class="math display">\[
+A \rightarrow B \rightarrow C \rightarrow D  \rightarrow \dots
+\]</span></p>
+<p>四相双四拍的通电规律为 <span class="math display">\[
+AB \rightarrow BC \rightarrow CD \rightarrow DA \rightarrow \dots
+\]</span></p>
+<p>四相八拍的通电规律为</p>
+<p><span class="math display">\[
+A\rightarrow AB \rightarrow B\rightarrow BC \rightarrow C\rightarrow CD
+\rightarrow D\rightarrow DA \rightarrow \dots
+\]</span></p>
+<p>其中有拍数和相数的关系 <span class="math display">\[
+N=km
+\]</span></p>
+<p><span
+class="math inline">\(k\)</span>的值为1时，称其为单拍制，为2时，称其为双拍制。可以看到，四相单四拍和四相双四拍均为单拍制，而四相八拍为双拍制。</p>
+<p>单拍制下，步距角为<span class="math inline">\(\displaystyle
+\frac{1}{m}\)</span>的齿距角，双拍制下步距角为<span
+class="math inline">\(\displaystyle \frac{1}{2m}\)</span>的齿距角。</p>
+<h2 id="引入电角度">引入电角度</h2>
+<p>和之前的电机不同，步进电机中电角度等于转子齿数乘以机械角度，即 <span
+class="math display">\[
+\theta _e = Z_r\theta
+\]</span></p>
+<p>那么齿距角应该是 <span class="math display">\[
+\theta_{te} = \frac{360^{o}}{Z_r}Z_r = 2\pi \mathrm{rad}
+\]</span></p>
+<p>步距角自然是 <span class="math display">\[
+\theta_{be} = \frac{2\pi}{N}
+\]</span></p>
+<h2 id="研究力矩">研究力矩</h2>
+<p>转矩是失调角的周期函数，周期为转子的一个齿距角，即<span
+class="math inline">\(2\pi\)</span>rad电角。</p>
+<p>单相通电的时候，静态力矩的基波分量为 <span class="math display">\[
+T = -T_m\sin(\theta_e - \theta_{e0})
+\]</span></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OFZAKg"><img
+src="https://s1.ax1x.com/2022/05/02/OFZAKg.png" srcset="/img/loading.gif" lazyload
+alt="OFZAKg.png" /></a></p>
+<p>这时的力矩是否为稳定平衡？图中标识了稳定平衡点，这里取了<span
+class="math inline">\(\theta_{e0}=0\)</span>。总之齿正好对齐的时候最稳定。</p>
+<p>多相通电的时候，就需要考虑不同相之间的电角差距了。</p>
+<p>电角的差距应该和步距角相同，那么在<span
+class="math inline">\(m\)</span>相步进电机<span
+class="math inline">\(n\)</span>相同时通电时，静态转矩应该为 <span
+class="math display">\[
+\begin{aligned}
+T &amp;= \sum_{i}^{n}T_i \\
+&amp;= T_m\sum_{i=1}^{n}\sin(\theta_e - (i-1)\theta_{be})\\
+&amp;=
+-T_m\frac{\sin\dfrac{n\theta_{be}}{2}}{\sin\dfrac{\theta_{be}}{2}}\sin(\theta_e-\frac{n-1}{2}\theta_{be})
+\\
+\end{aligned}
+\]</span></p>
+<p>单拍制下，步距角有公式 <span class="math display">\[
+\theta_{be} = \frac{2\pi}{m}
+\]</span></p>
+<p>所以最大静转矩为 <span class="math display">\[
+\frac{T_{m(n)}}{T_m} = \frac{\sin{\dfrac{n\pi}{m}}}{\sin\dfrac{\pi}{m}}
+\]</span></p>
+<h2 id="启动转矩">启动转矩</h2>
+<p>接下来考虑启动转矩。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OFe1Yt"><img
+src="https://s1.ax1x.com/2022/05/02/OFe1Yt.png" srcset="/img/loading.gif" lazyload
+alt="OFe1Yt.png" /></a></p>
+<p>正常启动需要让<strong>相邻通电状态的合成转矩大于负载转矩</strong>。这是因为在正常的通电切换时，不同的通电状态是合成的正弦波，因此力矩最小值通常在切换时取得。</p>
+<p>计算启动力矩，需要先得到步距角<span
+class="math inline">\(\theta_{be}\)</span>，因为相邻的磁极的相位差即为步距角。</p>
+<p>如果是单相通电，如四相单四拍，那么要考虑的是<span
+class="math inline">\(\sin(\theta_e)\)</span>和<span
+class="math inline">\(\sin(\theta_e - \theta_{be})\)</span>的交点，即
+<span class="math display">\[
+T_{start1} = T_m\sin(\dfrac{\pi}{2} + \dfrac{\theta_{be}}{2})
+\]</span></p>
+<p>其中<span
+class="math inline">\(\dfrac{\pi}{2}\)</span>是因为取最高点后面的第一个交点，二分之一的步距角是两个三角函数的交点距离最高点的相位差。</p>
+<p>如果是双相通电，如四相双四拍，那么就要考虑两项通电时候的合成磁场。
+<span class="math display">\[
+T_{AB} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta_{be}))
+\]</span></p>
+<p><span class="math display">\[
+T_{BC} = -T_m(\sin(\theta_e - \theta_{be}) + \sin(\theta_e -
+2\theta_{be}))
+\]</span></p>
+<p>为了取交点，让<span
+class="math inline">\(T_{AB}=T_{BC}\)</span>，得到 <span
+class="math display">\[
+\sin(\theta_e) = \sin(\theta_e - 2\theta_{be})
+\]</span></p>
+<p>通常让<span class="math inline">\(\theta_e\)</span>在<span
+class="math inline">\([0,\pi]\)</span>区间中，得到<span
+class="math inline">\(\theta_e = \pi\)</span></p>
+<p>那么将该数值带进<span class="math inline">\(T_{AB}\)</span>得到<span
+class="math inline">\(T_m\)</span>，即为启动转矩。</p>
+<p>如果是四相八拍，这时候注意步距角发生了变化，但是计算的步距角依然采取的是单拍的步距角。同样是进行合成
+<span class="math display">\[
+T_{A} = -T_m\sin(\theta_e)
+\]</span> <span class="math display">\[
+T_{AB} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta_{be}))
+\]</span></p>
+<!-- $$
+T_{ABC} = -T_m(\sin(\theta_e) + \sin(\theta_e - \theta_{be}) + \sin(\theta_e - 2\theta_{be}))
+$$ -->
+<p>令它们相等得到<span class="math inline">\(\sin(\theta_e -
+\theta_{be}) = 0\)</span>，可以取<span class="math inline">\(\theta_e =
+\dfrac{\pi}{2}\)</span>，得到起动转矩为<span
+class="math inline">\(T_m\)</span>。</p>
+<p>这里问题是步距角为什么取的是单拍的步距角？很简单，因为磁极的物理结构要求的偏差为<span
+class="math inline">\(\dfrac{2\pi}{m}\)</span>，正好是单拍的步距角。所以这里的步距角其实是磁极的相位差，数值上等于单拍步距角而已。这个数值的来历是<span
+class="math inline">\(\dfrac{2\pi}{m} \times m =
+2\pi\)</span>，即经过<span
+class="math inline">\(m\)</span>个磁极后相角相差<span
+class="math inline">\(2\pi\)</span>，也就是相差一个齿！这正是上文的要求。</p>
+<p>对于五相步进电机，上面求得的电角度分别是<span
+class="math inline">\(0.7\pi\)</span>，<span
+class="math inline">\(0.9\pi\)</span>，<span
+class="math inline">\(0.8\pi\)</span>，求得到的转矩分别为<span
+class="math inline">\(0.81T_m\)</span>，<span
+class="math inline">\(1.30T_m\)</span>，<span
+class="math inline">\(1.54T_m\)</span>。</p>
+<h2 id="感想">感想</h2>
+<p>步进电机的原理很简单，但是计算题想要算对算好还是需要扣细节的。</p>
+<h2 id="题外话">题外话</h2>
+<p>我写这篇笔记是因为我上课没听，而同时把这些角度全部搞混了，所以写不来作业题。很惭愧，上课摸鱼了造成这个悲剧...</p>
+<p>如果以后接着上课摸鱼，恐怕需要摸出来许许多多的课程笔记...</p>
+<p>还有其他的知识点我没有写，因为作业里没有。遇到了再整理。</p>
+<h2 id="图片来源">图片来源</h2>
+<p>本文图片来自《自动控制元件及线路》，系本课程课本。如有侵权我会及时删除。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E6%9C%BA/">电机</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BE%E5%86%85%E5%A4%8D%E4%B9%A0/">课内复习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E6%9C%BA/">电机</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/17/TRIAC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SCR,TRIAC,Photo TRIAC-四两拨千斤的光耦隔离电路</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/30/TikzInWeb/">
+                        <span class="hidden-mobile">在网页上使用TikZ!</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

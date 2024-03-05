@@ -1,0 +1,1107 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Michael Francis Williams">
+  <meta name="keywords" content="">
+
+  <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+  <script src="http://tikzjax.com/v1/tikzjax.js"></script> 
+
+  
+    <meta name="description" content="本文章是作者在学习电磁学时进行期中复习时做出的笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电磁学C复习-电学部分">
+<meta property="og:url" content="https://pickupthefall.xyz/2022/01/18/ElecC1/index.html">
+<meta property="og:site_name" content="无人问津的个人学习笔记站">
+<meta property="og:description" content="本文章是作者在学习电磁学时进行期中复习时做出的笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-18T13:52:27.000Z">
+<meta property="article:modified_time" content="2022-06-30T16:39:03.293Z">
+<meta property="article:author" content="Michael Francis Williams">
+<meta property="article:tag" content="物理">
+<meta property="article:tag" content="课内复习">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css"><script src="https://tikzjax.com/v1/tikzjax.js"></script>
+  
+  <title>电磁学C复习-电学部分 - 无人问津的个人学习笔记站</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pickupthefall.xyz","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>The Blog of Michael</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://z3.ax1x.com/2021/05/22/gLpEiF.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="电磁学C复习-电学部分">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-18 21:52" pubdate>
+        2022年1月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      10k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      85 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">电磁学C复习-电学部分</h1>
+            
+            <div class="markdown-body">
+              <p>本文章是作者在学习电磁学时进行期中复习时做出的笔记。</p>
+<span id="more"></span>
+<h2 id="第一章">第一章</h2>
+<h3 id="电荷守恒定律">电荷守恒定律</h3>
+<p><span class="math display">\[
+\newcommand{\oiint}{\subset\kern{-3pt}\supset\kern{-16.5pt}\iint}
+    \oiint_S \vec{j}\cdot\text{d}\vec{s} = -\frac{\partial}{\partial t}
+\iiint_V \rho \cdot \text{d}V
+\]</span></p>
+<p>即 <span class="math display">\[
+    \nabla \cdot \vec{j} = -\frac{\partial \rho}{\partial t}
+\]</span></p>
+<h3 id="库仑定律">库仑定律</h3>
+<p><span
+class="math inline">\(\vec{F}_{12}\)</span>为2对1的作用力，有</p>
+<p><span class="math display">\[
+    \vec{F}_{12} = k\frac{q_1q_2}{r_{12}^2}\vec{e_r}
+\]</span></p>
+<p>同时满足牛顿第三定律</p>
+<p><span class="math display">\[
+    \vec{F}_{12} = -\vec{F}_{21}
+\]</span></p>
+<p>其中 <span class="math display">\[
+    k = \frac{1}{4\pi \varepsilon_0}, \varepsilon_0 = 9\times 10^9
+Nm^2/C^2
+\]</span></p>
+<h3 id="矢量操作">矢量操作</h3>
+<h4 id="矢量分解">矢量分解</h4>
+<p><span class="math display">\[
+\vec{A} = (\vec{A} \cdot \vec{n})\vec{n} + \vec{n} \times (\vec{A}
+\times \vec{n})
+\]</span></p>
+<h4 id="运算方法">运算方法</h4>
+<p><span class="math display">\[
+    \nabla = \vec{e}_x \frac{\partial}{\partial x} + \vec{e}_y
+\frac{\partial}{\partial y} + \vec{e}_z \frac{\partial}{\partial z}
+\]</span></p>
+<h4 id="矢量微元">矢量微元</h4>
+<p>直角坐标系</p>
+<p><span class="math display">\[
+    \text{d} \vec{l} = \text{d} x\vec{x} + \text{d} y\vec{y}+ \text{d}
+z\vec{z}
+\]</span></p>
+<p><span class="math display">\[
+    \text{d} \vec{S}_x = \text{d} y \text{d} z \vec{x}
+\]</span></p>
+<p><span class="math display">\[
+    \text{d} \vec{S}_y = \text{d} z \text{d} x \vec{y}
+\]</span></p>
+<p><span class="math display">\[
+    \text{d} \vec{S}_z = \text{d} x \text{d} y \vec{z}
+\]</span></p>
+<p><span class="math display">\[
+\text{d} {V} = \text{d} x\text{d}y\text{d}z
+\]</span></p>
+<p>柱坐标系</p>
+<p><span class="math display">\[
+    \text{d} \vec{l} = \text{d}r\vec{r} + r\text{d}\varphi\vec{\varphi}
++ \text{d} z\vec{z}
+\]</span></p>
+<p>球坐标系</p>
+<p><span class="math display">\[
+    \text{d} \vec{l} = \text{d}R\vec{r} + R\text{d}\theta \vec{\theta} +
+R\sin \theta \text{d} \varphi \vec{\varphi}
+\]</span></p>
+<h3 id="叠加原理">叠加原理</h3>
+<p><span class="math display">\[
+F_i = \frac{1}{4\pi\varepsilon_0}q_i \sum_{j=1, i\neq
+i}^{N}\frac{q_j}{|\boldsymbol{r}-\boldsymbol{r_j}|^3}(\boldsymbol{r} -
+\boldsymbol{r_j})
+\]</span></p>
+<h3 id="电荷密度">电荷密度</h3>
+<p><span class="math display">\[
+\rho = \frac{\Delta q}{\Delta V}
+\]</span></p>
+<p><span class="math display">\[
+\sigma = \frac{\Delta q}{\Delta S}
+\]</span></p>
+<p><span class="math display">\[
+\lambda = \frac{\Delta q}{\Delta l}
+\]</span></p>
+<h3 id="带电体之间的作用力">带电体之间的作用力</h3>
+<p><span class="math display">\[
+F_{12} =
+\frac{1}{4\pi\varepsilon_0}\iiint_{V_1}\iiint_{V_2}\frac{\rho_1(\boldsymbol{r_1})\rho_2(\boldsymbol{r_2})}{|\boldsymbol{r_2}
+- \boldsymbol{r_1}|^3}(\boldsymbol{r_2} -
+\boldsymbol{r_1})\text{d}V_1\text{d}V_2
+\]</span></p>
+<h3 id="电偶极子">电偶极子</h3>
+<p>电偶极矩<span
+class="math inline">\(\boldsymbol{p}\)</span>，大小为<span
+class="math inline">\(p=ql\)</span>，方向由负电荷指向正电荷。</p>
+<p>设<span class="math inline">\(\boldsymbol{n}\)</span>是<span
+class="math inline">\(\boldsymbol{r}\)</span>方向的单位矢量，则有 <span
+class="math display">\[
+\vec{E} = \frac{1}{4\pi\varepsilon_0}
+\frac{3\vec{n}(\vec{p}\cdot\vec{n})-\vec{p}}{r^3}
+\]</span></p>
+<h3 id="电通量">电通量</h3>
+<p><span class="math display">\[
+\Delta \Phi = \vec{E}\cdot \Delta \vec{S}
+\]</span></p>
+<p><span class="math display">\[
+\Phi_E = \iint_S \vec{E}\cdot \text{d} \vec{S}
+\]</span></p>
+<p>开曲面：凸侧一方的方向的外法线方向为正
+闭曲面：外法线方向为正，内法线方向为负</p>
+<p>电通量满足叠加原理，是标量。</p>
+<h3 id="立体角">立体角</h3>
+<p><span class="math display">\[
+\Omega = \frac{S_r}{r^2}
+\]</span></p>
+<h3 id="静电场的高斯定理">静电场的高斯定理</h3>
+<p><span class="math display">\[
+\oiint_S \vec{E}\cdot \text{d}\vec{S} =
+\frac{1}{\varepsilon_0}\sum^{N}_{i=1}q_i^{in}
+\]</span></p>
+<p>对连续分布的电荷</p>
+<p><span class="math display">\[
+\oiint_S \vec{E}\cdot \text{d}\vec{S}
+=\frac{1}{\varepsilon_0}\iiint_V\rho \text{d} V
+\]</span></p>
+<p>由数学公式推导得到 <span class="math display">\[
+\nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}
+\]</span></p>
+<h3 id="环量">环量</h3>
+<p><span class="math display">\[
+\oint_L\boldsymbol \cdot \text{d}\boldsymbol{L}
+\]</span></p>
+<h3 id="静电场的环路定理">静电场的环路定理</h3>
+<p><span class="math display">\[
+\oint_L \vec{E}\cdot\text{d}\vec{l} = 0
+\]</span></p>
+<p>由数学公式推导得到 <span class="math display">\[
+\nabla \times \vec{E} = 0
+\]</span></p>
+<h3 id="电势能">电势能</h3>
+<p><span class="math display">\[
+W_P = q_0 \int^{\infty}_P\vec{E}\cdot \text{d}\vec{l}
+\]</span></p>
+<h3 id="电势差">电势差</h3>
+<p><span class="math display">\[
+U_{PQ} = \int^{Q}_{P}\vec{E}\cdot\text{d}\vec{l}
+\]</span></p>
+<h3 id="电势">电势</h3>
+<p><span class="math display">\[
+U_P = \int^{\infty}_{P} \vec{E}\cdot\text{d}\vec{l}
+\]</span></p>
+<p>电势满足叠加原理，电势是标量。</p>
+<p><span class="math display">\[
+U(\boldsymbol{r}) = \sum_{i}U_i(\boldsymbol{r}) =
+\frac{1}{4\pi\varepsilon_0}\sum_{i}\frac{q_i}{|\boldsymbol{r} -
+\boldsymbol{r}_i|}
+\]</span></p>
+<h3 id="点电荷电势">点电荷电势</h3>
+<p><span class="math display">\[
+U(r) = \frac{q}{4\pi\varepsilon_0 r}
+\]</span></p>
+<h3 id="带电体电势">带电体电势</h3>
+<p>将<span
+class="math inline">\(\displaystyle\frac{\text{d}q}{|\boldsymbol{r}-\boldsymbol{r}^{&#39;}|}\)</span>
+转化成体、面、线电荷元积分即可。</p>
+<h3 id="电场强度和电势的关系">电场强度和电势的关系</h3>
+<p><span class="math display">\[
+\vec{E} = -\nabla U
+\]</span></p>
+<p>即 <span class="math display">\[
+E_x = -\frac{\partial U}{\partial x}, E_y = -\frac{\partial U}{\partial
+y}, E_z = -\frac{\partial U}{\partial z}
+\]</span></p>
+<h3 id="泊松方程">泊松方程</h3>
+<p><span class="math display">\[
+\nabla^2 U = -\frac{\rho}{\varepsilon_0}
+\]</span></p>
+<h3 id="电偶极子电势分布和电场分布">电偶极子电势分布和电场分布</h3>
+<p><span class="math display">\[
+U(\boldsymbol{r}) =
+\frac{1}{4\pi\varepsilon_0}\frac{\boldsymbol{p}\cdot\boldsymbol{r}}{r^3}
+\]</span></p>
+<p><span class="math display">\[
+E(\boldsymbol{r}) = -\frac{\boldsymbol{p}}{4\pi\varepsilon_0 r^3} +
+\frac{3(\boldsymbol{p}\cdot
+\boldsymbol{r})}{4\pi\varepsilon_0r^5}\boldsymbol{r}
+\]</span></p>
+<h2 id="第二章">第二章</h2>
+<h3 id="电阻率">电阻率</h3>
+<p><span class="math display">\[
+\rho = \frac{RS}{l}
+\]</span></p>
+<h3 id="静电平衡">静电平衡</h3>
+<p>导体内部电场强度处处为零。</p>
+<p>静电平衡时内部电荷按照指数衰减</p>
+<p><span class="math display">\[
+\rho(t) = \rho_0\text{e}^{-t/\tau}
+\]</span></p>
+<h3 id="静电屏蔽">静电屏蔽</h3>
+<p>腔外不影响腔内，腔内影响腔外。对地接空腔，内外不影响。</p>
+<h3 id="电荷系统在静电场中的受力问题">电荷系统在静电场中的受力问题</h3>
+<p><span
+class="math inline">\(E=E_t-E_1\)</span>，分别为外场，总电场，和受力带电体的电场。</p>
+<p>体电荷<span class="math inline">\(E_1(r) = \rho_e r/(3\varepsilon_0)
+\rightarrow 0\)</span> 面电荷<span class="math inline">\(E_1 = \pm
+\sigma_e / (2\varepsilon_0)\)</span> 线电荷<span
+class="math inline">\(E_1 = \lambda_e / (2\pi\varepsilon_0 r)
+\rightarrow \infty\)</span></p>
+<h3 id="电偶极子在外电场中的受力问题">电偶极子在外电场中的受力问题</h3>
+<p><span class="math display">\[
+\boldsymbol{F} = (\boldsymbol{p}\cdot
+\nabla)\boldsymbol{E}(\boldsymbol{r})
+\]</span></p>
+<p>力矩参考点为电偶极子中点 <span class="math display">\[
+\boldsymbol{L} = \boldsymbol{p}\times \boldsymbol{E}
+\]</span></p>
+<h3 id="常见电容器">常见电容器</h3>
+<p>球体电容器 <span class="math display">\[
+C = 4\pi\varepsilon_0R
+\]</span></p>
+<p>平行板电容器 <span class="math display">\[
+C=\varepsilon_0S/d
+\]</span></p>
+<p>球形电容器 <span class="math display">\[
+C=4\pi\varepsilon_0\frac{R_AR_B}{R_B-R_A}
+\]</span></p>
+<p>同轴圆柱形电容器 <span class="math display">\[
+C=\frac{2\pi\varepsilon_0L}{\ln R_B/R_A}
+\]</span></p>
+<h3 id="极化强度矢量">极化强度矢量</h3>
+<p>Definition: 单位体积内分子电偶极矩矢量和 <span
+class="math display">\[
+\vec{P} = \lim_{\Delta V\rightarrow 0}\frac{\sum \vec{p}_i}{\Delta V}
+\]</span></p>
+<p>平衡时有</p>
+<p><span class="math display">\[
+\vec{E} = \vec{E}_0 + \vec{E}^{&#39;}
+\]</span></p>
+<h3 id="电荷的分布情况">电荷的分布情况</h3>
+<p>极化电荷 <span class="math display">\[
+\nabla \cdot \boldsymbol{P} = -\rho^{&#39;}
+\]</span></p>
+<p>边界上 <span class="math display">\[
+\sigma ^{&#39;} = -(\boldsymbol{P}_2 - \boldsymbol{P}_1) \cdot
+\boldsymbol{n}
+\]</span></p>
+<h3 id="极化强度与电场的关系">极化强度与电场的关系</h3>
+<p>各向同性电介质中 <span class="math display">\[
+\boldsymbol{P} = \chi_e\varepsilon_0\boldsymbol{E}
+\]</span></p>
+<p><span class="math inline">\(\chi_e\)</span>为电极化率，<span
+class="math inline">\(\boldsymbol{E}\)</span>为极化后的总电场。</p>
+<p><span class="math display">\[
+\varepsilon_r \equiv 1 + \chi_e
+\]</span></p>
+<h3 id="电介质中静电场高斯定理">电介质中静电场高斯定理</h3>
+<p>定义电位移矢量 <span class="math display">\[
+\boldsymbol{D} = \varepsilon_0\boldsymbol{E} + \boldsymbol{P}
+\]</span> 则有 <span class="math display">\[
+\oiint_S \boldsymbol{D} \cdot \text{d}\boldsymbol{S} = \sum_{S}q_0
+\]</span></p>
+<p>而且 <span class="math display">\[
+\boldsymbol{D} = \varepsilon_0\boldsymbol{E} + \boldsymbol{P} =
+\varepsilon_0\boldsymbol{E} + \chi_e\varepsilon_0\boldsymbol{E} =
+\varepsilon_r\varepsilon_0\boldsymbol{E} = \varepsilon\boldsymbol{E}
+\]</span></p>
+<p>写成连续形式也可以，将<span
+class="math inline">\(q_0\)</span>换成<span
+class="math inline">\(\iiint_V \rho_0\text{d}V\)</span>即可。</p>
+<p>同时有微分形式 <span class="math display">\[
+\nabla \cdot \boldsymbol{D} = \rho_0
+\]</span></p>
+<p>介质中静电场仍然是一个无旋的保守场。</p>
+<p>交界面无自由电荷，D线连续，E线通常不连续。</p>
+<h3 id="电介质交界面上的物理量">电介质交界面上的物理量</h3>
+<p>交界面上的电场强度切向分量总是相等的。</p>
+<p>交界面上的电位移矢量有如下关系 <span class="math display">\[
+D_{2n} - D_{1n} = \sigma_0
+\]</span></p>
+<p>无自由电荷时，交界面的电位移矢量连续。</p>
+<p>即</p>
+<p><span class="math display">\[
+(\boldsymbol{D}_2 - \boldsymbol{D}_1)\cdot \boldsymbol{n} = \sigma_0
+\]</span></p>
+<p><span class="math display">\[
+(\boldsymbol{P}_1 - \boldsymbol{P}_2)\cdot \boldsymbol{n} =
+\sigma^{&#39;}
+\]</span></p>
+<p><span class="math display">\[
+(\boldsymbol{E}_2 - \boldsymbol{E}_1)\cdot \boldsymbol{n} =
+\sigma/\varepsilon_0
+\]</span></p>
+<p>交界面上的电势总是连续的。</p>
+<h3 id="介质中静电场基本方程">介质中静电场基本方程</h3>
+<p>高斯定理 <span class="math display">\[
+\oiint_S\vec{D}\cdot\text{d}\vec{S} = \sum_Sq_0
+\]</span></p>
+<p>本构方程 <span class="math display">\[
+\vec{D} = \varepsilon_r\varepsilon_0\vec{E}
+\]</span></p>
+<p>环路定理 <span class="math display">\[
+\oint_L\vec{E}\cdot\text{d}\vec{l}= 0
+\]</span> 边值条件，上一节</p>
+<h4 id="介质界面与电场线重合">介质界面与电场线重合</h4>
+<p>电场强度连续</p>
+<h4 id="介质表面与等势面重合">介质表面与等势面重合</h4>
+<p>电位移矢量连续，且相当于真空中的情况，即 <span
+class="math display">\[
+\boldsymbol{D} = \varepsilon_r\varepsilon_0\boldsymbol{E}
+=  \varepsilon_0\boldsymbol{E}_0
+\]</span></p>
+<p>第二个等号由连续性得到，相当于延伸到真空的情况。</p>
+<h3 id="电场的能量">电场的能量</h3>
+<p>N个点电荷体系</p>
+<p><span class="math display">\[
+W_{\text{互}} = \frac{1}{2}\sum_{i=1}^{N}W_i =
+\frac{1}{2}\sum_{i=1}^{N}q_iU_i
+\]</span></p>
+<p>其中 <span class="math display">\[
+U_i = \sum_{j=1,i\neq j}^{N}U_{ji} = \frac{1}{4\pi\varepsilon_0}\sum_{j
+=1, i\neq j}^{N}\frac{q_j}{r_{ij}}
+\]</span></p>
+<p>一个点电荷的电势能为 <span class="math display">\[
+W_i = q_iU_i
+\]</span></p>
+<h3 id="体电荷分布自能">体电荷分布自能</h3>
+<p><span class="math display">\[
+W_e = \frac{1}{2}\iiint_V\rho(\boldsymbol{r})U(\boldsymbol{r})\text{d}V
+\]</span></p>
+<h3 id="面电荷分布自能">面电荷分布自能</h3>
+<p><span class="math display">\[
+W_e=\frac{1}{2}\iint_S\sigma(\boldsymbol{r})U(\boldsymbol{r})\text{d}S
+\]</span></p>
+<p>线电荷不能求自能</p>
+<h3 id="空间电势能">空间电势能</h3>
+<p>空间总电势为 <span class="math display">\[
+U(\boldsymbol{r}) = U_i(\boldsymbol{r}) + U^{(i)}(\boldsymbol{r})
+\]</span></p>
+<p><span
+class="math inline">\(U_i\)</span>：除第i个带电体外所有其他带电体在r产生的电势
+<span
+class="math inline">\(U^{(i)}\)</span>：第i个带电体在r处产生的电势</p>
+<p>总电势能 <span class="math display">\[
+W_e =
+\frac{1}{2}\sum_{i=1}^{N}\iiint_V\rho(\boldsymbol{r})U(\boldsymbol{r})\text{d}V
+\\ =
+\frac{1}{2}\sum_{i=1}^{N}\iiint_V\rho(\boldsymbol{r})U^{(i)}(\boldsymbol{r})\text{d}V
++
+\frac{1}{2}\sum_{i=1}^{N}\iiint_V\rho(\boldsymbol{r})U_i(\boldsymbol{r})\text{d}V
+\]</span></p>
+<p>即 <span class="math display">\[
+W_{\text{静}} = W_{\text{自}} + W_{\text{互}}
+\]</span></p>
+<p>互能可以当成点电荷处理。</p>
+<h3 id="孤立带电球体的自能">孤立带电球体的自能</h3>
+<p><span class="math display">\[
+W_{\text{自}} = \frac{4\pi\rho^2R^5}{15\varepsilon_0}
+\]</span></p>
+<h3 id="带电导体的静电能">带电导体的静电能</h3>
+<p>带电导体电荷分布在外表面 <span class="math display">\[
+W_e = \frac{1}{2}\sum_{i=1}^{N}\iint_S\sigma U\text{d}S =
+\frac{1}{2}\sum_{i=1}^{N}q_iU_i
+\]</span></p>
+<h3 id="电偶极子的静电能">电偶极子的静电能</h3>
+<p><span class="math display">\[
+W = -\vec{p} \cdot\vec{E}
+\]</span></p>
+<p>所以p平行于外场且指向外场方向时，能量最低。</p>
+<h3 id="电容器的能量">电容器的能量</h3>
+<p><span class="math display">\[
+W_e = \frac{1}{2}QU
+\]</span> 其中U为电势差</p>
+<h3 id="电介质存在时带电系统的静电能">电介质存在时带电系统的静电能</h3>
+<p>静电能时建立自由电荷分布所需要的外界做功，但是电势U包括了所有电荷的贡献
+<span class="math display">\[
+W_e =
+\frac{1}{2}\iiint_V\rho_0(\boldsymbol{r})U(\boldsymbol{r})\text{d}V
+\]</span></p>
+<h3 id="宏观静电能">宏观静电能</h3>
+<p>若 <span class="math display">\[
+\rho({\boldsymbol{r}})=\rho_0({\boldsymbol{r}}) +
+\rho^{&#39;}(\boldsymbol{r})
+\]</span></p>
+<p>定义宏观静电能 <span class="math display">\[
+W_{e0} =
+\frac{1}{2}\iiint_{V_0}\rho_0(\boldsymbol{r})U(\boldsymbol{r})\text{d}V
++
+\frac{1}{2}\iiint_{V^{&#39;}}\rho({\boldsymbol{r}})U(\boldsymbol{r})\text{d}V
+\]</span></p>
+<p>为建立宏观电荷分布<span class="math inline">\(\rho_0(\boldsymbol{r})
++ \rho^{&#39;}(\boldsymbol{r})\)</span>过程中系统储存的静电能。</p>
+<p>静电能时在建立该状态过程中外界对系统所做的功，事实上仅相当于对自由电荷所做的功。在完成自由电荷的分布后，极化电荷自发产生，产生了宏观静电能的概念。</p>
+<p>静电能等于宏观静电能加上极化能，即 <span class="math display">\[
+W_e = W_{e0} + W_{\text{极}}
+\]</span></p>
+<p>计算得到极化能 <span class="math display">\[
+W_{\text{极}} =
+-\frac{1}{2}\iiint_{V^{&#39;}}\rho^{&#39;}(\boldsymbol{r})U(\boldsymbol{r})\text{d}V
+\]</span></p>
+<h3 id="电场的能量密度">电场的能量密度</h3>
+<p><span class="math display">\[
+\omega_e = \frac{W_e}{V} = \frac{1}{2}\vec{D}\cdot\vec{E}
+\]</span></p>
+<p>静电能 <span class="math display">\[
+W_e = \iiint_V\omega_e\text{d}V
+\]</span></p>
+<p>PPT上用了复杂的方法推导这个关系，但是我很菜，记住就好。</p>
+<p>对导体或者真空(<span class="math inline">\(\varepsilon =
+\varepsilon_0\)</span>的情况) <span class="math display">\[
+\omega_e = \omega_{e0} = \frac{1}{2}\varepsilon_0E^2
+\]</span></p>
+<p>对均匀介质， <span class="math display">\[
+\omega_e = \omega_{e0} + \omega_{\text{极}} =
+\frac{1}{2}\varepsilon_0E^2 + \frac{1}{2}\vec{P}\cdot\vec{E}
+\]</span></p>
+<h3 id="虚功原理">虚功原理</h3>
+<p>对孤立带点体，若电量Q保持不变， <span class="math display">\[
+\vec{F}\cdot\text{d}\vec{r} = -(\Delta W)_Q \rightarrow \vec{F} =
+-\left(\frac{\partial W}{\partial \vec{r}}\right)_Q
+\]</span></p>
+<p>对非孤立带电体，若电势U保持不变， <span class="math display">\[
+\vec{F}\cdot\text{d}\vec{r} = (\Delta W)_U \rightarrow \vec{F} =
+\left(\frac{\partial W}{\partial \vec{r}}\right)_U
+\]</span></p>
+<p>推导： 对于一个稳定系统，发生虚位移后 <span class="math display">\[
+\text{d}W = \delta A - \delta A^{&#39;}
+\]</span></p>
+<p>其中<span class="math inline">\(\delta
+A\)</span>为外界电源做功，<span class="math inline">\(\delta
+A^{&#39;}\)</span>为静电力做功。静电力作功与能量有着功能原理，所以是负号。
+在连接外部电源时，有关系<span class="math inline">\(\delta A = 2 \delta
+A^{&#39;}\)</span>，可以由电容的公式推广得到。</p>
+<p>所以自然有了虚功原理的公式。其中的符号也得到了解释。</p>
+<h2 id="第三章">第三章</h2>
+<h3 id="电流强度">电流强度</h3>
+<p><span class="math display">\[
+I = \frac{\text{d}Q}{\text{d}t}
+\]</span></p>
+<h3 id="电流密度">电流密度</h3>
+<p>作一单位矢量为电流方向，取一面元<span class="math inline">\(\Delta
+S_0\)</span>与<span
+class="math inline">\(\boldsymbol{n}_0\)</span>垂直，设通过<span
+class="math inline">\(\Delta S_0\)</span>的电流强度为<span
+class="math inline">\(\Delta I\)</span>，则电流密度为 <span
+class="math display">\[
+\vec{j} = \frac{\Delta I}{\Delta S_0}\vec{n}_0
+\]</span></p>
+<p>所以通过任意有限截面<span
+class="math inline">\(S\)</span>的电流强度为 <span
+class="math display">\[
+I = \iint_S\vec{j}\cdot\text{d}\vec{S}
+\]</span></p>
+<h3 id="电流密度的微观图像">电流密度的微观图像</h3>
+<p>导体中有k种带电粒子，其中第i种带电粒子的电量、带电粒子数密度、平均速度为<span
+class="math inline">\(q_i, n_i, \boldsymbol{\bar{u}}_i\)</span></p>
+<p>则 <span class="math display">\[
+\vec{j} = \sum_{i=1}^{N}q_in_i\boldsymbol{\bar{u}}_i
+\]</span></p>
+<p>注意到<span class="math inline">\(q_in_i = \rho_i\)</span>，有 <span
+class="math display">\[
+\vec{j} = \sum_{i=1}^{N}\rho_i\boldsymbol{\bar{u}}_i
+\]</span></p>
+<h3 id="电流连续性方程">电流连续性方程</h3>
+<p><span class="math display">\[
+\oiint_S \vec{j}\cdot \text{d}\vec{S} = -\iiint_V \frac{\partial
+\rho}{\partial t}\text{d} V  = -\frac{\text{d} q}{\text{d} t}
+\]</span></p>
+<p>即 <span class="math display">\[
+\nabla \cdot \vec{j} + \frac{\partial \rho}{\partial t} = 0
+\]</span></p>
+<h3 id="稳恒条件">稳恒条件</h3>
+<p>稳恒电流的闭合性；电荷的分布不因电流的存在而随时间变化，产生的电场不随时间变化。</p>
+<p>电流线或者电流是闭合的，不可能有起点或者终点。
+沿任一电流管的各截面电流强度都相等。</p>
+<h3 id="欧姆定律">欧姆定律</h3>
+<p><span class="math display">\[
+I=\frac{U}{R} = GU, U = IR
+\]</span></p>
+<p><span class="math display">\[
+R= \rho\frac{l}{S}, G=\sigma\frac{S}{l}
+\]</span></p>
+<h3 id="欧姆定律的微观形式">欧姆定律的微观形式</h3>
+<p><span class="math display">\[
+\vec{j} =\sigma\vec{E},\vec{E} = \rho\vec{j}
+\]</span></p>
+<p>可以用之求解电阻，一般地，可以用 <span class="math display">\[
+R=\int\rho\frac{\text{d}l}{S}
+\]</span></p>
+<p>和/即 <span class="math display">\[
+R = \frac{U}{I} = \frac{\int \vec{E}\cdot \text{d}\vec{l}}{I} =
+\frac{\int \rho \vec{j}\cdot\text{d}\vec{l}}{I}
+\]</span></p>
+<h3 id="焦耳定律">焦耳定律</h3>
+<p>单位时间内电场做的功，即电流的功率为 <span class="math display">\[
+P_e = \frac{\text{d}A}{\text{d}t} = IU
+\]</span></p>
+<p>电功率密度定义为 <span class="math display">\[
+p = \frac{P}{V} = \frac{I^2R}{V}
+\]</span></p>
+<p>利用电流管，证明得到 <span class="math display">\[
+p = \vec{j}\cdot\vec{E} = \frac{j^2}{\sigma} = \rho j^2
+\]</span></p>
+<h3 id="导电介质问题">导电介质问题</h3>
+<p>基本定理</p>
+<p><span class="math display">\[
+\oint_L \vec{E}\cdot\text{d}\vec{l} = 0
+\]</span></p>
+<p><span class="math display">\[
+\oiint_S \vec{j}\cdot \text{d}\vec{S} = 0
+\]</span></p>
+<p>性能方程 <span class="math display">\[
+\vec{j} = \sigma \vec{E}
+\]</span></p>
+<p><span class="math display">\[
+\vec{D} = \varepsilon\vec{E}
+\]</span></p>
+<p>边界条件 <span class="math display">\[
+\vec{n}\times(\vec{E}_2 - \vec{E}_1) = 0
+\]</span></p>
+<p><span class="math display">\[\vec{n}\cdot(\vec{j}_2 - \vec{j}_1) = 0
+\]</span></p>
+<p>参考<a href="#电介质交界面上的物理量">电介质交界面上的物理量</a></p>
+<p>一般步骤</p>
+<p>先根据导电性质求出电场分布，再根据介质性质求出极化的情况。计划性质决定了自由电荷和极化电荷在总电荷中所占的比例，与介电常量有关。</p>
+<p><span class="math display">\[
+\oiint_S \vec{E}\cdot \text{d}\vec{S} = \frac{Q}{\varepsilon_0} =
+\frac{Q_0}{\varepsilon}
+\]</span></p>
+<p>得到 <span class="math display">\[
+\frac{Q^{&#39;}}{Q} = \frac{Q-Q_0}{Q} = \frac{\varepsilon_0 -
+\varepsilon}{\varepsilon_0}
+\]</span></p>
+<h3 id="导电介质的电容与电阻">导电介质的电容与电阻</h3>
+<p><span class="math display">\[
+C=\frac{Q_0}{\Delta U} = \frac{\varepsilon}{\Delta U}\oiint_S
+\vec{E}\cdot\text{d}\vec{S}
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{R} = \frac{I}{\Delta U} = \frac{\sigma}{\Delta U}\oiint_S
+\vec{E}\cdot \text{d}\vec{S}
+\]</span></p>
+<p>得到时间常数 <span class="math display">\[
+\tau = RC = \frac{\varepsilon}{\sigma} = \rho\varepsilon
+\]</span></p>
+<h3 id="全电路欧姆定律">全电路欧姆定律</h3>
+<p>U为路端电压 <span class="math display">\[
+U = \varepsilon - Ir
+\]</span></p>
+<h3 id="奇怪电阻回路">奇怪电阻回路</h3>
+<p>假设电流法，对称法，断开节点法</p>
+<h3 id="ydelta转换">Y——Delta转换</h3>
+<p><span class="math display">\[
+R_{12} = \frac{G_1 + G_2 + G_3}{G_1G_2}
+\]</span></p>
+<p><span class="math display">\[
+R_{23} = \frac{G_1 + G_2 + G_3}{G_2G_3}
+\]</span></p>
+<p><span class="math display">\[
+R_{31} = \frac{G_1 + G_2 + G_3}{G_3G_1}
+\]</span></p>
+<p><span class="math display">\[
+G_1 = \frac{R_{12} + R_{23} + R_{31}}{R_{12}R_{31}}
+\]</span></p>
+<p><span class="math display">\[
+G_2 = \frac{R_{12} + R_{23} + R_{31}}{R_{12}R_{23}}
+\]</span></p>
+<p><span class="math display">\[
+G_3 = \frac{R_{12} + R_{23} + R_{31}}{R_{23}R_{31}}
+\]</span></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BE%E5%86%85%E5%A4%8D%E4%B9%A0/">课内复习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/02/ElecC2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电磁学C复习-磁学部分一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/10/Minimal-TikZ-/">
+                        <span class="hidden-mobile">Minimal TikZ 学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
